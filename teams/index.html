@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Team Profiles - 16 Fantasies 1 Cup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Team Profiles - 16 Fantasies 1 Cup" />
+  <meta property="og:description" content="Deep dives into each team owner's performance, history, and roasting material." />
+  <style>
+    :root{--bg:#0f1318; --ink:#e9eef6; --muted:#9aa7b6; --panel:#181e25; --line:#2a3340; --accent:#f6c453;}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    .font-header{font-family:Teko,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 28px rgba(0,0,0,.25);position:relative;overflow:hidden}
+    a.card:hover{border-color:var(--accent); box-shadow:0 8px 30px rgba(246,196,83,.15); transform:translateY(-2px)}
+    .badge{position:absolute;top:10px;right:-34px;transform:rotate(35deg);background:var(--accent);color:#0b1020;font-weight:800;font-size:.7rem;padding:.3rem 3rem;border:1px solid #caa24b}
+    .division-badge{position:absolute;top:10px;left:10px;background:rgba(246,196,83,.2);color:var(--accent);font-weight:700;font-size:.6rem;padding:.2rem .6rem;border-radius:4px;border:1px solid var(--accent)}
+  </style>
+</head>
+<body class="min-h-screen p-6 sm:p-10">
+  <main class="mx-auto max-w-6xl space-y-10">
+    <header class="text-center space-y-2">
+      <a href="../index.html" class="inline-block mb-4 text-sm underline decoration-yellow-400/70 hover:decoration-yellow-300">← Back to home</a>
+      <h1 class="font-header text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-yellow-400 to-yellow-600">
+        👥 Team Profiles
+      </h1>
+      <p class="text-slate-400">Deep dives into each owner's performance, history, and shame</p>
+    </header>
+
+    <!-- Division Filter -->
+    <div class="flex justify-center gap-4 mb-6">
+      <button class="division-filter active bg-yellow-600 text-black px-4 py-2 rounded-lg text-sm font-semibold" data-division="all">All Teams</button>
+      <button class="division-filter bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm" data-division="FLO">FLO Division</button>
+      <button class="division-filter bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm" data-division="BTK">BTK Division</button>
+    </div>
+
+    <!-- Team Grid -->
+    <section id="teams-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <!-- Teams populated by JavaScript -->
+    </section>
+
+    <!-- League Leaders Section -->
+    <section class="card p-6">
+      <h2 class="font-header text-3xl font-bold text-center text-[color:var(--accent)] mb-6">🏆 League Leaders</h2>
+      <div class="grid gap-4 md:grid-cols-3">
+        <div class="text-center">
+          <h3 class="font-header text-xl text-yellow-400 mb-2">👑 Points Leader</h3>
+          <div id="points-leader" class="text-lg font-bold"></div>
+        </div>
+        <div class="text-center">
+          <h3 class="font-header text-xl text-green-400 mb-2">📈 Best Record</h3>
+          <div id="record-leader" class="text-lg font-bold"></div>
+        </div>
+        <div class="text-center">
+          <h3 class="font-header text-xl text-red-400 mb-2">💀 Most Points Against</h3>
+          <div id="unlucky-leader" class="text-lg font-bold"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Sample team data - this would be loaded from your data files
+    const teams = [
+      {
+        teamName: "JewTeam",
+        ownerName: "Jewish Lightning", 
+        division: "FLO",
+        record: "8-1",
+        pointsFor: 1234.5,
+        pointsAgainst: 1089.2,
+        rank: 1,
+        streak: "W4",
+        slug: "jewteam",
+        badges: ["👑 Leader"],
+        preview: "Riding the easiest schedule to the top. Lucky or skillful?"
+      },
+      {
+        teamName: "gunga36",
+        ownerName: "The Gunga",
+        division: "BTK", 
+        record: "7-2",
+        pointsFor: 1398.7,
+        pointsAgainst: 1156.3,
+        rank: 2,
+        streak: "W2",
+        slug: "gunga36",
+        badges: ["🔥 High Scorer"],
+        preview: "The scoring machine that everyone fears in the playoffs."
+      },
+      {
+        teamName: "Bonzo22",
+        ownerName: "Bonzo Master",
+        division: "FLO",
+        record: "6-3", 
+        pointsFor: 1356.8,
+        pointsAgainst: 1234.5,
+        rank: 3,
+        streak: "W1",
+        slug: "bonzo22",
+        badges: ["⚡ Streaky"],
+        preview: "Solid and dangerous, always capable of the week's high score."
+      }
+      // Add more teams as needed
+    ];
+
+    function renderTeams(filteredTeams = teams) {
+      const grid = document.getElementById('teams-grid');
+      grid.innerHTML = filteredTeams.map(team => `
+        <a href="${team.slug}.html" class="card p-5 block transition-all duration-200">
+          ${team.rank === 1 ? '<div class="badge" aria-label="League Leader">👑 #1</div>' : ''}
+          <div class="division-badge">${team.division}</div>
+          <div class="mt-6">
+            <div class="text-xs uppercase tracking-wide text-slate-400">Rank #${team.rank}</div>
+            <div class="mt-1 font-header text-xl font-bold">${team.teamName}</div>
+            <div class="text-sm text-slate-300">${team.ownerName}</div>
+            <div class="mt-2 flex justify-between text-sm">
+              <span class="font-bold text-green-400">${team.record}</span>
+              <span class="text-slate-400">${team.streak}</span>
+            </div>
+            <div class="mt-2 text-xs text-slate-400">
+              ${team.pointsFor.toFixed(1)} PF | ${team.pointsAgainst.toFixed(1)} PA
+            </div>
+            <div class="mt-3">
+              ${team.badges.map(badge => `<span class="inline-block bg-yellow-900/30 text-yellow-200 text-xs px-2 py-1 rounded">${badge}</span>`).join(' ')}
+            </div>
+            <p class="mt-3 text-xs text-slate-300 italic">${team.preview}</p>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // Division filtering
+    document.querySelectorAll('.division-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        document.querySelectorAll('.division-filter').forEach(b => {
+          b.classList.remove('active', 'bg-yellow-600', 'text-black');
+          b.classList.add('bg-slate-700', 'text-white');
+        });
+        btn.classList.add('active', 'bg-yellow-600', 'text-black');
+        btn.classList.remove('bg-slate-700', 'text-white');
+
+        // Filter teams
+        const division = btn.dataset.division;
+        const filtered = division === 'all' ? teams : teams.filter(t => t.division === division);
+        renderTeams(filtered);
+      });
+    });
+
+    // Populate league leaders
+    function populateLeaders() {
+      const pointsLeader = teams.reduce((prev, current) => 
+        prev.pointsFor > current.pointsFor ? prev : current
+      );
+      const recordLeader = teams.sort((a, b) => {
+        const aWins = parseInt(a.record.split('-')[0]);
+        const bWins = parseInt(b.record.split('-')[0]);
+        return bWins - aWins;
+      })[0];
+      const unluckyLeader = teams.reduce((prev, current) => 
+        prev.pointsAgainst > current.pointsAgainst ? prev : current
+      );
+
+      document.getElementById('points-leader').textContent = 
+        `${pointsLeader.teamName} (${pointsLeader.pointsFor.toFixed(1)} PF)`;
+      document.getElementById('record-leader').textContent = 
+        `${recordLeader.teamName} (${recordLeader.record})`;
+      document.getElementById('unlucky-leader').textContent = 
+        `${unluckyLeader.teamName} (${unluckyLeader.pointsAgainst.toFixed(1)} PA)`;
+    }
+
+    // Initialize
+    renderTeams();
+    populateLeaders();
+  </script>
+</body>
+</html>

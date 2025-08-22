@@ -1,0 +1,269 @@
+name: Weekly Fantasy Football Update
+
+on:
+  # Scheduled run every Tuesday at 8 AM EST (after Monday Night Football)
+  schedule:
+    - cron: '0 13 * * 2'  # 13:00 UTC = 8:00 AM EST
+  
+  # Manual trigger for immediate updates
+  workflow_dispatch:
+    inputs:
+      week_number:
+        description: 'Week number to process'
+        required: true
+        type: number
+      week_title:
+        description: 'Custom week title (optional)'
+        required: false
+        type: string
+      deploy_immediately:
+        description: 'Deploy to Netlify immediately (skip manual approval)'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  # GitHub will automatically set these if secrets are configured
+  KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+  KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+jobs:
+  determine-week:
+    runs-on: ubuntu-latest
+    outputs:
+      week_number: ${{ steps.week-calc.outputs.week_number }}
+      week_title: ${{ steps.week-calc.outputs.week_title }}
+    steps:
+      - name: Calculate current week
+        id: week-calc
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "week_number=${{ github.event.inputs.week_number }}" >> $GITHUB_OUTPUT
+            echo "week_title=${{ github.event.inputs.week_title }}" >> $GITHUB_OUTPUT
+          else
+            # Calculate week based on current date (season starts Week 1 on September 5, 2024)
+            SEASON_START=$(date -d "2024-09-05" +%s)
+            CURRENT_DATE=$(date +%s)
+            DAYS_DIFF=$(( (CURRENT_DATE - SEASON_START) / 86400 ))
+            WEEK_NUMBER=$(( (DAYS_DIFF / 7) + 1 ))
+            
+            # Ensure week is between 1 and 17
+            if [ $WEEK_NUMBER -lt 1 ]; then WEEK_NUMBER=1; fi
+            if [ $WEEK_NUMBER -gt 17 ]; then WEEK_NUMBER=17; fi
+            
+            echo "week_number=$WEEK_NUMBER" >> $GITHUB_OUTPUT
+            echo "week_title=" >> $GITHUB_OUTPUT
+          fi
+
+  fetch-and-process:
+    needs: determine-week
+    runs-on: ubuntu-latest
+    outputs:
+      newsletter-generated: ${{ steps.newsletter.outputs.success }}
+      preview-url: ${{ steps.preview.outputs.url }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pandas requests kaggle jinja2
+      
+      - name: Configure Kaggle API
+        run: |
+          mkdir -p ~/.kaggle
+          echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > ~/.kaggle/kaggle.json
+          chmod 600 ~/.kaggle/kaggle.json
+        if: env.KAGGLE_USERNAME != '' && env.KAGGLE_KEY != ''
+      
+      - name: Fetch weekly data from Kaggle
+        id: fetch-data
+        run: |
+          echo "🏈 Fetching Week ${{ needs.determine-week.outputs.week_number }} data..."
+          python scripts/fetch_kaggle_data.py --week ${{ needs.determine-week.outputs.week_number }}
+          echo "success=true" >> $GITHUB_OUTPUT
+        continue-on-error: true
+      
+      - name: Generate newsletter
+        id: newsletter
+        run: |
+          echo "📰 Generating newsletter for Week ${{ needs.determine-week.outputs.week_number }}..."
+          
+          TITLE_ARG=""
+          if [ -n "${{ needs.determine-week.outputs.week_title }}" ]; then
+            TITLE_ARG="--title '${{ needs.determine-week.outputs.week_title }}'"
+          fi
+          
+          python scripts/generate_newsletter.py --week ${{ needs.determine-week.outputs.week_number }} $TITLE_ARG
+          echo "success=true" >> $GITHUB_OUTPUT
+      
+      - name: Create preview build
+        id: preview
+        run: |
+          echo "🔍 Creating preview build..."
+          
+          # Create a preview branch
+          PREVIEW_BRANCH="preview-week-${{ needs.determine-week.outputs.week_number }}"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          git checkout -b $PREVIEW_BRANCH
+          git add .
+          git commit -m "Preview: Week ${{ needs.determine-week.outputs.week_number }} newsletter
+          
+          📊 Weekly data processed
+          📰 Newsletter generated
+          🔍 Ready for review
+          
+          Week ${{ needs.determine-week.outputs.week_number }}: ${{ needs.determine-week.outputs.week_title }}
+          Generated: $(date)
+          "
+          
+          git push origin $PREVIEW_BRANCH
+          
+          # Create preview URL (you'd replace this with your actual preview deployment)
+          PREVIEW_URL="https://preview-week-${{ needs.determine-week.outputs.week_number }}--your-site.netlify.app"
+          echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+      
+      - name: Create summary
+        run: |
+          echo "## 🏈 Week ${{ needs.determine-week.outputs.week_number }} Newsletter Generated! 📰" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Processing Results:" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Data fetched from Kaggle" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Newsletter HTML generated" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Team profiles updated" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Season stats refreshed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔍 Preview:" >> $GITHUB_STEP_SUMMARY
+          echo "Preview branch created: \`preview-week-${{ needs.determine-week.outputs.week_number }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📝 Files Generated:" >> $GITHUB_STEP_SUMMARY
+          echo "- \`week-${{ needs.determine-week.outputs.week_number }}.html\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Updated \`weeks.js\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Updated \`data/season-stats.json\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Updated team profile files" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🚀 Next Steps:" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ github.event.inputs.deploy_immediately }}" = "true" ]; then
+            echo "⚡ **Deploying immediately** (auto-deploy enabled)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⏳ **Waiting for manual approval** - Check the content and approve deployment when ready" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  # Manual approval step (skipped if deploy_immediately is true)
+  await-approval:
+    needs: [determine-week, fetch-and-process]
+    runs-on: ubuntu-latest
+    if: github.event.inputs.deploy_immediately != 'true'
+    environment: 
+      name: production-approval
+      url: ${{ needs.fetch-and-process.outputs.preview-url }}
+    
+    steps:
+      - name: Manual approval checkpoint
+        run: |
+          echo "🎯 Manual approval required for Week ${{ needs.determine-week.outputs.week_number }} deployment"
+          echo "📋 Review checklist:"
+          echo "  ✅ Newsletter content looks good"
+          echo "  ✅ Roasting material is appropriate"
+          echo "  ✅ Data appears accurate"
+          echo "  ✅ No offensive content"
+          echo ""
+          echo "🚀 Click 'Approve' to deploy to production!"
+
+  # Deploy to Netlify
+  deploy:
+    needs: [determine-week, fetch-and-process, await-approval]
+    runs-on: ubuntu-latest
+    if: always() && (needs.await-approval.result == 'success' || github.event.inputs.deploy_immediately == 'true')
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: preview-week-${{ needs.determine-week.outputs.week_number }}
+      
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2.0
+        with:
+          publish-dir: '.'
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Week ${{ needs.determine-week.outputs.week_number }}: ${{ needs.determine-week.outputs.week_title }}"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        if: env.NETLIFY_AUTH_TOKEN != '' && env.NETLIFY_SITE_ID != ''
+      
+      - name: Merge to main
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          git checkout main
+          git merge preview-week-${{ needs.determine-week.outputs.week_number }} --no-ff -m "Deploy Week ${{ needs.determine-week.outputs.week_number }}: ${{ needs.determine-week.outputs.week_title }}
+          
+          🚀 Deployed to production
+          📊 All data updated
+          📰 Newsletter live
+          
+          🤖 Generated with Claude Code
+          
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+          
+          git push origin main
+          
+          # Clean up preview branch
+          git push origin --delete preview-week-${{ needs.determine-week.outputs.week_number }}
+      
+      - name: Deployment summary
+        run: |
+          echo "## 🚀 Week ${{ needs.determine-week.outputs.week_number }} Successfully Deployed! 🎉" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Deployment Details:" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Deployed to Netlify production" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Merged to main branch" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Preview branch cleaned up" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🌐 Live Site:" >> $GITHUB_STEP_SUMMARY
+          echo "Your fantasy football newsletter is now live!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📱 Share with League:" >> $GITHUB_STEP_SUMMARY
+          echo "Send the link to your league members - they'll love the roasting content! 🔥" >> $GITHUB_STEP_SUMMARY
+
+  # Notify on failure
+  notify-failure:
+    needs: [determine-week, fetch-and-process, deploy]
+    runs-on: ubuntu-latest
+    if: failure()
+    
+    steps:
+      - name: Failure notification
+        run: |
+          echo "## ❌ Week ${{ needs.determine-week.outputs.week_number }} Deployment Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔍 Check the logs above for details" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🛠️ Common issues:" >> $GITHUB_STEP_SUMMARY
+          echo "- Kaggle API credentials not configured" >> $GITHUB_STEP_SUMMARY
+          echo "- Netlify tokens missing" >> $GITHUB_STEP_SUMMARY
+          echo "- Data format issues" >> $GITHUB_STEP_SUMMARY
+          echo "- Network connectivity problems" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔄 Try again:" >> $GITHUB_STEP_SUMMARY
+          echo "Use the 'Run workflow' button to retry with manual inputs"

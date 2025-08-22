@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>16 Fantasies 1 Cup – Weekly Cup‑Dates</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="16 Fantasies 1 Cup – Weekly Cup‑Dates" />
+  <meta property="og:description" content="All Weekly Cup‑Dates in one place. Dark, gold, spicy." />
+  <meta property="og:image" content="assets/og-week-09.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    :root{--bg:#0f1318; --ink:#e9eef6; --muted:#9aa7b6; --panel:#181e25; --line:#2a3340; --accent:#f6c453;}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    .font-header{font-family:Teko,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 28px rgba(0,0,0,.25);position:relative;overflow:hidden}
+    a.card:hover{border-color:var(--accent); box-shadow:0 8px 30px rgba(246,196,83,.15)}
+    .badge{position:absolute;top:10px;right:-34px;transform:rotate(35deg);background:var(--accent);color:#0b1020;font-weight:800;font-size:.7rem;padding:.3rem 3rem;border:1px solid #caa24b}
+  </style>
+</head>
+<body class="min-h-screen p-6 sm:p-10">
+  <main class="mx-auto max-w-5xl space-y-10">
+    <header class="text-center space-y-2">
+      <img src="./images/league-logo.png" alt="League Logo" class="mx-auto w-24 h-auto mb-2">
+      <h1 class="font-header text-5xl sm:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-yellow-400 to-yellow-600">
+        🏆 16 Fantasies 1 Cup
+      </h1>
+      <p class="text-slate-400">All Weekly Cup‑Dates · Archives · Poll receipts</p>
+      <div class="flex justify-center gap-4 text-sm text-slate-400">
+        <a class="underline decoration-yellow-400/70 hover:decoration-yellow-300" href="/latest">Jump to latest →</a>
+        <span>|</span>
+        <a class="underline decoration-yellow-400/70 hover:decoration-yellow-300" href="teams/">Team Profiles</a>
+      </div>
+    </header>
+
+    <!-- Season Dashboard -->
+    <section class="card p-6">
+      <div class="flex flex-col lg:flex-row gap-6">
+        <!-- Current Standings -->
+        <div class="flex-1">
+          <h2 class="font-header text-2xl sm:text-3xl font-bold text-[color:var(--accent)] mb-4">🏆 Current Standings</h2>
+          <div id="standings-mini" class="space-y-2">
+            <!-- Populated by JavaScript -->
+          </div>
+          <div class="mt-4 text-center">
+            <a href="teams/" class="text-sm underline decoration-yellow-400/70 hover:decoration-yellow-300">View all team profiles →</a>
+          </div>
+        </div>
+
+        <!-- Season Highlights -->
+        <div class="flex-1">
+          <h2 class="font-header text-2xl sm:text-3xl font-bold text-[color:var(--accent)] mb-4">⚡ Season Highlights</h2>
+          <div id="season-highlights" class="space-y-3">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="flex-1">
+          <h2 class="font-header text-2xl sm:text-3xl font-bold text-[color:var(--accent)] mb-4">📊 League Stats</h2>
+          <div id="quick-stats" class="space-y-3">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity Bar -->
+      <div class="mt-6 pt-6 border-t border-slate-600">
+        <h3 class="font-header text-lg text-[color:var(--accent)] mb-3">🔥 Recent League Activity</h3>
+        <div id="recent-activity" class="flex flex-wrap gap-2">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+    <section class="space-y-4">
+      <h2 class="font-header text-3xl sm:text-4xl font-bold text-center text-[color:var(--accent)]">Weekly Cup‑Dates</h2>
+      <div class="flex justify-center gap-4 mb-6">
+        <button id="share-btn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-200">
+          📤 Share Site
+        </button>
+        <button id="subscribe-btn" class="bg-yellow-600 hover:bg-yellow-700 text-black px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-200">
+          🔔 Get Notifications
+        </button>
+      </div>
+      <div id="weeks" class="grid gap-4 sm:grid-cols-2"></div>
+    </section>
+    <section class="card p-5">
+      <h3 class="font-header text-2xl mb-2 text-[color:var(--accent)]">About</h3>
+      <p class="text-sm text-slate-300">Built for chaos. Add new weeks in <code>weeks.js</code> and drop a matching HTML file (e.g., <code>week-10.html</code>). Shortlinks: <code>/w/10</code> or <code>/week/10</code>.</p>
+    </section>
+  </main>
+  <script src="weeks.js"></script>
+  <script>
+    // Load season data and populate dashboard
+    async function loadSeasonData() {
+      try {
+        const response = await fetch('./data/season-stats.json');
+        const seasonData = await response.json();
+        populateDashboard(seasonData);
+      } catch (error) {
+        console.log('Season data not found, using mock data');
+        populateDashboard(getMockSeasonData());
+      }
+    }
+
+    function populateDashboard(data) {
+      // Populate standings (top 5)
+      const standingsContainer = document.getElementById('standings-mini');
+      const topStandings = data.standings.slice(0, 5);
+      standingsContainer.innerHTML = topStandings.map(team => `
+        <div class="flex justify-between items-center bg-slate-800 p-2 rounded">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold w-6">${team.rank}.</span>
+            <span class="font-semibold text-sm">${team.team}</span>
+          </div>
+          <div class="text-right text-xs">
+            <div class="font-bold">${team.record}</div>
+            <div class="text-slate-400">${team.pointsFor.toFixed(1)} PF</div>
+          </div>
+        </div>
+      `).join('');
+
+      // Populate season highlights
+      const highlightsContainer = document.getElementById('season-highlights');
+      highlightsContainer.innerHTML = `
+        <div class="bg-slate-800 p-3 rounded">
+          <div class="text-sm font-semibold text-yellow-400">🏆 High Score</div>
+          <div class="text-xs">${data.topPerformers.highestScorer.team}: ${data.topPerformers.highestScorer.points} pts (Week ${data.topPerformers.highestScorer.week})</div>
+        </div>
+        <div class="bg-slate-800 p-3 rounded">
+          <div class="text-sm font-semibold text-green-400">📈 Most Consistent</div>
+          <div class="text-xs">${data.topPerformers.mostConsistent.team} (σ: ${data.topPerformers.mostConsistent.stdDev})</div>
+        </div>
+        <div class="bg-slate-800 p-3 rounded">
+          <div class="text-sm font-semibold text-red-400">💀 Worst Beat</div>
+          <div class="text-xs">${data.topPerformers.worstBeat.team}: ${data.topPerformers.worstBeat.points} pts (Week ${data.topPerformers.worstBeat.week})</div>
+        </div>
+      `;
+
+      // Populate quick stats
+      const statsContainer = document.getElementById('quick-stats');
+      statsContainer.innerHTML = `
+        <div class="bg-slate-800 p-3 rounded text-center">
+          <div class="text-lg font-bold text-yellow-400">${data.currentWeek}</div>
+          <div class="text-xs text-slate-400">Current Week</div>
+        </div>
+        <div class="bg-slate-800 p-3 rounded text-center">
+          <div class="text-lg font-bold text-green-400">${data.leagueInfo.playoffTeams}</div>
+          <div class="text-xs text-slate-400">Playoff Spots</div>
+        </div>
+        <div class="bg-slate-800 p-3 rounded text-center">
+          <div class="text-lg font-bold text-blue-400">${data.leagueInfo.totalTeams}</div>
+          <div class="text-xs text-slate-400">Total Teams</div>
+        </div>
+      `;
+
+      // Populate recent activity
+      const activityContainer = document.getElementById('recent-activity');
+      const activities = [];
+      
+      if (data.recentActivity.trades) {
+        activities.push(...data.recentActivity.trades.map(trade => 
+          `<span class="bg-blue-900 text-blue-200 px-2 py-1 rounded text-xs">📄 ${trade.summary}</span>`
+        ));
+      }
+      
+      if (data.recentActivity.waivers) {
+        activities.push(...data.recentActivity.waivers.map(waiver => 
+          `<span class="bg-green-900 text-green-200 px-2 py-1 rounded text-xs">💰 ${waiver.team} claimed ${waiver.player} (${waiver.faab})</span>`
+        ));
+      }
+
+      activityContainer.innerHTML = activities.join('');
+    }
+
+    function getMockSeasonData() {
+      return {
+        currentWeek: 9,
+        leagueInfo: { totalTeams: 16, playoffTeams: 8 },
+        standings: [
+          { rank: 1, team: "JewTeam", record: "8-1", pointsFor: 1234.5 },
+          { rank: 2, team: "gunga36", record: "7-2", pointsFor: 1398.7 },
+          { rank: 3, team: "Bonzo22", record: "6-3", pointsFor: 1356.8 }
+        ],
+        topPerformers: {
+          highestScorer: { team: "gunga36", points: 178.5, week: 7 },
+          mostConsistent: { team: "JewTeam", stdDev: 12.3 },
+          worstBeat: { team: "Bonzo22", points: 89.2, week: 4 }
+        },
+        recentActivity: {
+          trades: [{ summary: "Blockbuster WR swap changes playoff picture" }],
+          waivers: [{ team: "gunga36", player: "Backup RB", faab: "$45" }]
+        }
+      };
+    }
+
+    // Initialize dashboard
+    loadSeasonData();
+    const wrap = document.getElementById('weeks');
+    const weeks = Array.isArray(window.CUP_WEEKS) ? window.CUP_WEEKS.slice() : [];
+    const maxWeek = weeks.reduce((m, w) => Math.max(m, w.week || 0), 0);
+    
+    weeks.forEach(w => {
+      const a = document.createElement('a');
+      a.className = 'card p-5 block hover:scale-105 transition-transform duration-200';
+      a.href = `${w.slug}.html`;
+      a.innerHTML = `
+        ${w.week === maxWeek ? '<div class="badge" aria-label="Newest">NEW</div>' : ''}
+        <div class="text-xs uppercase tracking-wide text-slate-400">Week ${w.week}</div>
+        <div class="mt-1 font-header text-2xl">${w.title}</div>
+        <p class="mt-2 text-sm text-slate-300">${w.blurb ?? ""}</p>
+        <div class="mt-3 flex gap-2">
+          <button class="share-week-btn text-xs bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded" data-week="${w.week}" data-title="${w.title}" data-slug="${w.slug}">
+            📤 Share
+          </button>
+          <span class="text-xs text-slate-500">Click to read →</span>
+        </div>
+      `;
+      wrap.appendChild(a);
+    });
+
+    // Share functionality
+    document.getElementById('share-btn').addEventListener('click', async () => {
+      try {
+        await navigator.share({
+          title: '16 Fantasies 1 Cup',
+          text: 'Check out our fantasy football league newsletter!',
+          url: window.location.href
+        });
+      } catch (err) {
+        navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard!');
+      }
+    });
+
+    // Subscription simulation
+    document.getElementById('subscribe-btn').addEventListener('click', () => {
+      const email = prompt('Enter your email to get notified of new Cup-Dates:');
+      if (email) {
+        alert(`Thanks! We'll notify ${email} when new newsletters are published.`);
+        localStorage.setItem('subscribedEmail', email);
+      }
+    });
+
+    // Individual week sharing
+    document.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('share-week-btn')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const { week, title, slug } = e.target.dataset;
+        const url = `${window.location.origin}/${slug}.html`;
+        try {
+          await navigator.share({
+            title: `Week ${week}: ${title}`,
+            text: `Check out this week's Cup-Date from 16 Fantasies 1 Cup!`,
+            url: url
+          });
+        } catch (err) {
+          navigator.clipboard.writeText(url);
+          alert('Link copied to clipboard!');
+        }
+      }
+    });
+
+    // Show notification if user is subscribed
+    if (localStorage.getItem('subscribedEmail')) {
+      const email = localStorage.getItem('subscribedEmail');
+      document.getElementById('subscribe-btn').innerHTML = '✅ Subscribed';
+      document.getElementById('subscribe-btn').title = `Notifications enabled for ${email}`;
+    }
+  </script>
+</body>
+</html>

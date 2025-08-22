@@ -1,0 +1,98 @@
+{
+  "currentWeek": 9,
+  "totalWeeks": 17,
+  "lastUpdated": "2024-11-12T08:00:00Z",
+  "leagueInfo": {
+    "name": "16 Fantasies 1 Cup",
+    "season": "2024",
+    "totalTeams": 16,
+    "playoffTeams": 8,
+    "regularSeasonWeeks": 14
+  },
+  "topPerformers": {
+    "highestScorer": {
+      "team": "gunga36",
+      "points": 178.5,
+      "week": 7
+    },
+    "mostConsistent": {
+      "team": "JewTeam",
+      "stdDev": 12.3
+    },
+    "worstBeat": {
+      "team": "Bonzo22", 
+      "points": 89.2,
+      "week": 4
+    }
+  },
+  "standings": [
+    {
+      "rank": 1,
+      "team": "JewTeam",
+      "owner": "Jewish Lightning",
+      "record": "8-1",
+      "pointsFor": 1234.5,
+      "pointsAgainst": 1089.2,
+      "streak": "W4",
+      "division": "FLO"
+    },
+    {
+      "rank": 2,
+      "team": "gunga36",
+      "owner": "The Gunga",
+      "record": "7-2", 
+      "pointsFor": 1398.7,
+      "pointsAgainst": 1156.3,
+      "streak": "W2",
+      "division": "BTK"
+    },
+    {
+      "rank": 3,
+      "team": "Bonzo22",
+      "owner": "Bonzo Master",
+      "record": "6-3",
+      "pointsFor": 1356.8,
+      "pointsAgainst": 1234.5,
+      "streak": "W1",
+      "division": "FLO"
+    }
+  ],
+  "weeklyHighlights": [
+    {
+      "week": 9,
+      "title": "Judgment Day",
+      "highlight": "JewTeam maintains their lead with the league's easiest schedule"
+    },
+    {
+      "week": 8,
+      "title": "Trade Deadline Chaos",
+      "highlight": "Three blockbuster trades shake up the playoff race"
+    }
+  ],
+  "divisionStandings": {
+    "FLO": [
+      {"team": "JewTeam", "record": "8-1", "divisionRecord": "4-0"},
+      {"team": "Bonzo22", "record": "6-3", "divisionRecord": "3-1"}
+    ],
+    "BTK": [
+      {"team": "gunga36", "record": "7-2", "divisionRecord": "4-0"}
+    ]
+  },
+  "recentActivity": {
+    "trades": [
+      {
+        "week": 9,
+        "teams": ["Team A", "Team B"],
+        "summary": "Blockbuster WR swap changes playoff picture"
+      }
+    ],
+    "waivers": [
+      {
+        "week": 9,
+        "player": "Backup RB",
+        "team": "gunga36",
+        "faab": "$45"
+      }
+    ]
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "teamInfo": {
+    "teamName": "JewTeam",
+    "ownerName": "Jewish Lightning",
+    "division": "FLO",
+    "teamSlug": "jewteam",
+    "founded": 2019,
+    "motto": "Chosen for Victory"
+  },
+  "currentSeason": {
+    "record": "8-1",
+    "pointsFor": 1234.5,
+    "pointsAgainst": 1089.2,
+    "rank": 1,
+    "divisionRank": 1,
+    "streak": "W4",
+    "playoffOdds": 98.5,
+    "strengthOfSchedule": 0.45,
+    "roster": {
+      "qb": ["Josh Allen", "Geno Smith"],
+      "rb": ["Austin Ekeler", "Raheem Mostert", "Tony Pollard"],
+      "wr": ["Davante Adams", "Keenan Allen", "DJ Moore", "Jordan Addison"],
+      "te": ["Travis Kelce"],
+      "def": ["49ers D/ST"],
+      "k": ["Harrison Butker"]
+    },
+    "weeklyScores": [
+      {"week": 1, "score": 134.5, "opponent": "Team B", "result": "W"},
+      {"week": 2, "score": 128.2, "opponent": "Team C", "result": "W"},
+      {"week": 3, "score": 145.8, "opponent": "Team D", "result": "W"},
+      {"week": 4, "score": 118.3, "opponent": "Team E", "result": "W"},
+      {"week": 5, "score": 97.6, "opponent": "Team F", "result": "L"},
+      {"week": 6, "score": 139.4, "opponent": "Team G", "result": "W"},
+      {"week": 7, "score": 156.2, "opponent": "Team H", "result": "W"},
+      {"week": 8, "score": 142.1, "opponent": "Team I", "result": "W"},
+      {"week": 9, "score": 167.3, "opponent": "Team J", "result": "W"}
+    ]
+  },
+  "historicalData": {
+    "championships": [2021],
+    "playoffAppearances": [2019, 2020, 2021, 2022, 2023],
+    "bestSeason": {
+      "year": 2021,
+      "record": "12-2",
+      "pointsFor": 1876.4,
+      "achievement": "League Champion"
+    },
+    "worstSeason": {
+      "year": 2020,
+      "record": "4-10",
+      "pointsFor": 1234.2,
+      "lowlight": "Missed playoffs after championship"
+    },
+    "allTimeDraftPicks": [
+      {
+        "year": 2024,
+        "round": 1,
+        "pick": 8,
+        "player": "Josh Allen",
+        "grade": "A+",
+        "analysis": "Solid QB1 anchor"
+      },
+      {
+        "year": 2024,
+        "round": 2,
+        "pick": 17,
+        "player": "Austin Ekeler",
+        "grade": "B+",
+        "analysis": "Consistent RB1 production"
+      },
+      {
+        "year": 2023,
+        "round": 1,
+        "pick": 5,
+        "player": "Jonathan Taylor",
+        "grade": "D-",
+        "analysis": "Injury-riddled bust season"
+      }
+    ]
+  },
+  "analytics": {
+    "draftStrategy": "Balanced approach with QB priority",
+    "tradeFrequency": "Conservative - 2.3 trades per season",
+    "waiverSuccess": "Above average - 67% hit rate",
+    "riskTolerance": "Medium",
+    "managerialTendencies": [
+      "Always drafts a top QB early",
+      "Prefers proven veterans over rookies",
+      "Reluctant to trade away draft picks",
+      "Strong at identifying waiver wire gems"
+    ]
+  },
+  "roastingMaterial": {
+    "currentSeason": [
+      "Currently riding the league's easiest schedule to the top - luck or skill?",
+      "8-1 record but still can't crack 1300 points for - efficiency over explosiveness",
+      "That Week 5 loss to the worst team in the league still stings, doesn't it?"
+    ],
+    "historicalShame": [
+      "2020: Defending champion to missing playoffs - talk about a championship hangover",
+      "2023: Drafted Jonathan Taylor 5th overall and watched him crumble",
+      "Has never won back-to-back championships despite multiple chances"
+    ],
+    "signatures": [
+      "The 'Safe Pick Specialist' - never reaches, never steals",
+      "Playoff choker - great regular seasons, mediocre postseasons",
+      "The schedule whisperer - always seems to catch teams on their worst weeks"
+    ]
+  },
+  "headToHead": {
+    "nemesis": {
+      "team": "gunga36",
+      "allTimeRecord": "3-7",
+      "recentTrend": "L3"
+    },
+    "favoritePrey": {
+      "team": "Basement Bob",
+      "allTimeRecord": "9-1",
+      "dominanceLevel": "Complete"
+    }
+  }
+}
