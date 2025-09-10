@@ -38,43 +38,34 @@
       </div>
     </header>
 
-    <!-- Season Dashboard -->
     <section class="card p-6">
       <div class="flex flex-col lg:flex-row gap-6">
-        <!-- Current Standings -->
         <div class="flex-1">
           <h2 class="font-header text-2xl sm:text-3xl font-bold text-[color:var(--accent)] mb-4">🏆 Current Standings</h2>
           <div id="standings-mini" class="space-y-2">
-            <!-- Populated by JavaScript -->
-          </div>
+            </div>
           <div class="mt-4 text-center">
             <a href="teams/" class="text-sm underline decoration-yellow-400/70 hover:decoration-yellow-300">View all team profiles →</a>
           </div>
         </div>
 
-        <!-- Season Highlights -->
         <div class="flex-1">
           <h2 class="font-header text-2xl sm:text-3xl font-bold text-[color:var(--accent)] mb-4">⚡ Season Highlights</h2>
           <div id="season-highlights" class="space-y-3">
-            <!-- Populated by JavaScript -->
-          </div>
+            </div>
         </div>
 
-        <!-- Quick Stats -->
         <div class="flex-1">
           <h2 class="font-header text-2xl sm:text-3xl font-bold text-[color:var(--accent)] mb-4">📊 League Stats</h2>
           <div id="quick-stats" class="space-y-3">
-            <!-- Populated by JavaScript -->
-          </div>
+            </div>
         </div>
       </div>
 
-      <!-- Recent Activity Bar -->
       <div class="mt-6 pt-6 border-t border-slate-600">
         <h3 class="font-header text-lg text-[color:var(--accent)] mb-3">🔥 Recent League Activity</h3>
         <div id="recent-activity" class="flex flex-wrap gap-2">
-          <!-- Populated by JavaScript -->
-        </div>
+          </div>
       </div>
     </section>
     <section class="space-y-4">
@@ -103,7 +94,7 @@
         const seasonData = await response.json();
         populateDashboard(seasonData);
       } catch (error) {
-        console.log('Season data not found, using mock data');
+        console.log('Season data not found, using updated mock data for Week 1');
         populateDashboard(getMockSeasonData());
       }
     }
@@ -120,7 +111,7 @@
           </div>
           <div class="text-right text-xs">
             <div class="font-bold">${team.record}</div>
-            <div class="text-slate-400">${team.pointsFor.toFixed(1)} PF</div>
+            <div class="text-slate-400">${team.pointsFor.toFixed(2)} PF</div>
           </div>
         </div>
       `).join('');
@@ -133,12 +124,12 @@
           <div class="text-xs">${data.topPerformers.highestScorer.team}: ${data.topPerformers.highestScorer.points} pts (Week ${data.topPerformers.highestScorer.week})</div>
         </div>
         <div class="bg-slate-800 p-3 rounded">
-          <div class="text-sm font-semibold text-green-400">📈 Most Consistent</div>
-          <div class="text-xs">${data.topPerformers.mostConsistent.team} (σ: ${data.topPerformers.mostConsistent.stdDev})</div>
+          <div class="text-sm font-semibold text-green-400">⚙️ Most Efficient</div>
+          <div class="text-xs">${data.topPerformers.mostEfficient.team} (${data.topPerformers.mostEfficient.efficiency}%)</div>
         </div>
         <div class="bg-slate-800 p-3 rounded">
-          <div class="text-sm font-semibold text-red-400">💀 Worst Beat</div>
-          <div class="text-xs">${data.topPerformers.worstBeat.team}: ${data.topPerformers.worstBeat.points} pts (Week ${data.topPerformers.worstBeat.week})</div>
+          <div class="text-sm font-semibold text-red-400">💔 Worst Beat</div>
+          <div class="text-xs">${data.topPerformers.worstBeat.team}: Lost with ${data.topPerformers.worstBeat.points} pts (Week ${data.topPerformers.worstBeat.week})</div>
         </div>
       `;
 
@@ -163,15 +154,17 @@
       const activityContainer = document.getElementById('recent-activity');
       const activities = [];
       
-      if (data.recentActivity.trades) {
+      if (data.recentActivity.trades && data.recentActivity.trades.length > 0) {
         activities.push(...data.recentActivity.trades.map(trade => 
           `<span class="bg-blue-900 text-blue-200 px-2 py-1 rounded text-xs">📄 ${trade.summary}</span>`
         ));
+      } else {
+        activities.push(`<span class="bg-gray-700 text-gray-300 px-2 py-1 rounded text-xs">No trades this week</span>`);
       }
       
-      if (data.recentActivity.waivers) {
+      if (data.recentActivity.waivers && data.recentActivity.waivers.length > 0) {
         activities.push(...data.recentActivity.waivers.map(waiver => 
-          `<span class="bg-green-900 text-green-200 px-2 py-1 rounded text-xs">💰 ${waiver.team} claimed ${waiver.player} (${waiver.faab})</span>`
+          `<span class="bg-green-900 text-green-200 px-2 py-1 rounded text-xs">💰 ${waiver.team} claimed ${waiver.player}</span>`
         ));
       }
 
@@ -180,21 +173,34 @@
 
     function getMockSeasonData() {
       return {
-        currentWeek: 9,
+        currentWeek: 1,
         leagueInfo: { totalTeams: 16, playoffTeams: 8 },
         standings: [
-          { rank: 1, team: "JewTeam", record: "8-1", pointsFor: 1234.5 },
-          { rank: 2, team: "gunga36", record: "7-2", pointsFor: 1398.7 },
-          { rank: 3, team: "Bonzo22", record: "6-3", pointsFor: 1356.8 }
+          { rank: 1, team: "healzyswarriors", record: "1-0", pointsFor: 108.62 },
+          { rank: 2, team: "FattyC26", record: "1-0", pointsFor: 97.92 },
+          { rank: 3, team: "MorgsLev13", record: "1-0", pointsFor: 95.54 },
+          { rank: 4, team: "coopersallstarz", record: "1-0", pointsFor: 93.72 },
+          { rank: 5, team: "Stampy", record: "1-0", pointsFor: 92.06 },
+          { rank: 6, team: "3whits", record: "1-0", pointsFor: 88.16 },
+          { rank: 7, team: "webbyt", record: "1-0", pointsFor: 75.52 },
+          { rank: 8, team: "Wicka", record: "1-0", pointsFor: 75.00 },
+          { rank: 9, team: "5yearRebuild", record: "0-1", pointsFor: 91.08 },
+          { rank: 10, team: "Bonzo22", record: "0-1", pointsFor: 87.02 },
+          { rank: 11, team: "Sedgy", record: "0-1", pointsFor: 85.08 },
+          { rank: 12, team: "Poddy", record: "0-1", pointsFor: 84.82 },
+          { rank: 13, team: "DaksDemons", record: "0-1", pointsFor: 81.68 },
+          { rank: 14, team: "MickyMayn", record: "0-1", pointsFor: 68.12 },
+          { rank: 15, team: "gunga36", record: "0-1", pointsFor: 60.82 },
+          { rank: 16, team: "JewTeam", record: "0-1", pointsFor: 57.22 }
         ],
         topPerformers: {
-          highestScorer: { team: "gunga36", points: 178.5, week: 7 },
-          mostConsistent: { team: "JewTeam", stdDev: 12.3 },
-          worstBeat: { team: "Bonzo22", points: 89.2, week: 4 }
+          highestScorer: { team: "healzyswarriors", points: 108.62, week: 1 },
+          mostEfficient: { team: "gunga36", efficiency: 100 },
+          worstBeat: { team: "5yearRebuild", points: 91.08, week: 1 }
         },
         recentActivity: {
-          trades: [{ summary: "Blockbuster WR swap changes playoff picture" }],
-          waivers: [{ team: "gunga36", player: "Backup RB", faab: "$45" }]
+          trades: [],
+          waivers: [{ team: "Sedgy", player: "Kyren Williams" }]
         }
       };
     }
