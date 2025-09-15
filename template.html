@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title id="page-title">The Weekly Cup-Date</title>
+
+  <meta id="meta-description" name="description" content="Weekly standings, trades, waivers, matchup autopsies, and more." />
+  <meta id="meta-og-title" property="og:title" content="The Weekly Cup-Date" />
+  <meta id="meta-og-description" property="og:description" content="Weekly standings, trades, waivers, and matchup autopsies." />
+  <meta property="og:type" content="website" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{--bg:#1a1a1a;--panel:#2a2a2a;--line:#4a4a4a;--ink:#f0f0f0;--muted:#999;--accent:#f6c453;--win:#4ade80;--loss:#f87171;--font-header:'Teko',sans-serif;--font-body:'Inter',sans-serif}
+    body{background-color:var(--bg);color:var(--ink);font-family:var(--font-body)}
+    .font-header{font-family:var(--font-header)}
+    .card{background-color:var(--panel);border:1px solid var(--line);border-radius:1rem;padding:1.5rem}
+    .hairline{border-color:var(--line)}
+    .accent-text{color:var(--accent)}
+    .win-bg{background-color:rgba(74,222,128,.1)}
+    .loss-bg{background-color:rgba(248,113,113,.1)}
+    .summary-card{background-color:#333;border:1px solid var(--line);border-radius:0.5rem;padding:0.75rem;text-align:center}
+    .summary-title{font-size:0.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em}
+    .summary-value{font-size:1.125rem;font-weight:700;margin-top:0.25rem}
+    .summary-value.small{font-size:0.875rem}
+  </style>
+</head>
+<body class="antialiased">
+  <div class="container mx-auto max-w-4xl px-4 py-8">
+    <header class="text-center mb-8">
+      <h1 id="main-header" class="font-header text-6xl md:text-7xl font-bold accent-text"></h1>
+      <p id="sub-header" class="text-lg text-gray-400"></p>
+      <button id="share" class="mt-4 bg-yellow-600 text-black font-bold py-2 px-5 rounded-lg hover:bg-yellow-500 transition-all">Share</button>
+    </header>
+
+    <main class="space-y-12">
+      <section id="standings-section"></section>
+      <section id="power-rankings-section"></section>
+      <section id="transactions-section"></section>
+      <section id="matchups-section"></section>
+    </main>
+
+    <footer class="text-center mt-8 mb-2">
+      <p id="footer-text" class="text-gray-500"></p>
+    </footer>
+  </div>
+
+  <script id="data-loader"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof weekData === 'undefined') {
+        console.error('Week data is not loaded.');
+        return;
+      }
+
+      // --- HEADER ---
+      document.getElementById('page-title').textContent = `The Weekly Cup-Date: Week ${weekData.week}`;
+      document.getElementById('main-header').textContent = `WEEK ${weekData.week} RECAP`;
+      document.getElementById('sub-header').textContent = weekData.subHeader;
+      document.getElementById('footer-text').textContent = weekData.footerText;
+      
+      // --- STANDINGS ---
+      const standingsSection = document.getElementById('standings-section');
+      standingsSection.innerHTML = `
+        <h2 class="font-header text-4xl font-semibold mb-4 text-center accent-text">Overall Standings</h2>
+        <div class="card overflow-hidden">
+          <table class="w-full text-sm text-left">
+            <thead class="text-xs text-gray-400 uppercase">
+              <tr>
+                <th scope="col" class="py-3 px-6">#</th>
+                <th scope="col" class="py-3 px-6">Team</th>
+                <th scope="col" class="py-3 px-6 hidden md:table-cell">Record</th>
+                <th scope="col" class="py-3 px-6">PF</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${weekData.standings.map(team => `
+                <tr class="border-b border-gray-700">
+                  <td class="py-4 px-6 font-bold">${team.rank}</td>
+                  <td class="py-4 px-6 font-semibold">${team.teamName}</td>
+                  <td class="py-4 px-6 hidden md:table-cell">${team.W}-${team.L}</td>
+                  <td class="py-4 px-6">${team.PF.toFixed(2)}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>`;
+
+      // --- POWER RANKINGS ---
+      const powerRankingsSection = document.getElementById('power-rankings-section');
+      powerRankingsSection.innerHTML = `
+        <h2 class="font-header text-4xl font-semibold mb-4 text-center accent-text">Power Rankings</h2>
+        <div class="card">
+          <ol class="space-y-3">
+            ${weekData.powerRankings.map(team => `
+              <li class="flex items-center gap-4">
+                <div class="text-2xl font-bold accent-text">${team.rank}</div>
+                <div class="flex-1">
+                  <div class="font-bold">${team.teamName}</div>
+                  <p class="text-sm text-gray-400">${team.blurb}</p>
+                </div>
+              </li>
+            `).join('')}
+          </ol>
+        </div>`;
+      
+      // --- TRANSACTIONS ---
+      const transactionsSection = document.getElementById('transactions-section');
+      if(weekData.transactions.waivers.length > 0 || weekData.transactions.freeAgents.length > 0){
+        transactionsSection.innerHTML = `
+          <h2 class="font-header text-4xl font-semibold mb-4 text-center accent-text">Transactions</h2>
+          <div class="card">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h3 class="font-header text-2xl mb-2">Waiver Claims</h3>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                  ${weekData.transactions.waivers.map(t => `<li><strong>${t.teamName}</strong> adds <strong>${t.player}</strong> for $${t.amount}</li>`).join('')}
+                </ul>
+              </div>
+              <div>
+                <h3 class="font-header text-2xl mb-2">Free Agent Adds</h3>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                  ${weekData.transactions.freeAgents.map(t => `<li><strong>${t.teamName}</strong> adds <strong>${t.player}</strong></li>`).join('')}
+                </ul>
+              </div>
+            </div>
+          </div>`;
+      }
+
+      // --- MATCHUPS ---
+      const matchupsSection = document.getElementById('matchups-section');
+      matchupsSection.innerHTML = `
+        <h2 class="font-header text-4xl font-semibold mb-8 text-center accent-text">Matchup Autopsies</h2>
+        ${weekData.matchups.map(matchup => `
+          <div class="mb-8">
+            <div class="card">
+              <div class="text-center mb-4">
+                <h3 class="font-header text-3xl">${matchup.teams[0].name} vs. ${matchup.teams[1].name}</h3>
+                <p class="text-gray-400">${matchup.recap.title}</p>
+              </div>
+              <table class="w-full mb-4">
+                <tbody>
+                  ${matchup.teams.map(team => `
+                    <tr class="${team.result === 'W' ? 'win-bg' : 'loss-bg'}">
+                      <td class="p-4 font-bold text-lg">${team.name}</td>
+                      <td class="p-4 text-right font-bold text-2xl">${team.score.toFixed(2)}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+              <div class="prose prose-invert max-w-none text-gray-300 mb-6">
+                <p>${matchup.recap.brutalRecap}</p>
+              </div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                <div class="summary-card">
+                  <div class="summary-title">Coaching Grade</div>
+                  <div class="summary-value">${matchup.recap.coachingGrade}</div>
+                </div>
+                <div class="summary-card">
+                  <div class="summary-title">Luck</div>
+                  <div class="summary-value">${matchup.recap.luck}</div>
+                </div>
+                <div class="summary-card">
+                  <div class="summary-title">Best Player</div>
+                  <div class="summary-value small">${matchup.teams[0].bestPlayer.name} (${matchup.teams[0].bestPlayer.score.toFixed(2)})</div>
+                </div>
+                <div class="summary-card">
+                  <div class="summary-title">Worst Player</div>
+                  <div class="summary-value small">${matchup.teams[0].worstPlayer.name} (${matchup.teams[0].worstPlayer.score.toFixed(2)})</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      `;
+
+    });
+  </script>
+</body>
+</html>
