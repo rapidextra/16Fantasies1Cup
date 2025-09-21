@@ -1,7 +1,7 @@
 window.CUP_WEEKS = [
  {
     week: 2,
-    slug: 'week-2',
+    slug: 'week-02',
     title: 'Is It Time To Panic Yet?',
     blurb: 'The contenders start to pull away from the pretenders as several teams go 2-0, leaving others in an early-season panic.'
   },  
