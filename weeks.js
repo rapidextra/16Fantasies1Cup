@@ -1,5 +1,11 @@
 window.CUP_WEEKS = [
  {
+    week: 3,
+    slug: 'week-03',
+    title: 'The Panic Button?',
+    blurb: 'Jitters turn into full-blown panic as winless teams face do-or-die territory.'
+  },
+ {
     week: 2,
     slug: 'week-02',
     title: 'Is It Time To Panic Yet?',
