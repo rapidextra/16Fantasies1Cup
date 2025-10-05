@@ -1,0 +1,263 @@
+{
+  "week": 1,
+  "season": 2025,
+  "last_updated": "2025-09-21T14:22:28.586550",
+  "matchups": [
+    {
+      "team1": "coopersallstarz",
+      "team2": "Stampy",
+      "team1_score": 83,
+      "team2_score": 93,
+      "winner": "Stampy"
+    },
+    {
+      "team1": "DaksDemons",
+      "team2": "gunga36",
+      "team1_score": 78,
+      "team2_score": 103,
+      "winner": "gunga36"
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "5yearRebuild",
+      "team1_score": 88,
+      "team2_score": 95,
+      "winner": "5yearRebuild"
+    },
+    {
+      "team1": "3whits",
+      "team2": "Bonzo22",
+      "team1_score": 100,
+      "team2_score": 76,
+      "winner": "3whits"
+    },
+    {
+      "team1": "Poddy",
+      "team2": "MorgsLev13",
+      "team1_score": 89,
+      "team2_score": 96,
+      "winner": "MorgsLev13"
+    },
+    {
+      "team1": "webbyt",
+      "team2": "MickyMayn",
+      "team1_score": 81,
+      "team2_score": 89,
+      "winner": "MickyMayn"
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "JewTeam",
+      "team1_score": 86,
+      "team2_score": 94,
+      "winner": "JewTeam"
+    },
+    {
+      "team1": "Sedgy",
+      "team2": "Wicka",
+      "team1_score": 99,
+      "team2_score": 80,
+      "winner": "Sedgy"
+    }
+  ],
+  "standings": [
+    {
+      "rank": 1,
+      "team": "5yearRebuild",
+      "owner": "Rebuild",
+      "record": "7-3",
+      "points_for": 886,
+      "points_against": 963,
+      "division": "BTK",
+      "streak": "W3"
+    },
+    {
+      "rank": 2,
+      "team": "Poddy",
+      "owner": "Poddy",
+      "record": "5-3",
+      "points_for": 870,
+      "points_against": 717,
+      "division": "BTK",
+      "streak": "W1"
+    },
+    {
+      "rank": 3,
+      "team": "MorgsLev13",
+      "owner": "Morgs",
+      "record": "6-2",
+      "points_for": 868,
+      "points_against": 682,
+      "division": "FLO",
+      "streak": "W1"
+    },
+    {
+      "rank": 4,
+      "team": "Sedgy",
+      "owner": "Sedgy",
+      "record": "8-3",
+      "points_for": 840,
+      "points_against": 854,
+      "division": "FLO",
+      "streak": "L1"
+    },
+    {
+      "rank": 5,
+      "team": "DaksDemons",
+      "owner": "Dak",
+      "record": "8-5",
+      "points_for": 733,
+      "points_against": 815,
+      "division": "BTK",
+      "streak": "L2"
+    },
+    {
+      "rank": 6,
+      "team": "FattyC26",
+      "owner": "Fatty",
+      "record": "4-4",
+      "points_for": 654,
+      "points_against": 626,
+      "division": "FLO",
+      "streak": "W2"
+    },
+    {
+      "rank": 7,
+      "team": "Wicka",
+      "owner": "Wicka",
+      "record": "8-3",
+      "points_for": 646,
+      "points_against": 743,
+      "division": "FLO",
+      "streak": "W1"
+    },
+    {
+      "rank": 8,
+      "team": "webbyt",
+      "owner": "Webbyt",
+      "record": "7-1",
+      "points_for": 592,
+      "points_against": 617,
+      "division": "FLO",
+      "streak": "L2"
+    },
+    {
+      "rank": 9,
+      "team": "coopersallstarz",
+      "owner": "Cooper",
+      "record": "6-5",
+      "points_for": 506,
+      "points_against": 932,
+      "division": "FLO",
+      "streak": "W2"
+    },
+    {
+      "rank": 10,
+      "team": "MickyMayn",
+      "owner": "Micky",
+      "record": "4-3",
+      "points_for": 498,
+      "points_against": 939,
+      "division": "BTK",
+      "streak": "W1"
+    },
+    {
+      "rank": 11,
+      "team": "JewTeam",
+      "owner": "Jewish Lightning",
+      "record": "8-5",
+      "points_for": 473,
+      "points_against": 914,
+      "division": "FLO",
+      "streak": "W3"
+    },
+    {
+      "rank": 12,
+      "team": "Bonzo22",
+      "owner": "Bonzo Master",
+      "record": "6-4",
+      "points_for": 470,
+      "points_against": 963,
+      "division": "FLO",
+      "streak": "W2"
+    },
+    {
+      "rank": 13,
+      "team": "3whits",
+      "owner": "3whits",
+      "record": "8-1",
+      "points_for": 468,
+      "points_against": 957,
+      "division": "FLO",
+      "streak": "W2"
+    },
+    {
+      "rank": 14,
+      "team": "gunga36",
+      "owner": "The Gunga",
+      "record": "4-1",
+      "points_for": 408,
+      "points_against": 722,
+      "division": "BTK",
+      "streak": "W3"
+    },
+    {
+      "rank": 15,
+      "team": "healzyswarriors",
+      "owner": "Healy",
+      "record": "4-5",
+      "points_for": 397,
+      "points_against": 733,
+      "division": "BTK",
+      "streak": "W1"
+    },
+    {
+      "rank": 16,
+      "team": "Stampy",
+      "owner": "Stampy",
+      "record": "3-3",
+      "points_for": 319,
+      "points_against": 976,
+      "division": "FLO",
+      "streak": "L2"
+    }
+  ],
+  "transactions": {
+    "trades": [],
+    "waivers": []
+  },
+  "player_performances": {
+    "top_performers": [
+      {
+        "player": "Josh Allen",
+        "team": "JewTeam",
+        "points": 28.5
+      },
+      {
+        "player": "CMC",
+        "team": "gunga36",
+        "points": 31.2
+      }
+    ],
+    "busts": [
+      {
+        "player": "Jonathan Taylor",
+        "team": "Some Team",
+        "points": 4.2
+      }
+    ],
+    "surprises": [
+      {
+        "player": "Random Backup",
+        "team": "Lucky Team",
+        "points": 22.1
+      }
+    ]
+  },
+  "league_averages": {
+    "avg_points_per_week": 125.4,
+    "highest_score": 178.5,
+    "lowest_score": 67.8,
+    "std_deviation": 28.7
+  }
+}

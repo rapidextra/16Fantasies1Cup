@@ -28,46 +28,63 @@ A complete automated system for generating weekly fantasy football newsletters w
 - Automatic Netlify deployment
 - One-click newsletter publishing
 
-## 🛠️ Setup Instructions
+## 🛠️ Quick Setup
 
-### 1. **Repository Setup**
-
-```bash
-# Clone or initialize your repository
-git init
-git add .
-git commit -m "Initial setup"
-git remote add origin https://github.com/your-username/16fantasies1cup.git
-git push -u origin main
-```
-
-### 2. **Data Configuration**
-
-Update the sample data files with your league information:
-
-- `data/season-stats.json` - Current season overview
-- `data/teams/*.json` - Individual team profiles (create one for each owner)
-- `weeks.js` - Newsletter index
-
-### 3. **Python Dependencies**
-
-Install required packages:
+### **Option 1: Automated Setup (Recommended)**
 
 ```bash
-pip install pandas requests kaggle jinja2
+# 1. Clone the repository
+git clone https://github.com/your-username/16fantasies1cup.git
+cd 16fantasies1cup
+
+# 2. Run the automated setup
+python setup.py
+
+# 3. Test the system
+python test_system.py
 ```
 
-### 4. **Kaggle API Setup**
+### **Option 2: Manual Setup**
 
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Create directories and initial files
+python setup.py
+
+# 3. Configure your data source (see Data Sources section below)
+```
+
+## 📊 Data Sources
+
+### **Option 1: Kaggle Integration (Real Data)**
 1. Go to [Kaggle.com](https://kaggle.com) → Account → API → Create New API Token
-2. Download `kaggle.json` file
-3. Set environment variables:
+2. Set environment variables:
    ```bash
    export KAGGLE_USERNAME="your-username"
    export KAGGLE_KEY="your-api-key"
    ```
+3. Update `config.py` with your dataset name:
+   ```python
+   KAGGLE_DATASET = "jgade/16-fantasies-1-cup"  # Your actual dataset
+   ```
 
-### 5. **GitHub Secrets Configuration**
+### **Your Kaggle Notebook Integration**
+Your notebook generates comprehensive fantasy football analysis including:
+- **Standings**: Overall and divisional rankings with tiers
+- **Matchups**: Detailed team performance with MVP, bust, coach ratings
+- **Awards**: Highest scorer, coach of the week, bonehead, luckiest/unluckiest
+- **Player Analysis**: Individual player performances and optimal lineups
+
+The newsletter system automatically converts your YAML creative briefs into newsletter format.
+
+### **Option 2: Mock Data (Testing)**
+The system automatically falls back to realistic mock data if Kaggle is not configured.
+
+## 🚀 Deployment Setup
+
+### **GitHub Secrets Configuration**
 
 Add these secrets to your GitHub repository (Settings → Secrets and variables → Actions):
 
@@ -78,14 +95,14 @@ NETLIFY_SITE_ID=your_netlify_site_id
 NETLIFY_AUTH_TOKEN=your_netlify_token
 ```
 
-### 6. **Netlify Setup**
+### **Netlify Setup**
 
 1. Create account at [Netlify.com](https://netlify.com)
 2. Connect your GitHub repository
 3. Get your Site ID from Site Settings → General → Site information
 4. Generate Personal Access Token from User Settings → Applications
 
-### 7. **GitHub Actions Environment**
+### **GitHub Actions Environment**
 
 Create a GitHub Environment for manual approvals:
 1. Go to Settings → Environments
@@ -95,15 +112,46 @@ Create a GitHub Environment for manual approvals:
 
 ## 📅 Usage
 
+### **Newsletter Types**
+
+The system now supports two types of newsletters:
+
+#### **Pre-Week Newsletters** 🔮
+- **Purpose**: Preview upcoming week with predictions and analysis
+- **Content**: Matchup predictions, storylines, waiver wire picks, weather watch, injury reports
+- **Timing**: Generated before games start
+- **Features**: Confidence ratings, upset alerts, blowout predictions
+
+#### **Post-Week Newsletters** 📰
+- **Purpose**: Recap completed week with results and analysis
+- **Content**: Standings, matchups, transactions, roasting corner
+- **Timing**: Generated after games complete
+- **Features**: Performance analysis, enhanced roasting system, league highlights
+
 ### **Automatic Weekly Updates**
 
 The system automatically runs every Tuesday at 8 AM EST after Monday Night Football:
 
 1. **Data Fetching**: Pulls latest stats from your Kaggle notebook
-2. **Newsletter Generation**: Creates HTML newsletter with roasting content
+2. **Newsletter Generation**: Creates both pre-week and post-week newsletters
 3. **Preview Creation**: Generates preview branch for review
 4. **Manual Approval**: Waits for your approval (unless auto-deploy enabled)
 5. **Deployment**: Publishes to Netlify and merges to main branch
+
+### **Manual Newsletter Generation**
+
+Generate newsletters locally:
+
+```bash
+# Generate post-week newsletter (recap)
+python scripts/generate_newsletter.py --week 1
+
+# Generate pre-week newsletter (preview)
+python scripts/generate_preweek_newsletter.py --week 1
+
+# Generate both newsletters
+python scripts/generate_newsletters.py --week 1 --type both
+```
 
 ### **Manual Updates**
 

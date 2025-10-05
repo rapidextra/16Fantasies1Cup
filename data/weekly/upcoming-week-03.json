@@ -1,0 +1,143 @@
+{
+  "week": 3,
+  "season": 2025,
+  "generated_at": "2025-09-21T15:00:56.654836",
+  "matchups": [
+    {
+      "week": 3,
+      "team1": {
+        "owner": "healzyswarriors",
+        "wins": 2,
+        "losses": 0,
+        "points_for": 216.64
+      },
+      "team2": {
+        "owner": "FattyC26",
+        "wins": 2,
+        "losses": 0,
+        "points_for": 206.22
+      },
+      "matchup_id": "week_3_matchup_1",
+      "status": "upcoming"
+    },
+    {
+      "week": 3,
+      "team1": {
+        "owner": "Wicka",
+        "wins": 2,
+        "losses": 0,
+        "points_for": 200.56
+      },
+      "team2": {
+        "owner": "webbyt",
+        "wins": 2,
+        "losses": 0,
+        "points_for": 188.2
+      },
+      "matchup_id": "week_3_matchup_2",
+      "status": "upcoming"
+    },
+    {
+      "week": 3,
+      "team1": {
+        "owner": "3whits",
+        "wins": 2,
+        "losses": 0,
+        "points_for": 184.58
+      },
+      "team2": {
+        "owner": "coopersallstarz",
+        "wins": 2,
+        "losses": 0,
+        "points_for": 167.1
+      },
+      "matchup_id": "week_3_matchup_3",
+      "status": "upcoming"
+    },
+    {
+      "week": 3,
+      "team1": {
+        "owner": "DaksDemons",
+        "wins": 1,
+        "losses": 1,
+        "points_for": 181.68
+      },
+      "team2": {
+        "owner": "Stampy",
+        "wins": 1,
+        "losses": 1,
+        "points_for": 175.26
+      },
+      "matchup_id": "week_3_matchup_4",
+      "status": "upcoming"
+    },
+    {
+      "week": 3,
+      "team1": {
+        "owner": "MorgsLev13",
+        "wins": 1,
+        "losses": 1,
+        "points_for": 165.88
+      },
+      "team2": {
+        "owner": "JewTeam",
+        "wins": 1,
+        "losses": 1,
+        "points_for": 147.32
+      },
+      "matchup_id": "week_3_matchup_5",
+      "status": "upcoming"
+    },
+    {
+      "week": 3,
+      "team1": {
+        "owner": "Poddy",
+        "wins": 0,
+        "losses": 2,
+        "points_for": 184.06
+      },
+      "team2": {
+        "owner": "5yearRebuild",
+        "wins": 0,
+        "losses": 2,
+        "points_for": 157.66
+      },
+      "matchup_id": "week_3_matchup_6",
+      "status": "upcoming"
+    },
+    {
+      "week": 3,
+      "team1": {
+        "owner": "Bonzo22",
+        "wins": 0,
+        "losses": 2,
+        "points_for": 152.76
+      },
+      "team2": {
+        "owner": "Sedgy",
+        "wins": 0,
+        "losses": 2,
+        "points_for": 152.22
+      },
+      "matchup_id": "week_3_matchup_7",
+      "status": "upcoming"
+    },
+    {
+      "week": 3,
+      "team1": {
+        "owner": "gunga36",
+        "wins": 0,
+        "losses": 2,
+        "points_for": 144.1
+      },
+      "team2": {
+        "owner": "MickyMayn",
+        "wins": 0,
+        "losses": 2,
+        "points_for": 133.96
+      },
+      "matchup_id": "week_3_matchup_8",
+      "status": "upcoming"
+    }
+  ]
+}

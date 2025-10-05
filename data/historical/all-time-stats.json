@@ -1,0 +1,1129 @@
+{
+  "teams": [
+    {
+      "owner": "healzyswarriors",
+      "total_wins": 19,
+      "total_losses": 37,
+      "championships": 1,
+      "playoff_appearances": 5,
+      "best_season": 10,
+      "worst_season": 6,
+      "total_points_for": 5412,
+      "total_points_against": 3213,
+      "average_points_per_game": 109.3,
+      "longest_win_streak": 10,
+      "longest_losing_streak": 6
+    },
+    {
+      "owner": "FattyC26",
+      "total_wins": 15,
+      "total_losses": 25,
+      "championships": 3,
+      "playoff_appearances": 4,
+      "best_season": 10,
+      "worst_season": 2,
+      "total_points_for": 3159,
+      "total_points_against": 5119,
+      "average_points_per_game": 97.8,
+      "longest_win_streak": 9,
+      "longest_losing_streak": 6
+    },
+    {
+      "owner": "Wicka",
+      "total_wins": 27,
+      "total_losses": 44,
+      "championships": 2,
+      "playoff_appearances": 6,
+      "best_season": 10,
+      "worst_season": 3,
+      "total_points_for": 5578,
+      "total_points_against": 7168,
+      "average_points_per_game": 98.8,
+      "longest_win_streak": 12,
+      "longest_losing_streak": 7
+    },
+    {
+      "owner": "webbyt",
+      "total_wins": 41,
+      "total_losses": 17,
+      "championships": 3,
+      "playoff_appearances": 5,
+      "best_season": 10,
+      "worst_season": 3,
+      "total_points_for": 5426,
+      "total_points_against": 4636,
+      "average_points_per_game": 95.4,
+      "longest_win_streak": 7,
+      "longest_losing_streak": 8
+    },
+    {
+      "owner": "3whits",
+      "total_wins": 19,
+      "total_losses": 45,
+      "championships": 1,
+      "playoff_appearances": 8,
+      "best_season": 10,
+      "worst_season": 2,
+      "total_points_for": 6712,
+      "total_points_against": 3539,
+      "average_points_per_game": 100.0,
+      "longest_win_streak": 8,
+      "longest_losing_streak": 7
+    },
+    {
+      "owner": "coopersallstarz",
+      "total_wins": 38,
+      "total_losses": 45,
+      "championships": 1,
+      "playoff_appearances": 6,
+      "best_season": 11,
+      "worst_season": 6,
+      "total_points_for": 7685,
+      "total_points_against": 6789,
+      "average_points_per_game": 96.6,
+      "longest_win_streak": 5,
+      "longest_losing_streak": 7
+    },
+    {
+      "owner": "DaksDemons",
+      "total_wins": 43,
+      "total_losses": 21,
+      "championships": 2,
+      "playoff_appearances": 2,
+      "best_season": 11,
+      "worst_season": 5,
+      "total_points_for": 6547,
+      "total_points_against": 7898,
+      "average_points_per_game": 91.3,
+      "longest_win_streak": 5,
+      "longest_losing_streak": 3
+    },
+    {
+      "owner": "Stampy",
+      "total_wins": 15,
+      "total_losses": 29,
+      "championships": 0,
+      "playoff_appearances": 2,
+      "best_season": 14,
+      "worst_season": 6,
+      "total_points_for": 7238,
+      "total_points_against": 4720,
+      "average_points_per_game": 104.9,
+      "longest_win_streak": 8,
+      "longest_losing_streak": 5
+    },
+    {
+      "owner": "MorgsLev13",
+      "total_wins": 17,
+      "total_losses": 33,
+      "championships": 0,
+      "playoff_appearances": 8,
+      "best_season": 13,
+      "worst_season": 4,
+      "total_points_for": 5572,
+      "total_points_against": 7259,
+      "average_points_per_game": 99.3,
+      "longest_win_streak": 8,
+      "longest_losing_streak": 6
+    },
+    {
+      "owner": "JewTeam",
+      "total_wins": 35,
+      "total_losses": 15,
+      "championships": 1,
+      "playoff_appearances": 8,
+      "best_season": 13,
+      "worst_season": 5,
+      "total_points_for": 4630,
+      "total_points_against": 5087,
+      "average_points_per_game": 104.6,
+      "longest_win_streak": 12,
+      "longest_losing_streak": 8
+    },
+    {
+      "owner": "Poddy",
+      "total_wins": 20,
+      "total_losses": 37,
+      "championships": 3,
+      "playoff_appearances": 2,
+      "best_season": 13,
+      "worst_season": 2,
+      "total_points_for": 4781,
+      "total_points_against": 6509,
+      "average_points_per_game": 96.2,
+      "longest_win_streak": 10,
+      "longest_losing_streak": 6
+    },
+    {
+      "owner": "5yearRebuild",
+      "total_wins": 40,
+      "total_losses": 31,
+      "championships": 2,
+      "playoff_appearances": 5,
+      "best_season": 10,
+      "worst_season": 5,
+      "total_points_for": 3666,
+      "total_points_against": 4328,
+      "average_points_per_game": 90.9,
+      "longest_win_streak": 8,
+      "longest_losing_streak": 4
+    },
+    {
+      "owner": "Bonzo22",
+      "total_wins": 31,
+      "total_losses": 23,
+      "championships": 1,
+      "playoff_appearances": 2,
+      "best_season": 11,
+      "worst_season": 5,
+      "total_points_for": 5452,
+      "total_points_against": 7722,
+      "average_points_per_game": 103.9,
+      "longest_win_streak": 4,
+      "longest_losing_streak": 7
+    },
+    {
+      "owner": "Sedgy",
+      "total_wins": 17,
+      "total_losses": 30,
+      "championships": 1,
+      "playoff_appearances": 3,
+      "best_season": 11,
+      "worst_season": 5,
+      "total_points_for": 4759,
+      "total_points_against": 3849,
+      "average_points_per_game": 94.8,
+      "longest_win_streak": 7,
+      "longest_losing_streak": 3
+    },
+    {
+      "owner": "gunga36",
+      "total_wins": 40,
+      "total_losses": 26,
+      "championships": 0,
+      "playoff_appearances": 5,
+      "best_season": 11,
+      "worst_season": 4,
+      "total_points_for": 3868,
+      "total_points_against": 4186,
+      "average_points_per_game": 108.6,
+      "longest_win_streak": 9,
+      "longest_losing_streak": 3
+    },
+    {
+      "owner": "MickyMayn",
+      "total_wins": 32,
+      "total_losses": 45,
+      "championships": 1,
+      "playoff_appearances": 8,
+      "best_season": 10,
+      "worst_season": 4,
+      "total_points_for": 3024,
+      "total_points_against": 3742,
+      "average_points_per_game": 105.4,
+      "longest_win_streak": 9,
+      "longest_losing_streak": 4
+    }
+  ],
+  "head_to_head": [
+    {
+      "team1": "healzyswarriors",
+      "team2": "FattyC26",
+      "wins1": 2,
+      "wins2": 7,
+      "total_games": 9
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "Wicka",
+      "wins1": 3,
+      "wins2": 7,
+      "total_games": 10
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "webbyt",
+      "wins1": 4,
+      "wins2": 6,
+      "total_games": 10
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "3whits",
+      "wins1": 7,
+      "wins2": 7,
+      "total_games": 14
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "coopersallstarz",
+      "wins1": 4,
+      "wins2": 7,
+      "total_games": 11
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "DaksDemons",
+      "wins1": 8,
+      "wins2": 4,
+      "total_games": 12
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "Stampy",
+      "wins1": 2,
+      "wins2": 2,
+      "total_games": 4
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "MorgsLev13",
+      "wins1": 5,
+      "wins2": 5,
+      "total_games": 10
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "JewTeam",
+      "wins1": 2,
+      "wins2": 8,
+      "total_games": 10
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "Poddy",
+      "wins1": 3,
+      "wins2": 3,
+      "total_games": 6
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "5yearRebuild",
+      "wins1": 4,
+      "wins2": 7,
+      "total_games": 11
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "Bonzo22",
+      "wins1": 3,
+      "wins2": 5,
+      "total_games": 8
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "Sedgy",
+      "wins1": 3,
+      "wins2": 2,
+      "total_games": 5
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "gunga36",
+      "wins1": 8,
+      "wins2": 6,
+      "total_games": 14
+    },
+    {
+      "team1": "healzyswarriors",
+      "team2": "MickyMayn",
+      "wins1": 3,
+      "wins2": 4,
+      "total_games": 7
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "Wicka",
+      "wins1": 2,
+      "wins2": 6,
+      "total_games": 8
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "webbyt",
+      "wins1": 5,
+      "wins2": 7,
+      "total_games": 12
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "3whits",
+      "wins1": 6,
+      "wins2": 8,
+      "total_games": 14
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "coopersallstarz",
+      "wins1": 4,
+      "wins2": 4,
+      "total_games": 8
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "DaksDemons",
+      "wins1": 5,
+      "wins2": 7,
+      "total_games": 12
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "Stampy",
+      "wins1": 2,
+      "wins2": 7,
+      "total_games": 9
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "MorgsLev13",
+      "wins1": 7,
+      "wins2": 2,
+      "total_games": 9
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "JewTeam",
+      "wins1": 3,
+      "wins2": 5,
+      "total_games": 8
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "Poddy",
+      "wins1": 7,
+      "wins2": 4,
+      "total_games": 11
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "5yearRebuild",
+      "wins1": 8,
+      "wins2": 8,
+      "total_games": 16
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "Bonzo22",
+      "wins1": 3,
+      "wins2": 4,
+      "total_games": 7
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "Sedgy",
+      "wins1": 6,
+      "wins2": 4,
+      "total_games": 10
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "gunga36",
+      "wins1": 3,
+      "wins2": 3,
+      "total_games": 6
+    },
+    {
+      "team1": "FattyC26",
+      "team2": "MickyMayn",
+      "wins1": 5,
+      "wins2": 6,
+      "total_games": 11
+    },
+    {
+      "team1": "Wicka",
+      "team2": "webbyt",
+      "wins1": 4,
+      "wins2": 3,
+      "total_games": 7
+    },
+    {
+      "team1": "Wicka",
+      "team2": "3whits",
+      "wins1": 8,
+      "wins2": 8,
+      "total_games": 16
+    },
+    {
+      "team1": "Wicka",
+      "team2": "coopersallstarz",
+      "wins1": 6,
+      "wins2": 5,
+      "total_games": 11
+    },
+    {
+      "team1": "Wicka",
+      "team2": "DaksDemons",
+      "wins1": 8,
+      "wins2": 8,
+      "total_games": 16
+    },
+    {
+      "team1": "Wicka",
+      "team2": "Stampy",
+      "wins1": 4,
+      "wins2": 5,
+      "total_games": 9
+    },
+    {
+      "team1": "Wicka",
+      "team2": "MorgsLev13",
+      "wins1": 2,
+      "wins2": 6,
+      "total_games": 8
+    },
+    {
+      "team1": "Wicka",
+      "team2": "JewTeam",
+      "wins1": 3,
+      "wins2": 7,
+      "total_games": 10
+    },
+    {
+      "team1": "Wicka",
+      "team2": "Poddy",
+      "wins1": 5,
+      "wins2": 7,
+      "total_games": 12
+    },
+    {
+      "team1": "Wicka",
+      "team2": "5yearRebuild",
+      "wins1": 8,
+      "wins2": 6,
+      "total_games": 14
+    },
+    {
+      "team1": "Wicka",
+      "team2": "Bonzo22",
+      "wins1": 7,
+      "wins2": 7,
+      "total_games": 14
+    },
+    {
+      "team1": "Wicka",
+      "team2": "Sedgy",
+      "wins1": 6,
+      "wins2": 6,
+      "total_games": 12
+    },
+    {
+      "team1": "Wicka",
+      "team2": "gunga36",
+      "wins1": 3,
+      "wins2": 3,
+      "total_games": 6
+    },
+    {
+      "team1": "Wicka",
+      "team2": "MickyMayn",
+      "wins1": 7,
+      "wins2": 4,
+      "total_games": 11
+    },
+    {
+      "team1": "webbyt",
+      "team2": "3whits",
+      "wins1": 3,
+      "wins2": 4,
+      "total_games": 7
+    },
+    {
+      "team1": "webbyt",
+      "team2": "coopersallstarz",
+      "wins1": 3,
+      "wins2": 6,
+      "total_games": 9
+    },
+    {
+      "team1": "webbyt",
+      "team2": "DaksDemons",
+      "wins1": 4,
+      "wins2": 8,
+      "total_games": 12
+    },
+    {
+      "team1": "webbyt",
+      "team2": "Stampy",
+      "wins1": 6,
+      "wins2": 4,
+      "total_games": 10
+    },
+    {
+      "team1": "webbyt",
+      "team2": "MorgsLev13",
+      "wins1": 5,
+      "wins2": 8,
+      "total_games": 13
+    },
+    {
+      "team1": "webbyt",
+      "team2": "JewTeam",
+      "wins1": 5,
+      "wins2": 2,
+      "total_games": 7
+    },
+    {
+      "team1": "webbyt",
+      "team2": "Poddy",
+      "wins1": 6,
+      "wins2": 5,
+      "total_games": 11
+    },
+    {
+      "team1": "webbyt",
+      "team2": "5yearRebuild",
+      "wins1": 8,
+      "wins2": 8,
+      "total_games": 16
+    },
+    {
+      "team1": "webbyt",
+      "team2": "Bonzo22",
+      "wins1": 8,
+      "wins2": 8,
+      "total_games": 16
+    },
+    {
+      "team1": "webbyt",
+      "team2": "Sedgy",
+      "wins1": 8,
+      "wins2": 8,
+      "total_games": 16
+    },
+    {
+      "team1": "webbyt",
+      "team2": "gunga36",
+      "wins1": 7,
+      "wins2": 4,
+      "total_games": 11
+    },
+    {
+      "team1": "webbyt",
+      "team2": "MickyMayn",
+      "wins1": 3,
+      "wins2": 3,
+      "total_games": 6
+    },
+    {
+      "team1": "3whits",
+      "team2": "coopersallstarz",
+      "wins1": 3,
+      "wins2": 7,
+      "total_games": 10
+    },
+    {
+      "team1": "3whits",
+      "team2": "DaksDemons",
+      "wins1": 2,
+      "wins2": 8,
+      "total_games": 10
+    },
+    {
+      "team1": "3whits",
+      "team2": "Stampy",
+      "wins1": 5,
+      "wins2": 3,
+      "total_games": 8
+    },
+    {
+      "team1": "3whits",
+      "team2": "MorgsLev13",
+      "wins1": 3,
+      "wins2": 7,
+      "total_games": 10
+    },
+    {
+      "team1": "3whits",
+      "team2": "JewTeam",
+      "wins1": 7,
+      "wins2": 6,
+      "total_games": 13
+    },
+    {
+      "team1": "3whits",
+      "team2": "Poddy",
+      "wins1": 8,
+      "wins2": 2,
+      "total_games": 10
+    },
+    {
+      "team1": "3whits",
+      "team2": "5yearRebuild",
+      "wins1": 2,
+      "wins2": 5,
+      "total_games": 7
+    },
+    {
+      "team1": "3whits",
+      "team2": "Bonzo22",
+      "wins1": 4,
+      "wins2": 2,
+      "total_games": 6
+    },
+    {
+      "team1": "3whits",
+      "team2": "Sedgy",
+      "wins1": 6,
+      "wins2": 5,
+      "total_games": 11
+    },
+    {
+      "team1": "3whits",
+      "team2": "gunga36",
+      "wins1": 8,
+      "wins2": 4,
+      "total_games": 12
+    },
+    {
+      "team1": "3whits",
+      "team2": "MickyMayn",
+      "wins1": 3,
+      "wins2": 4,
+      "total_games": 7
+    },
+    {
+      "team1": "coopersallstarz",
+      "team2": "DaksDemons",
+      "wins1": 3,
+      "wins2": 5,
+      "total_games": 8
+    },
+    {
+      "team1": "coopersallstarz",
+      "team2": "Stampy",
+      "wins1": 5,
+      "wins2": 2,
+      "total_games": 7
+    },
+    {
+      "team1": "coopersallstarz",
+      "team2": "MorgsLev13",
+      "wins1": 2,
+      "wins2": 3,
+      "total_games": 5
+    },
+    {
+      "team1": "coopersallstarz",
+      "team2": "JewTeam",
+      "wins1": 7,
+      "wins2": 8,
+      "total_games": 15
+    },
+    {
+      "team1": "coopersallstarz",
+      "team2": "Poddy",
+      "wins1": 5,
+      "wins2": 8,
+      "total_games": 13
+    },
+    {
+      "team1": "coopersallstarz",
+      "team2": "5yearRebuild",
+      "wins1": 2,
+      "wins2": 8,
+      "total_games": 10
+    },
+    {
+      "team1": "coopersallstarz",
+      "team2": "Bonzo22",
+      "wins1": 2,
+      "wins2": 8,
+      "total_games": 10
+    },
+    {
+      "team1": "coopersallstarz",
+      "team2": "Sedgy",
+      "wins1": 4,
+      "wins2": 6,
+      "total_games": 10
+    },
+    {
+      "team1": "coopersallstarz",
+      "team2": "gunga36",
+      "wins1": 5,
+      "wins2": 4,
+      "total_games": 9
+    },
+    {
+      "team1": "coopersallstarz",
+      "team2": "MickyMayn",
+      "wins1": 7,
+      "wins2": 2,
+      "total_games": 9
+    },
+    {
+      "team1": "DaksDemons",
+      "team2": "Stampy",
+      "wins1": 8,
+      "wins2": 4,
+      "total_games": 12
+    },
+    {
+      "team1": "DaksDemons",
+      "team2": "MorgsLev13",
+      "wins1": 6,
+      "wins2": 2,
+      "total_games": 8
+    },
+    {
+      "team1": "DaksDemons",
+      "team2": "JewTeam",
+      "wins1": 2,
+      "wins2": 4,
+      "total_games": 6
+    },
+    {
+      "team1": "DaksDemons",
+      "team2": "Poddy",
+      "wins1": 4,
+      "wins2": 6,
+      "total_games": 10
+    },
+    {
+      "team1": "DaksDemons",
+      "team2": "5yearRebuild",
+      "wins1": 6,
+      "wins2": 8,
+      "total_games": 14
+    },
+    {
+      "team1": "DaksDemons",
+      "team2": "Bonzo22",
+      "wins1": 8,
+      "wins2": 4,
+      "total_games": 12
+    },
+    {
+      "team1": "DaksDemons",
+      "team2": "Sedgy",
+      "wins1": 6,
+      "wins2": 8,
+      "total_games": 14
+    },
+    {
+      "team1": "DaksDemons",
+      "team2": "gunga36",
+      "wins1": 5,
+      "wins2": 7,
+      "total_games": 12
+    },
+    {
+      "team1": "DaksDemons",
+      "team2": "MickyMayn",
+      "wins1": 4,
+      "wins2": 8,
+      "total_games": 12
+    },
+    {
+      "team1": "Stampy",
+      "team2": "MorgsLev13",
+      "wins1": 7,
+      "wins2": 2,
+      "total_games": 9
+    },
+    {
+      "team1": "Stampy",
+      "team2": "JewTeam",
+      "wins1": 8,
+      "wins2": 5,
+      "total_games": 13
+    },
+    {
+      "team1": "Stampy",
+      "team2": "Poddy",
+      "wins1": 6,
+      "wins2": 2,
+      "total_games": 8
+    },
+    {
+      "team1": "Stampy",
+      "team2": "5yearRebuild",
+      "wins1": 8,
+      "wins2": 2,
+      "total_games": 10
+    },
+    {
+      "team1": "Stampy",
+      "team2": "Bonzo22",
+      "wins1": 5,
+      "wins2": 6,
+      "total_games": 11
+    },
+    {
+      "team1": "Stampy",
+      "team2": "Sedgy",
+      "wins1": 3,
+      "wins2": 8,
+      "total_games": 11
+    },
+    {
+      "team1": "Stampy",
+      "team2": "gunga36",
+      "wins1": 8,
+      "wins2": 2,
+      "total_games": 10
+    },
+    {
+      "team1": "Stampy",
+      "team2": "MickyMayn",
+      "wins1": 7,
+      "wins2": 5,
+      "total_games": 12
+    },
+    {
+      "team1": "MorgsLev13",
+      "team2": "JewTeam",
+      "wins1": 5,
+      "wins2": 6,
+      "total_games": 11
+    },
+    {
+      "team1": "MorgsLev13",
+      "team2": "Poddy",
+      "wins1": 5,
+      "wins2": 4,
+      "total_games": 9
+    },
+    {
+      "team1": "MorgsLev13",
+      "team2": "5yearRebuild",
+      "wins1": 4,
+      "wins2": 8,
+      "total_games": 12
+    },
+    {
+      "team1": "MorgsLev13",
+      "team2": "Bonzo22",
+      "wins1": 5,
+      "wins2": 8,
+      "total_games": 13
+    },
+    {
+      "team1": "MorgsLev13",
+      "team2": "Sedgy",
+      "wins1": 4,
+      "wins2": 4,
+      "total_games": 8
+    },
+    {
+      "team1": "MorgsLev13",
+      "team2": "gunga36",
+      "wins1": 2,
+      "wins2": 8,
+      "total_games": 10
+    },
+    {
+      "team1": "MorgsLev13",
+      "team2": "MickyMayn",
+      "wins1": 2,
+      "wins2": 8,
+      "total_games": 10
+    },
+    {
+      "team1": "JewTeam",
+      "team2": "Poddy",
+      "wins1": 2,
+      "wins2": 7,
+      "total_games": 9
+    },
+    {
+      "team1": "JewTeam",
+      "team2": "5yearRebuild",
+      "wins1": 2,
+      "wins2": 2,
+      "total_games": 4
+    },
+    {
+      "team1": "JewTeam",
+      "team2": "Bonzo22",
+      "wins1": 5,
+      "wins2": 7,
+      "total_games": 12
+    },
+    {
+      "team1": "JewTeam",
+      "team2": "Sedgy",
+      "wins1": 2,
+      "wins2": 4,
+      "total_games": 6
+    },
+    {
+      "team1": "JewTeam",
+      "team2": "gunga36",
+      "wins1": 6,
+      "wins2": 3,
+      "total_games": 9
+    },
+    {
+      "team1": "JewTeam",
+      "team2": "MickyMayn",
+      "wins1": 7,
+      "wins2": 2,
+      "total_games": 9
+    },
+    {
+      "team1": "Poddy",
+      "team2": "5yearRebuild",
+      "wins1": 7,
+      "wins2": 7,
+      "total_games": 14
+    },
+    {
+      "team1": "Poddy",
+      "team2": "Bonzo22",
+      "wins1": 2,
+      "wins2": 3,
+      "total_games": 5
+    },
+    {
+      "team1": "Poddy",
+      "team2": "Sedgy",
+      "wins1": 2,
+      "wins2": 7,
+      "total_games": 9
+    },
+    {
+      "team1": "Poddy",
+      "team2": "gunga36",
+      "wins1": 3,
+      "wins2": 7,
+      "total_games": 10
+    },
+    {
+      "team1": "Poddy",
+      "team2": "MickyMayn",
+      "wins1": 4,
+      "wins2": 4,
+      "total_games": 8
+    },
+    {
+      "team1": "5yearRebuild",
+      "team2": "Bonzo22",
+      "wins1": 5,
+      "wins2": 6,
+      "total_games": 11
+    },
+    {
+      "team1": "5yearRebuild",
+      "team2": "Sedgy",
+      "wins1": 4,
+      "wins2": 4,
+      "total_games": 8
+    },
+    {
+      "team1": "5yearRebuild",
+      "team2": "gunga36",
+      "wins1": 3,
+      "wins2": 7,
+      "total_games": 10
+    },
+    {
+      "team1": "5yearRebuild",
+      "team2": "MickyMayn",
+      "wins1": 7,
+      "wins2": 5,
+      "total_games": 12
+    },
+    {
+      "team1": "Bonzo22",
+      "team2": "Sedgy",
+      "wins1": 3,
+      "wins2": 5,
+      "total_games": 8
+    },
+    {
+      "team1": "Bonzo22",
+      "team2": "gunga36",
+      "wins1": 2,
+      "wins2": 6,
+      "total_games": 8
+    },
+    {
+      "team1": "Bonzo22",
+      "team2": "MickyMayn",
+      "wins1": 8,
+      "wins2": 5,
+      "total_games": 13
+    },
+    {
+      "team1": "Sedgy",
+      "team2": "gunga36",
+      "wins1": 2,
+      "wins2": 7,
+      "total_games": 9
+    },
+    {
+      "team1": "Sedgy",
+      "team2": "MickyMayn",
+      "wins1": 8,
+      "wins2": 6,
+      "total_games": 14
+    },
+    {
+      "team1": "gunga36",
+      "team2": "MickyMayn",
+      "wins1": 2,
+      "wins2": 2,
+      "total_games": 4
+    }
+  ],
+  "season_records": [
+    {
+      "year": 2020,
+      "champion": "Wicka",
+      "runner_up": "Poddy",
+      "regular_season_leader": "JewTeam",
+      "points_leader": "Wicka",
+      "biggest_upset": "DaksDemons over 5yearRebuild"
+    },
+    {
+      "year": 2021,
+      "champion": "coopersallstarz",
+      "runner_up": "Poddy",
+      "regular_season_leader": "3whits",
+      "points_leader": "3whits",
+      "biggest_upset": "DaksDemons over MickyMayn"
+    },
+    {
+      "year": 2022,
+      "champion": "FattyC26",
+      "runner_up": "coopersallstarz",
+      "regular_season_leader": "Stampy",
+      "points_leader": "Poddy",
+      "biggest_upset": "Stampy over Wicka"
+    },
+    {
+      "year": 2023,
+      "champion": "JewTeam",
+      "runner_up": "JewTeam",
+      "regular_season_leader": "Sedgy",
+      "points_leader": "coopersallstarz",
+      "biggest_upset": "DaksDemons over Bonzo22"
+    },
+    {
+      "year": 2024,
+      "champion": "5yearRebuild",
+      "runner_up": "Bonzo22",
+      "regular_season_leader": "MickyMayn",
+      "points_leader": "webbyt",
+      "biggest_upset": "FattyC26 over coopersallstarz"
+    }
+  ],
+  "league_records": {
+    "highest_single_game_score": 218,
+    "highest_single_game_score_team": "Bonzo22",
+    "highest_single_game_score_year": 2022,
+    "lowest_single_game_score": 57,
+    "lowest_single_game_score_team": "JewTeam",
+    "lowest_single_game_score_year": 2022,
+    "most_consecutive_wins": 12,
+    "most_consecutive_wins_team": "DaksDemons",
+    "most_consecutive_wins_year": 2024,
+    "most_consecutive_losses": 12,
+    "most_consecutive_losses_team": "MorgsLev13",
+    "most_consecutive_losses_year": 2022
+  },
+  "generated_at": "2025-09-21T15:20:16.679662",
+  "total_teams": 16,
+  "total_seasons": 5
+}

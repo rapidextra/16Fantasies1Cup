@@ -1,0 +1,35 @@
+{
+  "teamInfo": {
+    "teamName": "5yearRebuild",
+    "ownerName": "Rebuild",
+    "division": "BTK",
+    "teamSlug": "5yearrebuild",
+    "founded": 2024,
+    "motto": "Generated Profile"
+  },
+  "currentSeason": {
+    "record": "3-1",
+    "pointsFor": 295,
+    "pointsAgainst": 706,
+    "rank": 16,
+    "lastUpdated": "2025-09-21T14:50:43.425749"
+  },
+  "historicalData": {},
+  "analytics": {
+    "efficiency_rating": 85.7,
+    "strength_of_schedule": 0.45,
+    "playoff_odds": 98.5,
+    "power_ranking": 3,
+    "trends": {
+      "scoring_trend": "Improving",
+      "consistency": "High",
+      "recent_form": "Hot"
+    }
+  },
+  "roastingMaterial": {
+    "currentSeason": [],
+    "historicalShame": [],
+    "signatures": []
+  },
+  "headToHead": {}
+}

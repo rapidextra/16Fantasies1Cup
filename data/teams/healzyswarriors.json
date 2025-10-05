@@ -1,0 +1,35 @@
+{
+  "teamInfo": {
+    "teamName": "healzyswarriors",
+    "ownerName": "Healy",
+    "division": "BTK",
+    "teamSlug": "healzyswarriors",
+    "founded": 2024,
+    "motto": "Generated Profile"
+  },
+  "currentSeason": {
+    "record": "8-1",
+    "pointsFor": 509,
+    "pointsAgainst": 682,
+    "rank": 12,
+    "lastUpdated": "2025-09-21T14:50:43.425749"
+  },
+  "historicalData": {},
+  "analytics": {
+    "efficiency_rating": 85.7,
+    "strength_of_schedule": 0.45,
+    "playoff_odds": 98.5,
+    "power_ranking": 3,
+    "trends": {
+      "scoring_trend": "Improving",
+      "consistency": "High",
+      "recent_form": "Hot"
+    }
+  },
+  "roastingMaterial": {
+    "currentSeason": [],
+    "historicalShame": [],
+    "signatures": []
+  },
+  "headToHead": {}
+}

@@ -1,726 +1,378 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>The Weekly Cup-Date: Week 2</title>
-
-  <meta name="description" content="Week 2: standings, matchups, awards, and more. 16 fantasies, 1 Cup." />
-  <meta property="og:title" content="The Weekly Cup-Date — Week 2" />
-  <meta property="og:description" content="Standings, matchups, awards for Week 2." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://your-site.example/og-card-week2.png" />
-  <meta property="og:url" content="https://your-site.example/week2" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Weekly Cup‑Date: Week 2</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="The Weekly Cup‑Date: Week 2" />
+  <meta property="og:description" content="Week 2 recap — standings, division dogfight, trades, waivers, matchups." />
+  <meta property="og:image" content="assets/og-week-2.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
   <style>
-    :root{
-      --bg:#0f1318; --ink:#e9eef6; --muted:#9aa7b6;
-      --panel:#181e25; --line:#2a3340; --accent:#f6c453;
-      --good:#35c26b; --warn:#ffb84a; --bad:#ff6262;
-    }
-    html,body{background:var(--bg); color:var(--ink); font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    .font-header{font-family:'Teko',sans-serif}
-    .card{background:var(--panel); border-radius:14px; border:1px solid var(--line); padding:24px; margin-bottom:24px; box-shadow:0 6px 24px rgba(0,0,0,.18)}
+    :root{--bg:#0f1318; --ink:#e9eef6; --muted:#9aa7b6; --panel:#181e25; --line:#2a3340; --accent:#f6c453; --good:#35c26b; --warn:#ffb84a; --bad:#ff6262;}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    .font-header{font-family:Teko,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 28px rgba(0,0,0,.25)}
     .gold-text{color:var(--accent)}
-    .sub-card{background:#1c232c; border:1px solid var(--line); border-radius:10px; padding:14px}
-    .status-badge{font-size:.75rem; font-weight:800; padding:4px 10px; border-radius:9999px; text-transform:uppercase; width:fit-content; margin:0 auto 10px}
-    .badge-contender{background:var(--accent); color:#121212}
-    .badge-chaser{background:#3182CE; color:#fff}
-    .badge-pretender{background:#A0AEC0; color:#121212}
-    .badge-basement{background:#E53E3E; color:#fff}
-    .chip{border:1px solid var(--line); border-radius:9999px; padding:.15rem .55rem; font-size:12px; opacity:.95}
-    .points-diff-pos { color: var(--good); }
-    .points-diff-neg { color: var(--bad); }
-    .matchup{padding:18px 16px}
-    .hairline{border:0; border-top:1px solid var(--line); margin:14px 0}
-    .team-name{font-weight:900; font-size:26px; line-height:1.1}
-    .winner .team-name{color:var(--accent)}
-    .team-sub{font-size:12px; opacity:.8}
-    .team-rec{font-size:13px; display:flex; gap:8px; align-items:center}
-    .th-left .team-rec{justify-content:flex-end}
-    .th-right .team-rec{justify-content:flex-start}
-    .team-score{font-weight:900; font-size:30px; line-height:1; margin-top:4px}
-    .center-sep{display:flex; flex-direction:column; align-items:center; gap:4px; min-width:70px}
-    .vs-word{font-size:12px; padding:.15rem .55rem; border:1px dashed var(--line); border-radius:9999px; opacity:.85}
-    .vs-margin{font-size:12px; opacity:.8}
-    .matchup-blurb{max-width:70ch; margin:0 auto 18px; text-align:center; opacity:.9; font-style:italic}
-    .h2h-table{width:100%; border-collapse:collapse;}
-    .h2h-table thead th { padding-bottom: 12px; vertical-align: top; border-bottom: 2px solid var(--line);}
-    .h2h-table .th-left { text-align:right; }
-    .h2h-table .th-right { text-align:left; }
-    .h2h-table .th-center { vertical-align: middle; }
-    .h2h-table td{padding:8px 4px; font-size:14px; border-bottom:1px solid var(--line);}
-    .h2h-table tr:last-child td{border:0;}
-    .player-name{font-weight:600;}
-    .player-stats{font-size:11px; color:var(--muted); margin-top:2px;}
-    .player-score{font-weight:700; font-size:18px;}
-    .score-winner{color:var(--accent);}
-    .td-left{text-align:right;}
-    .td-center{text-align:center; font-size:12px; color:var(--muted);}
-    .td-right{text-align:left;}
-    .h2h-table tfoot td { padding-top: 10px; border-top: 2px solid var(--line); vertical-align: top;}
-    .summary-card { text-align: center; background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-radius: 10px; padding: 8px; margin-bottom: 6px;}
-    .summary-title { font-size: 10px; font-weight: 700; border-radius: 9999px; background: var(--line); padding: 2px 8px; display: inline-block; margin-bottom: 4px;}
-    .summary-value { font-size: 16px; font-weight: 700; line-height: 1.2;}
-    .summary-value.small { font-size: 12px; font-weight: 400; color: var(--muted); }
-    .grade-a { color: var(--good); } .grade-b { color: var(--warn); } .grade-c { color: var(--muted); } .grade-f { color: var(--bad); }
-    .pos-pill { display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 700; border-radius: 9999px; background: var(--line); margin-bottom: 4px;}
-    .headline{-webkit-text-stroke:.5px rgba(0,0,0,.25); text-shadow:0 2px 10px rgba(246,196,83,.12);}
-    .sticky-nav{position:sticky; top:0; z-index:30; backdrop-filter:saturate(140%) blur(6px); background:rgba(15,19,24,.6); border-bottom:1px solid var(--line)}
-    .sticky-nav a{font-weight:700}
+    .sub-card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px}
+    .status-badge{font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:9999px;text-transform:uppercase;width:fit-content;margin-inline:auto}
+    .badge-contender{background:var(--accent);color:#111827}
+    .badge-chaser{background:#60a5fa;color:#0b1020}
+    .badge-pretender{background:#a3a3a3;color:#111827}
+    .badge-basement{background:#ef4444;color:#fff}
+    .chip{border:1px solid var(--line);border-radius:999px;padding:.15rem .55rem;font-size:.75rem}
+    .chip-playoff.lock{background:rgba(53,194,107,.16)}
+    .chip-playoff.bubble{background:rgba(255,184,74,.16)}
+    .chip-playoff.out{background:rgba(255,98,98,.16)}
+    @media print{
+      body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .card{box-shadow:none}
+      .toolbar{display:none !important}
+    }
+    .toolbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(15,19,24,.95), rgba(15,19,24,.8));backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+    .btn{border:1px solid var(--line);border-radius:10px;padding:.4rem .8rem;font-size:.9rem}
+    .btn:hover{border-color:var(--accent)}
   </style>
 </head>
-<body class="p-4 sm:p-6 lg:p-8">
-
-  <nav class="sticky-nav">
-    <div class="max-w-5xl mx-auto flex items-center gap-4 px-2 py-2">
-      <a href="#standings" class="text-sm hover:underline">Standings</a>
-      <a href="#divisions" class="text-sm hover:underline">Divisions</a>
-      <a href="#autopsy" class="text-sm hover:underline">Matchups</a>
-      <a href="#awards" class="text-sm hover:underline">Awards</a>
-      <button id="share" class="ml-auto share-btn text-xs px-3 py-1.5 rounded-full border border-[var(--line)] hover:bg-white/5">Share</button>
-    </div>
-  </nav>
-
-  <div class="max-w-5xl mx-auto">
-    <header class="text-center mb-10">
-      <h1 class="headline font-header text-5xl sm:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-yellow-400 to-yellow-600">
-        THE WEEKLY CUP-DATE
+<body class="min-h-full p-6 sm:p-8">
+  <div class="toolbar px-4 py-3 flex items-center gap-3 flex-wrap">
+    <a class="btn" href="index.html">← Back to archive</a>
+    <button class="btn" onclick="window.print()">🖨️ Export as PDF</button>
+    <button class="btn" id="share-week-btn">📤 Share Week</button>
+    <button class="btn" id="reactions-btn">👍 React</button>
+    <div id="reaction-display" class="text-xs text-slate-400"></div>
+    <span class="text-slate-400 text-xs hidden sm:block">Tip: set Destination to "Save as PDF", enable Background graphics</span>
+  </div>
+  <div class="mx-auto max-w-6xl space-y-8">
+    <header class="text-center">
+      <h1 class="font-header text-5xl sm:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-yellow-400 to-yellow-600">
+        <span aria-hidden="true">🚽</span> THE WEEKLY CUP‑DATE <span aria-hidden="true">🏆</span>
       </h1>
-      <p class="text-base sm:text-lg text-gray-400 mt-2">Week 2 — Is It Time To Panic Yet?</p>
+      <p class="mt-2 text-base sm:text-lg text-slate-400">Week 2 · Is It Time To Panic Yet? · 16 Fantasies 1 Cup</p>
+      <p class="mt-2"><a href="index.html" class="underline decoration-yellow-400/60 hover:decoration-yellow-300">← Back to archive</a></p>
     </header>
-
-    <section id="standings" class="card">
-      <h2 class="font-header text-3xl sm:text-4xl font-bold mb-4 text-center gold-text">🔥 The Table of Glory (and Shame) 🔥</h2>
-      <p class="text-center text-gray-400 mb-8 italic">"Some soared, some sank — and some just stunk up the joint."</p>
-      
-      <div class="mb-8 p-4 rounded-lg bg-yellow-900/20 border border-yellow-700">
-        <h3 class="font-header text-2xl sm:text-3xl font-semibold mb-4 text-center">🏆 Contenders</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="sub-card text-center">
-            <div class="status-badge badge-contender">Top Dog</div>
-            <p class="font-bold">1. healzyswarriors (2-0)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 216.64 | 📉 PA: 184.32 | 🔥 2 Wins</p>
-            <p class="text-sm">Two weeks, two wins. The early team to beat.</p>
+    
+    
+        
+        <section id="standings" class="card px-5 sm:px-6 py-6">
+          <h2 class="font-header text-3xl sm:text-4xl font-bold text-center gold-text">The Table of Glory (and Shame)</h2>
+          <p class="mt-1 text-center italic text-slate-400">Where champions rise, pretenders flop, and clowns collect L's.</p>
+        
+            <div class="mt-8 rounded-lg border border-yellow-700/60 bg-yellow-900/20 p-4">
+              <h3 class="font-header text-2xl sm:text-3xl text-center mb-3">🏆 Contenders</h3>
+              <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+            
+                <article class="sub-card p-4 text-center">
+                  <div class="status-badge badge-contender">Crown Contender</div>
+                  <p class="font-bold">1. healzyswarriors (2-0-0)</p>
+                  <p class="mb-2 text-xs text-slate-400">PF: #? · PA: 0nd easiest · </p>
+                  <p class="text-sm">The target is on your back now. How does it feel? 2 wins so far, but the real test is yet to come. 216.64 points is nice, but can you do it consistently? Ranked #1 now, but the pressure is mounting.</p>
+                </article>
+                
+                <article class="sub-card p-4 text-center">
+                  <div class="status-badge badge-contender">Crown Contender</div>
+                  <p class="font-bold">2. FattyC26 (2-0-0)</p>
+                  <p class="mb-2 text-xs text-slate-400">PF: #? · PA: 0nd easiest · </p>
+                  <p class="text-sm">First place is nice, but can you finish what you started? 2 wins so far, but the real test is yet to come. 206.22 points is nice, but can you do it consistently? Ranked #2 now, but the pressure is mounting.</p>
+                </article>
+                
+                <article class="sub-card p-4 text-center">
+                  <div class="status-badge badge-contender">Crown Contender</div>
+                  <p class="font-bold">3. Wicka (2-0-0)</p>
+                  <p class="mb-2 text-xs text-slate-400">PF: #? · PA: 0nd easiest · </p>
+                  <p class="text-sm">Great record, but playoff time is when boys become men. 'Luck is a skill' - sure, Wicka, sure. 2 wins so far, but the real test is yet to come. 200.56 points is nice, but can you do it consistently? Ranked #3 now, but the pressure is mounting.</p>
+                </article>
+                </div></div>
+            <div class="mt-6 rounded-lg border border-blue-700/60 bg-blue-900/20 p-4">
+              <h3 class="font-header text-2xl sm:text-3xl text-center mb-3">⚡ Bubble Watch</h3>
+              <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
+            
+                <article class="sub-card p-3 text-center">
+                  <div class="status-badge badge-chaser">Playoff Chaser</div>
+                  <p class="font-bold">4. webbyt (2-0-0)</p>
+                  <p class="text-xs">Great record, but playoff time is when boys become men. 2 wins so far, but the real test is yet to come. 188.2 points is nice, but can you do it consistently? Ranked #4 now, but the pressure is mounting.</p>
+                </article>
+                
+                <article class="sub-card p-3 text-center">
+                  <div class="status-badge badge-chaser">Playoff Chaser</div>
+                  <p class="font-bold">5. 3whits (2-0-0)</p>
+                  <p class="text-xs">Consistently inconsistent. At least you're consistent about something. 2 wins so far, but the real test is yet to come. 184.58 points is nice, but can you do it consistently?</p>
+                </article>
+                
+                <article class="sub-card p-3 text-center">
+                  <div class="status-badge badge-chaser">Playoff Chaser</div>
+                  <p class="font-bold">6. coopersallstarz (2-0-0)</p>
+                  <p class="text-xs">The definition of mediocre - not good enough to be great, not bad enough to be memorable. 2 wins so far, but the real test is yet to come. 167.1 points is nice, but can you do it consistently? Remember when Bragged about a trade that backfired spectacularly? Yeah, we do too.</p>
+                </article>
+                
+                <article class="sub-card p-3 text-center">
+                  <div class="status-badge badge-chaser">Playoff Chaser</div>
+                  <p class="font-bold">7. DaksDemons (1-1-0)</p>
+                  <p class="text-xs">Fighting for that last playoff spot like it's Black Friday. Perfectly mediocre at 1-1-0. The definition of average. 181.68 points is nice, but can you do it consistently? Remember when Threatened to quit the league after losing to the last place team? Yeah, we do too.</p>
+                </article>
+                
+                <article class="sub-card p-3 text-center">
+                  <div class="status-badge badge-chaser">Playoff Chaser</div>
+                  <p class="font-bold">8. Stampy (1-1-0)</p>
+                  <p class="text-xs">Fighting for that last playoff spot like it's Black Friday. Perfectly mediocre at 1-1-0. The definition of average. 175.26 points is nice, but can you do it consistently? Remember when Refused to drop a player who was on IR for 8 weeks? Yeah, we do too.</p>
+                </article>
+                </div></div></section>
+        
+        <section class="card px-5 sm:px-6 py-6">
+          <h2 class="font-header text-3xl sm:text-4xl font-bold text-center gold-text">⚔️ This Week's Carnage</h2>
+          <div class="mt-6 space-y-4">
+        
+            <div class="sub-card p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-bold text-green-400">DaksDemons</span>
+                <span class="text-slate-400">vs</span>
+                <span class="font-bold text-red-400">gunga36</span>
+              </div>
+              <div class="text-center text-2xl font-bold mb-2">
+                83.28 - 100.0
+              </div>
+              <p class="text-sm text-slate-300 italic text-center">gunga36 vs DaksDemons was a 16.7 point beatdown. DaksDemons dominated, and the other team should probably just quit now.</p>
+            </div>
+            
+            <div class="sub-card p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-bold text-green-400">JewTeam</span>
+                <span class="text-slate-400">vs</span>
+                <span class="font-bold text-red-400">Bonzo22</span>
+              </div>
+              <div class="text-center text-2xl font-bold mb-2">
+                65.74 - 90.1
+              </div>
+              <p class="text-sm text-slate-300 italic text-center">Bonzo22 vs JewTeam was a 24.4 point beatdown. JewTeam dominated, and the other team should probably just quit now.</p>
+            </div>
+            
+            <div class="sub-card p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-bold text-green-400">healzyswarriors</span>
+                <span class="text-slate-400">vs</span>
+                <span class="font-bold text-red-400">Poddy</span>
+              </div>
+              <div class="text-center text-2xl font-bold mb-2">
+                99.24 - 108.02
+              </div>
+              <p class="text-sm text-slate-300 italic text-center">Poddy vs healzyswarriors was a 8.8 point difference. healzyswarriors won, but it wasn't exactly a blowout.</p>
+            </div>
+            
+            <div class="sub-card p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-bold text-green-400">Wicka</span>
+                <span class="text-slate-400">vs</span>
+                <span class="font-bold text-red-400">5yearRebuild</span>
+              </div>
+              <div class="text-center text-2xl font-bold mb-2">
+                125.56 - 66.58
+              </div>
+              <p class="text-sm text-slate-300 italic text-center">Wicka vs 5yearRebuild was a 59.0 point beatdown. Wicka dominated, and the other team should probably just quit now.</p>
+            </div>
+            
+            <div class="sub-card p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-bold text-green-400">3whits</span>
+                <span class="text-slate-400">vs</span>
+                <span class="font-bold text-red-400">Stampy</span>
+              </div>
+              <div class="text-center text-2xl font-bold mb-2">
+                96.42 - 83.2
+              </div>
+              <p class="text-sm text-slate-300 italic text-center">3whits vs Stampy was a 13.2 point difference. 3whits won, but it wasn't exactly a blowout.</p>
+            </div>
+            
+            <div class="sub-card p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-bold text-green-400">coopersallstarz</span>
+                <span class="text-slate-400">vs</span>
+                <span class="font-bold text-red-400">Sedgy</span>
+              </div>
+              <div class="text-center text-2xl font-bold mb-2">
+                73.38 - 67.14
+              </div>
+              <p class="text-sm text-slate-300 italic text-center">coopersallstarz vs Sedgy was a 6.2 point difference. coopersallstarz won, but it wasn't exactly a blowout.</p>
+            </div>
+            </div></section>
+        
+        <section class="card px-5 sm:px-6 py-6">
+          <h2 class="font-header text-3xl sm:text-4xl font-bold text-center gold-text">💼 Wheelin' and Dealin'</h2>
+        <h3 class="font-header text-2xl text-yellow-400 mt-6 mb-3">🔄 Trade Analysis</h3>
+                <div class="sub-card p-4 mb-3">
+                  <div class="font-semibold mb-2"></div>
+                  <div class="text-sm text-slate-300"></div>
+                  <div class="text-xs text-slate-400 mt-2 italic">Even trade</div>
+                </div>
+                
+                <div class="sub-card p-4 mb-3">
+                  <div class="font-semibold mb-2"></div>
+                  <div class="text-sm text-slate-300"></div>
+                  <div class="text-xs text-slate-400 mt-2 italic">Even trade</div>
+                </div>
+                
+                <div class="sub-card p-4 mb-3">
+                  <div class="font-semibold mb-2"></div>
+                  <div class="text-sm text-slate-300"></div>
+                  <div class="text-xs text-slate-400 mt-2 italic">Even trade</div>
+                </div>
+                </section>
+        
+        <section class="card px-5 sm:px-6 py-6 border-2 border-red-600/50">
+          <h2 class="font-header text-3xl sm:text-4xl font-bold text-center text-red-400">🔥 WEEKLY ROAST CORNER 🔥</h2>
+          <div class="mt-6 space-y-4">
+        
+            <div class="sub-card p-4 border border-red-500/30">
+              <h3 class="font-header text-xl text-red-300 mb-3">🏆 Top Performers Getting Roasted</h3>
+              <div class="space-y-2">
+            <div class="bg-red-900/30 p-3 rounded text-sm">The target is on your back now. How does it feel? 'This is our year' - sure, healzyswarriors, sure. 2 wins so far, but the real test is yet to come. 216.64 points is nice, but can you do it consistently? Ranked #1 now, but the pressure is mounting. Remember when Dropped a player who scored 30+ the next week? Yeah, we do too.</div><div class="bg-red-900/30 p-3 rounded text-sm">Sitting pretty at the top, but can you handle the pressure? 2 wins so far, but the real test is yet to come. 206.22 points is nice, but can you do it consistently? Ranked #2 now, but the pressure is mounting.</div><div class="bg-red-900/30 p-3 rounded text-sm">The target is on your back now. How does it feel? 2 wins so far, but the real test is yet to come. 200.56 points is nice, but can you do it consistently? Ranked #3 now, but the pressure is mounting.</div><div class="bg-red-900/30 p-3 rounded text-sm">First place is nice, but can you finish what you started? 2 wins so far, but the real test is yet to come. 188.2 points is nice, but can you do it consistently? Ranked #4 now, but the pressure is mounting. Remember when Lost because he spent too much time analyzing and forgot to set lineup? Yeah, we do too.</div></div></div>
+            <div class="sub-card p-4 border border-red-500/30">
+              <h3 class="font-header text-xl text-red-300 mb-3">💀 Bottom Feeders Getting Destroyed</h3>
+              <div class="space-y-2">
+            <div class="bg-red-900/30 p-3 rounded text-sm">A shocking performance from a supposed contender. Awful start. 2 losses and counting. At least you're consistent. 152.76 points is nice, but can you do it consistently? Ranked #13 out of 16. At least you're not last... yet.</div><div class="bg-red-900/30 p-3 rounded text-sm">At this point, you're just playing for pride. And you're not even doing that well. 2 losses and counting. At least you're consistent. 152.22 points is nice, but can you do it consistently? Ranked #14 out of 16. At least you're not last... yet.</div><div class="bg-red-900/30 p-3 rounded text-sm">The worst team in the league. A truly pathetic display. 2 losses and counting. At least you're consistent. Ranked #15 out of 16. At least you're not last... yet. Remember when Traded away a top-5 RB for a defense? Yeah, we do too.</div><div class="bg-red-900/30 p-3 rounded text-sm">At this point, you're just playing for pride. And you're not even doing that well. 2 losses and counting. At least you're consistent. Ranked #16 out of 16. At least you're not last... yet.</div></div></div>
+            <div class="sub-card p-4 border border-red-500/30">
+              <h3 class="font-header text-xl text-red-300 mb-3">🤡 Questionable Decisions</h3>
+              <div class="space-y-2">
+            <div class="bg-red-900/30 p-3 rounded text-sm">gunga36 vs DaksDemons was a 16.7 point beatdown. DaksDemons dominated, and the other team should probably just quit now.</div><div class="bg-red-900/30 p-3 rounded text-sm">Bonzo22 vs JewTeam was a 24.4 point beatdown. JewTeam dominated, and the other team should probably just quit now.</div><div class="bg-red-900/30 p-3 rounded text-sm">Poddy vs healzyswarriors was a 8.8 point difference. healzyswarriors won, but it wasn't exactly a blowout.</div><div class="bg-red-900/30 p-3 rounded text-sm">healzyswarriors (healzyswarriors) made a trade: healzyswarriors made a strategic trade to strengthen their lineup</div><div class="bg-red-900/30 p-3 rounded text-sm">FattyC26 (FattyC26) made a trade: FattyC26 made a strategic trade to strengthen their lineup</div><div class="bg-red-900/30 p-3 rounded text-sm">Another trade in the league. Wicka (Wicka) is making moves: Wicka made a strategic trade to strengthen their lineup</div></div></div>
+            <div class="sub-card p-4 border border-red-500/30">
+              <h3 class="font-header text-xl text-red-300 mb-3">🔥 League-Wide Shame</h3>
+              <div class="space-y-2">
+            <div class="bg-red-900/30 p-3 rounded text-sm">16 teams, 16 different levels of disappointment. At least you're all consistent in that regard.</div></div></div></div></section>
+        
+    <section class="card px-5 sm:px-6 py-6">
+      <h2 class="font-header text-3xl sm:text-4xl font-bold text-center gold-text">[SECTION TITLE]</h2>
+      <!-- Add your content here -->
+    </section>
+    
+    <!-- Interactive Engagement Section -->
+    <section class="card px-5 sm:px-6 py-6">
+      <h3 class="font-header text-2xl gold-text mb-4">💬 League Chatter</h3>
+      <div class="space-y-4">
+        <div class="sub-card p-4">
+          <h4 class="font-semibold mb-2">Quick Poll:</h4>
+          <p class="text-sm mb-3">Who's getting eliminated first in the playoffs?</p>
+          <div class="grid grid-cols-2 gap-2">
+            <button class="poll-btn bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-sm" data-option="Option1">healzyswarriors 🏆</button>
+            <button class="poll-btn bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-sm" data-option="Option2">FattyC26 💪</button>
+            <button class="poll-btn bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-sm" data-option="Option3">Wicka 🔥</button>
+            <button class="poll-btn bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-sm" data-option="Option4">webbyt 👀</button>
           </div>
-          <div class="sub-card text-center">
-            <div class="status-badge badge-contender">Powerhouse</div>
-            <p class="font-bold">2. FattyC26 (2-0)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 206.22 | 📉 PA: 161.42 | 🔥 2 Wins</p>
-            <p class="text-sm">Putting up points and banking wins. A serious threat.</p>
-          </div>
-          <div class="sub-card text-center">
-            <div class="status-badge badge-contender">Hot Start</div>
-            <p class="font-bold">3. Wicka (2-0)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 200.56 | 📉 PA: 134.70 | 🔥 2 Wins</p>
-            <p class="text-sm">Perfect start to the season, looking dominant.</p>
-          </div>
-          <div class="sub-card text-center">
-            <div class="status-badge badge-contender">Flying High</div>
-            <p class="font-bold">4. webbyt (2-0)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 188.20 | 📉 PA: 123.06 | 🔥 2 Wins</p>
-            <p class="text-sm">Quietly undefeated. Proving the doubters wrong.</p>
-          </div>
+          <div id="poll-results" class="mt-3 text-xs text-slate-400"></div>
         </div>
-      </div>
-      
-      <div class="mb-8 p-4 rounded-lg bg-blue-900/20 border border-blue-700">
-        <h3 class="font-header text-2xl sm:text-3xl font-semibold mb-4 text-center">🐎 The Chasers</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="sub-card text-center">
-            <div class="status-badge badge-chaser">In the Hunt</div>
-            <p class="font-bold">5. 3whits (2-0)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 184.58 | 📉 PA: 144.02 | 🔥 2 Wins</p>
-            <p class="text-sm">Grinding out wins and staying in the mix.</p>
-          </div>
-          <div class="sub-card text-center">
-            <div class="status-badge badge-chaser">Still Kicking</div>
-            <p class="font-bold">6. coopersallstarz (2-0)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 167.10 | 📉 PA: 151.82 | 🔥 2 Wins</p>
-            <p class="text-sm">Not the prettiest, but 2-0 is 2-0.</p>
-          </div>
-          <div class="sub-card text-center">
-            <div class="status-badge badge-chaser">Mid-Pack</div>
-            <p class="font-bold">7. DaksDemons (1-1)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 181.68 | 📉 PA: 177.00 | 🤝 1-1</p>
-            <p class="text-sm">A solid bounce-back win to even the record.</p>
-          </div>
-          <div class="sub-card text-center">
-            <div class="status-badge badge-chaser">Work to Do</div>
-            <p class="font-bold">8. Stampy (1-1)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 175.26 | 📉 PA: 183.44 | 🤝 1-1</p>
-            <p class="text-sm">Still looking for consistency to climb the ladder.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mb-8 p-4 rounded-lg bg-gray-700/20 border border-gray-600">
-        <h3 class="font-header text-2xl sm:text-3xl font-semibold mb-4 text-center">🎭 The Pretenders</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="sub-card text-center">
-            <div class="status-badge badge-pretender">Fraud Watch</div>
-            <p class="font-bold">9. MorgsLev13 (1-1)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 165.88 | 📉 PA: 193.12 | 🤝 1-1</p>
-            <p class="text-sm">An up-and-down start to the season.</p>
-          </div>
-          <div class="sub-card text-center">
-            <div class="status-badge badge-pretender">On The Bubble</div>
-            <p class="font-bold">10. JewTeam (1-1)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 147.32 | 📉 PA: 141.26 | 🤝 1-1</p>
-            <p class="text-sm">Got a much-needed win, but more is needed.</p>
-          </div>
-          <div class="sub-card text-center">
-            <div class="status-badge badge-pretender">Needs a Spark</div>
-            <p class="font-bold">11. Poddy (0-2)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 184.06 | 📉 PA: 203.56 | ❄️ 2 Losses</p>
-            <p class="text-sm">High scoring but can't find a win. Brutal luck.</p>
-          </div>
-          <div class="sub-card text-center">
-            <div class="status-badge badge-pretender">Mediocre</div>
-            <p class="font-bold">12. 5yearRebuild (0-2)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 157.66 | 📉 PA: 223.48 | ❄️ 2 Losses</p>
-            <p class="text-sm">Leaking points and still winless.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="p-4 rounded-lg bg-red-900/20 border border-red-700">
-        <h3 class="font-header text-2xl sm:text-3xl font-semibold mb-4 text-center">🚽 The Basement</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="sub-card text-center">
-            <div class="status-badge badge-basement">Dumpster Fire</div>
-            <p class="font-bold">13. Bonzo22 (0-2)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 152.76 | 📉 PA: 182.16 | ❄️ 2 Losses</p>
-            <p class="text-sm">A rough start has them languishing at the bottom.</p>
-          </div>
-          <div class="sub-card text-center">
-            <div class="status-badge badge-basement">Painfully Bad</div>
-            <p class="font-bold">14. Sedgy (0-2)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 152.22 | 📉 PA: 185.00 | ❄️ 2 Losses</p>
-            <p class="text-sm">Two straight losses and not looking competitive.</p>
-          </div>
-          <div class="sub-card text-center">
-            <div class="status-badge badge-basement">Hopeless</div>
-            <p class="font-bold">15. gunga36 (0-2)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 144.10 | 📉 PA: 188.16 | ❄️ 2 Losses</p>
-            <p class="text-sm">The season is already looking bleak.</p>
-          </div>
-          <div class="sub-card text-center">
-            <div class="status-badge badge-basement">Dead Last</div>
-            <p class="font-bold">16. MickyMayn (0-2)</p>
-            <p class="text-xs text-gray-400 mb-2">📈 PF: 133.96 | 📉 PA: 187.68 | ❄️ 2 Losses</p>
-            <p class="text-sm">The undisputed worst team in the league so far.</p>
-          </div>
+        
+        <div class="sub-card p-4">
+          <h4 class="font-semibold mb-2">💭 Drop a Comment:</h4>
+          <textarea id="comment-input" placeholder="Share your thoughts on this week's action..." class="w-full bg-slate-800 border border-slate-600 rounded p-2 text-sm" rows="3"></textarea>
+          <button id="submit-comment" class="mt-2 bg-yellow-600 hover:bg-yellow-700 text-black px-3 py-1 rounded text-sm font-semibold">Post Comment</button>
+          <div id="comments-list" class="mt-4 space-y-2"></div>
         </div>
       </div>
     </section>
-<section id="divisions" class="card">
-  <h2 class="font-header text-3xl sm:text-4xl font-bold mb-4 text-center gold-text">⚔️ Division Dogfight ⚔️</h2>
-  <p class="text-center text-gray-400 mb-8 italic">BTK vs FLO — where divisional bragging rights are earned, not given.</p>
-
-  <div class="space-y-4">
-    <div class="flex items-center gap-4 px-4">
-      <h3 class="flex-1 font-header text-3xl text-center text-yellow-400">Bend The Knee</h3>
-      <div class="w-12 flex-shrink-0"></div>
-      <h3 class="flex-1 font-header text-3xl text-center text-blue-400">Finkle Laces Out</h3>
-    </div>
-
-    <div class="flex items-stretch gap-4">
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">Wicka</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">1-0-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">125.56 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">65.74 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">190.99%</span></div><p class="text-sm italic mt-auto pt-2 text-center">Running away with the division before anyone else has even tied their shoes.</p></div>
-      <div class="w-12 flex-shrink-0 flex items-center justify-center"><span class="text-4xl font-bold text-gray-500">1</span></div>
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">webbyt</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">1-0-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">112.68 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">65.84 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">171.14%</span></div><p class="text-sm italic mt-auto pt-2 text-center">An absolute powerhouse performance to set the standard in the division.</p></div>
-    </div>
-
-    <div class="flex items-stretch gap-4">
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">DaksDemons</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">1-0-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">100.00 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">66.58 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">150.19%</span></div><p class="text-sm italic mt-auto pt-2 text-center">A dominant start has them looking like a lock for the playoffs already.</p></div>
-      <div class="w-12 flex-shrink-0 flex items-center justify-center"><span class="text-4xl font-bold text-gray-500">2</span></div>
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">FattyC26</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">1-0-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">108.30 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">67.14 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">161.30%</span></div><p class="text-sm italic mt-auto pt-2 text-center">Barely broke a sweat. Looks like a serious title threat.</p></div>
-    </div>
-
-    <div class="flex items-stretch gap-4">
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">healzyswarriors</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">1-0-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">108.02 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">83.28 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">129.71%</span></div><p class="text-sm italic mt-auto pt-2 text-center">Strong out of the gate and firmly in the championship conversation.</p></div>
-      <div class="w-12 flex-shrink-0 flex items-center justify-center"><span class="text-4xl font-bold text-gray-500">3</span></div>
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">3whits</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">1-0-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">96.42 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">70.34 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">137.08%</span></div><p class="text-sm italic mt-auto pt-2 text-center">A rock-solid start that puts the rest of the division on notice.</p></div>
-    </div>
-
-    <div class="flex items-stretch gap-4">
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">JewTeam</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">1-0-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">90.10 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">99.24 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">90.79%</span></div><p class="text-sm italic mt-auto pt-2 text-center">Got the win, but they'll need more firepower to keep climbing.</p></div>
-      <div class="w-12 flex-shrink-0 flex items-center justify-center"><span class="text-4xl font-bold text-gray-500">4</span></div>
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">coopersallstarz</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">1-0-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">73.38 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">83.20 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">88.20%</span></div><p class="text-sm italic mt-auto pt-2 text-center">A win is a win, but they're playing with fire with that point differential.</p></div>
-    </div>
-
-    <div class="flex items-stretch gap-4">
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">Poddy</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">0-1-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">99.24 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">90.10 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">110.14%</span></div><p class="text-sm italic mt-auto pt-2 text-center">The best of the worst; a tough loss but still outscored some winners.</p></div>
-      <div class="w-12 flex-shrink-0 flex items-center justify-center"><span class="text-4xl font-bold text-gray-500">5</span></div>
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">Stampy</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">0-1-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">83.20 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">73.38 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">113.38%</span></div><p class="text-sm italic mt-auto pt-2 text-center">Lost a heartbreaker but has the scoring punch to bounce back quickly.</p></div>
-    </div>
-
-    <div class="flex items-stretch gap-4">
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">gunga36</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">0-1-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">83.28 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">108.02 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">77.09%</span></div><p class="text-sm italic mt-auto pt-2 text-center">Needs to find a spark soon before the elites pull too far ahead.</p></div>
-      <div class="w-12 flex-shrink-0 flex items-center justify-center"><span class="text-4xl font-bold text-gray-500">6</span></div>
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">MorgsLev13</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">0-1-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">70.34 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">96.42 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">72.95%</span></div><p class="text-sm italic mt-auto pt-2 text-center">Stumbled out of the gate and now has to play catch-up.</p></div>
-    </div>
-
-    <div class="flex items-stretch gap-4">
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">5yearRebuild</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">0-1-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">66.58 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">100.00 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">66.58%</span></div><p class="text-sm italic mt-auto pt-2 text-center">Early signs suggest this rebuild might be on the 5-year plan after all.</p></div>
-      <div class="w-12 flex-shrink-0 flex items-center justify-center"><span class="text-4xl font-bold text-gray-500">7</span></div>
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">Sedgy</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">0-1-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">67.14 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">108.30 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">62.00%</span></div><p class="text-sm italic mt-auto pt-2 text-center">The team is searching for an identity, and preferably, some points.</p></div>
-    </div>
-
-    <div class="flex items-stretch gap-4">
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">Bonzo22</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">0-1-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">65.74 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">125.56 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">52.36%</span></div><p class="text-sm italic mt-auto pt-2 text-center">Currently holding the wooden spoon and looking for answers. Anywhere.</p></div>
-      <div class="w-12 flex-shrink-0 flex items-center justify-center"><span class="text-4xl font-bold text-gray-500">8</span></div>
-      <div class="flex-1 sub-card p-4 flex flex-col"><p class="font-bold text-center">MickyMayn</p><div class="flex flex-wrap gap-2 mt-2 justify-center"><span class="bg-transparent border border-gray-500 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full">0-1-0</span><span class="bg-transparent border border-green-500 text-green-400 text-xs font-medium px-2.5 py-1 rounded-full">65.84 PF</span><span class="bg-transparent border border-red-500 text-red-400 text-xs font-medium px-2.5 py-1 rounded-full">112.68 PA</span><span class="bg-transparent border border-sky-500 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">58.43%</span></div><p class="text-sm italic mt-auto pt-2 text-center">A rough start puts them in a deep hole early in the season.</p></div>
-    </div>
-
-  </div>
-</section>
-</section>
-<section id="autopsy" class="card">
-  <h2 class="font-header text-3xl sm:text-4xl font-bold mb-6 text-center gold-text">
-    🩺 The Autopsy Specialist
-  </h2>
-  <p class="text-center text-gray-400 mb-8 italic">
-    Winners strut, losers get scalpel’d. Let’s cut them open.
-  </p>
-
-  <section class="matchup">
-    <p class="matchup-blurb">A crucial win for DaksDemons to get back to .500, squeaking by a desperately unlucky gunga36, who left a monster game from Daniel Jones wasting away on the bench. A true fantasy heartbreaker.</p>
-    <div class="overflow-x-auto">
-      <table class="h2h-table">
-        <thead>
-          <tr>
-            <th class="th-left winner">
-              <div class="team-name">DaksDemons</div>
-              <div class="team-sub">BTK</div>
-              <div class="team-rec">1–1 <span class="chip">🤝 1-1</span></div>
-              <div class="team-score">100.00</div>
-            </th>
-            <th class="th-center">
-              <div class="center-sep"><span class="vs-word">def.</span><span class="vs-margin">+16.72</span></div>
-            </th>
-            <th class="th-right">
-              <div class="team-name">gunga36</div>
-              <div class="team-sub">BTK</div>
-              <div class="team-rec">0–2 <span class="chip">❄️ 2 Losses</span></div>
-              <div class="team-score">83.28</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="td-left"><p class="player-name">Baker Mayfield</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">QB</div><div><span class="player-score score-winner">22.58</span> vs <span class="player-score">3.98</span></div></td><td class="td-right"><p class="player-name">Justin Fields</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Javonte Williams</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score score-winner">19.40</span> vs <span class="player-score">7.10</span></div></td><td class="td-right"><p class="player-name">Omarion Hampton</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">David Montgomery</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score">6.30</span> vs <span class="player-score score-winner">21.50</span></div></td><td class="td-right"><p class="player-name">Kenneth Walker</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">DJ Moore</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score">7.10</span> vs <span class="player-score score-winner">19.60</span></div></td><td class="td-right"><p class="player-name">Davante Adams</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Brian Thomas</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score score-winner">8.50</span> vs <span class="player-score">4.60</span></div></td><td class="td-right"><p class="player-name">Jameson Williams</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Nick Chubb</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">FLEX</div><div><span class="player-score">6.00</span> vs <span class="player-score score-winner">14.50</span></div></td><td class="td-right"><p class="player-name">CeeDee Lamb</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Jake Ferguson</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">TE</div><div><span class="player-score score-winner">4.80</span> vs <span class="player-score">12.00</span></div></td><td class="td-right"><p class="player-name">Mark Andrews</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Cincinnati</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">DEF</div><div><span class="player-score score-winner">7.00</span> vs <span class="player-score">0.00</span></div></td><td class="td-right"><p class="player-name">New York Jets</p><p class="player-stats">&nbsp;</p></td></tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td class="td-left"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-b">B</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">About Even</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Hunter Henry (8.60)</div></div></td>
-            <td></td>
-            <td class="td-right"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-f">F</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">Hard Yakka</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Daniel Jones (22.84)</div></div></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <hr class="hairline" />
-  </section>
-
-  <section class="matchup">
-    <p class="matchup-blurb">JewTeam gets their season on track with a solid win, powered by a big day from Kyler Murray. Bonzo22 continues to struggle, as their lineup failed to fire for the second week in a row.</p>
-    <div class="overflow-x-auto">
-      <table class="h2h-table">
-        <thead>
-          <tr>
-            <th class="th-left winner">
-              <div class="team-name">JewTeam</div>
-              <div class="team-sub">BTK</div>
-              <div class="team-rec">1–1 <span class="chip">🤝 1-1</span></div>
-              <div class="team-score">90.10</div>
-            </th>
-            <th class="th-center">
-              <div class="center-sep"><span class="vs-word">def.</span><span class="vs-margin">+24.36</span></div>
-            </th>
-            <th class="th-right">
-              <div class="team-name">Bonzo22</div>
-              <div class="team-sub">BTK</div>
-              <div class="team-rec">0–2 <span class="chip">❄️ 2 Losses</span></div>
-              <div class="team-score">65.74</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="td-left"><p class="player-name">Kyler Murray</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">QB</div><div><span class="player-score score-winner">21.90</span> vs <span class="player-score">14.12</span></div></td><td class="td-right"><p class="player-name">Joe Burrow</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Isiah Pacheco</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score">8.30</span> vs <span class="player-score score-winner">14.40</span></div></td><td class="td-right"><p class="player-name">Jaylen Warren</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Tyrone Tracy</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score score-winner">4.50</span> vs <span class="player-score">2.00</span></div></td><td class="td-right"><p class="player-name">Rashod Bateman</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Chris Olave</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score score-winner">18.90</span> vs <span class="player-score">17.00</span></div></td><td class="td-right"><p class="player-name">Michael Pittman Jr.</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Tee Higgins</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score score-winner">12.10</span> vs <span class="player-score">9.50</span></div></td><td class="td-right"><p class="player-name">Drake London</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Nico Collins</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">FLEX</div><div><span class="player-score">5.90</span> vs <span class="player-score score-winner">8.72</span></div></td><td class="td-right"><p class="player-name">Zay Flowers</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Tucker Kraft</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">TE</div><div><span class="player-score score-winner">13.00</span> vs <span class="player-score">2.00</span></div></td><td class="td-right"><p class="player-name">David Njoku</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Philadelphia</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">DEF</div><div><span class="player-score score-winner">5.50</span> vs <span class="player-score">-2.00</span></div></td><td class="td-right"><p class="player-name">New England</p><p class="player-stats">&nbsp;</p></td></tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td class="td-left"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-a">A+</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">Cruisey</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Dylan Sampson (13.30)</div></div></td>
-            <td></td>
-            <td class="td-right"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-f">F</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">About Even</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">J.K. Dobbins (12.30)</div></div></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <hr class="hairline" />
-  </section>
-
-  <section class="matchup">
-    <p class="matchup-blurb">A nail-biter! coopersallstarz hangs on for a razor-thin victory to stay undefeated, while 5yearRebuild is left heartbroken, falling to 0-2 despite a solid team performance.</p>
-    <div class="overflow-x-auto">
-      <table class="h2h-table">
-        <thead>
-          <tr>
-            <th class="th-left winner">
-              <div class="team-name">coopersallstarz</div>
-              <div class="team-sub">FLO</div>
-              <div class="team-rec">2–0 <span class="chip">🔥 2 Wins</span></div>
-              <div class="team-score">73.38</div>
-            </th>
-            <th class="th-center">
-              <div class="center-sep"><span class="vs-word">def.</span><span class="vs-margin">+6.80</span></div>
-            </th>
-            <th class="th-right">
-              <div class="team-name">5yearRebuild</div>
-              <div class="team-sub">BTK</div>
-              <div class="team-rec">0–2 <span class="chip">❄️ 2 Losses</span></div>
-              <div class="team-score">66.58</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="td-left"><p class="player-name">Justin Herbert</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">QB</div><div><span class="player-score">10.38</span> vs <span class="player-score score-winner">18.78</span></div></td><td class="td-right"><p class="player-name">Brock Purdy</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Deebo Samuel</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score score-winner">19.10</span> vs <span class="player-score">15.50</span></div></td><td class="td-right"><p class="player-name">Breece Hall</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Aaron Jones</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score score-winner">14.20</span> vs <span class="player-score">11.00</span></div></td><td class="td-right"><p class="player-name">Ashton Jeanty</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">George Kittle</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score">10.50</span> vs <span class="player-score score-winner">19.00</span></div></td><td class="td-right"><p class="player-name">Garrett Wilson</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Jahmyr Gibbs</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score score-winner">10.00</span> vs <span class="player-score">12.80</span></div></td><td class="td-right"><p class="player-name">Ricky Pearsall</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Stefon Diggs</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">FLEX</div><div><span class="player-score score-winner">8.70</span> vs <span class="player-score">0.00</span></div></td><td class="td-right"><p class="player-name">Xavier Worthy</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">A.J. Brown</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">TE</div><div><span class="player-score">1.30</span> vs <span class="player-score score-winner">3.00</span></div></td><td class="td-right"><p class="player-name">T.J. Hockenson</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Pittsburgh</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">DEF</div><div><span class="player-score">2.00</span> vs <span class="player-score score-winner">11.00</span></div></td><td class="td-right"><p class="player-name">San Francisco</p><p class="player-stats">&nbsp;</p></td></tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td class="td-left"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-a">A+</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">Got bloody lucky</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Michael Penix (24.02)</div></div></td>
-            <td></td>
-            <td class="td-right"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-c">C</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">Hard Yakka</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Caleb Williams (24.20)</div></div></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <hr class="hairline" />
-  </section>
-
-  <section class="matchup">
-    <p class="matchup-blurb">A complete demolition. FattyC26 stays perfect with a dominant performance, while MickyMayn continues their abysmal start to the season, cementing their spot in the league basement.</p>
-    <div class="overflow-x-auto">
-      <table class="h2h-table">
-        <thead>
-          <tr>
-            <th class="th-left winner">
-              <div class="team-name">FattyC26</div>
-              <div class="team-sub">FLO</div>
-              <div class="team-rec">2–0 <span class="chip">🔥 2 Wins</span></div>
-              <div class="team-score">108.30</div>
-            </th>
-            <th class="th-center">
-              <div class="center-sep"><span class="vs-word">def.</span><span class="vs-margin">+42.46</span></div>
-            </th>
-            <th class="th-right">
-              <div class="team-name">MickyMayn</div>
-              <div class="team-sub">BTK</div>
-              <div class="team-rec">0–2 <span class="chip">❄️ 2 Losses</span></div>
-              <div class="team-score">65.84</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="td-left"><p class="player-name">Jayden Daniels</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">QB</div><div><span class="player-score score-winner">19.70</span> vs <span class="player-score">10.32</span></div></td><td class="td-right"><p class="player-name">Geno Smith</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Christian McCaffrey</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score score-winner">19.70</span> vs <span class="player-score">3.40</span></div></td><td class="td-right"><p class="player-name">Zack Moss</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">James Conner</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score">11.70</span> vs <span class="player-score score-winner">11.60</span></div></td><td class="td-right"><p class="player-name">James Cook</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Jaxon Smith-Njigba</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score score-winner">14.30</span> vs <span class="player-score">1.90</span></div></td><td class="td-right"><p class="player-name">Marquise Brown</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">DK Metcalf</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score">9.50</span> vs <span class="player-score score-winner">7.70</span></div></td><td class="td-right"><p class="player-name">Diontae Johnson</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Chase Brown</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">FLEX</div><div><span class="player-score">7.50</span> vs <span class="player-score score-winner">18.90</span></div></td><td class="td-right"><p class="player-name">Chris Olave</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Tyler Warren</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">TE</div><div><span class="player-score score-winner">9.90</span> vs <span class="player-score">7.00</span></div></td><td class="td-right"><p class="player-name">Kyle Pitts</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Baltimore</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">DEF</div><div><span class="player-score score-winner">16.00</span> vs <span class="player-score">-5.00</span></div></td><td class="td-right"><p class="player-name">Los Angeles</p><p class="player-stats">&nbsp;</p></td></tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td class="td-left"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-b">B</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">About Even</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">George Pickens (15.30)</div></div></td>
-            <td></td>
-            <td class="td-right"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-a">A+</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">Hard Yakka</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Devin Singletary (9.60)</div></div></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <hr class="hairline" />
-  </section>
-
-  <section class="matchup">
-    <p class="matchup-blurb">A battle of inches! 3whits remains undefeated after a nail-biting win, while MorgsLev13 is left to rue a coaching decision that cost them the game. A tough loss to swallow.</p>
-    <div class="overflow-x-auto">
-      <table class="h2h-table">
-        <thead>
-          <tr>
-            <th class="th-left winner">
-              <div class="team-name">3whits</div>
-              <div class="team-sub">FLO</div>
-              <div class="team-rec">2–0 <span class="chip">🔥 2 Wins</span></div>
-              <div class="team-score">96.42</div>
-            </th>
-            <th class="th-center">
-              <div class="center-sep"><span class="vs-word">def.</span><span class="vs-margin">+2.50</span></div>
-            </th>
-            <th class="th-right">
-              <div class="team-name">MorgsLev13</div>
-              <div class="team-sub">FLO</div>
-              <div class="team-rec">1–1 <span class="chip">🤝 1-1</span></div>
-              <div class="team-score">93.92</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="td-left"><p class="player-name">Josh Allen</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">QB</div><div><span class="player-score score-winner">38.76</span> vs <span class="player-score">20.58</span></div></td><td class="td-right"><p class="player-name">Lamar Jackson</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">TreVeyon Henderson</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score">8.10</span> vs <span class="player-score score-winner">18.60</span></div></td><td class="td-right"><p class="player-name">Josh Jacobs</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Tank Bigsby</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score">1.20</span> vs <span class="player-score score-winner">13.70</span></div></td><td class="td-right"><p class="player-name">Isiah Pacheco</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">CeeDee Lamb</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score">14.50</span> vs <span class="player-score score-winner">21.40</span></div></td><td class="td-right"><p class="player-name">Chris Olave</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Rome Odunze</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score score-winner">12.70</span> vs <span class="player-score">6.00</span></div></td><td class="td-right"><p class="player-name">Rashee Rice</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Jaylen Waddle</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">FLEX</div><div><span class="player-score score-winner">5.00</span> vs <span class="player-score">0.00</span></div></td><td class="td-right"><p class="player-name">Malachi Corley</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Brenton Strange</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">TE</div><div><span class="player-score">7.90</span> vs <span class="player-score score-winner">11.90</span></div></td><td class="td-right"><p class="player-name">Evan Engram</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Detroit</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">DEF</div><div><span class="player-score score-winner">8.26</span> vs <span class="player-score">1.74</span></div></td><td class="td-right"><p class="player-name">Indianapolis</p><p class="player-stats">&nbsp;</p></td></tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td class="td-left"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-a">A+</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">Got bloody lucky</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Braelon Allen (6.90)</div></div></td>
-            <td></td>
-            <td class="td-right"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-c">C</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">Hard Yakka</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Bo Nix (11.08)</div></div></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <hr class="hairline" />
-  </section>
-
-  <section class="matchup">
-    <p class="matchup-blurb">Stampy gets back in the winner's circle with a comfortable victory over Poddy, whose high-scoring offense from Week 1 went completely missing. A frustrating 0-2 start for a team with playoff hopes.</p>
-    <div class="overflow-x-auto">
-      <table class="h2h-table">
-        <thead>
-          <tr>
-            <th class="th-left winner">
-              <div class="team-name">Stampy</div>
-              <div class="team-sub">FLO</div>
-              <div class="team-rec">1–1 <span class="chip">🤝 1-1</span></div>
-              <div class="team-score">83.20</div>
-            </th>
-            <th class="th-center">
-              <div class="center-sep"><span class="vs-word">def.</span><span class="vs-margin">+22.48</span></div>
-            </th>
-            <th class="th-right">
-              <div class="team-name">Poddy</div>
-              <div class="team-sub">BTK</div>
-              <div class="team-rec">0–2 <span class="chip">❄️ 2 Losses</span></div>
-              <div class="team-score">60.72</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="td-left"><p class="player-name">Lamar Jackson</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">QB</div><div><span class="player-score score-winner">29.36</span> vs <span class="player-score">8.82</span></div></td><td class="td-right"><p class="player-name">Joe Burrow</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Chuba Hubbard</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score score-winner">16.40</span> vs <span class="player-score">12.90</span></div></td><td class="td-right"><p class="player-name">Javonte Williams</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Jordan Mason</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score">8.00</span> vs <span class="player-score score-winner">24.60</span></div></td><td class="td-right"><p class="player-name">Rachaad White</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Justin Jefferson</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score">12.80</span> vs <span class="player-score score-winner">17.00</span></div></td><td class="td-right"><p class="player-name">Drake London</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Calvin Ridley</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score">4.70</span> vs <span class="player-score score-winner">9.50</span></div></td><td class="td-right"><p class="player-name">George Pickens</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Rico Dowdle</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">FLEX</div><div><span class="player-score">2.60</span> vs <span class="player-score score-winner">2.00</span></div></td><td class="td-right"><p class="player-name">Christian Kirk</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Colston Loveland</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">TE</div><div><span class="player-score">2.20</span> vs <span class="player-score score-winner">5.20</span></div></td><td class="td-right"><p class="player-name">Jake Ferguson</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Denver</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">DEF</div><div><span class="player-score score-winner">16.00</span> vs <span class="player-score">-10.00</span></div></td><td class="td-right"><p class="player-name">New York Jets</p><p class="player-stats">&nbsp;</p></td></tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td class="td-left"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-a">A+</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">Cruisey</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Drake Maye (16.28)</div></div></td>
-            <td></td>
-            <td class="td-right"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-f">F</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">Hard Yakka</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Justin Jefferson (15.50)</div></div></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <hr class="hairline" />
-  </section>
-
-  <section class="matchup">
-    <p class="matchup-blurb">healzyswarriors keeps their perfect record intact with a statement win, flexing their championship credentials. Sedgy fought hard but couldn't keep pace, slumping to a disappointing 0-2 start.</p>
-    <div class="overflow-x-auto">
-      <table class="h2h-table">
-        <thead>
-          <tr>
-            <th class="th-left winner">
-              <div class="team-name">healzyswarriors</div>
-              <div class="team-sub">BTK</div>
-              <div class="team-rec">2–0 <span class="chip">🔥 2 Wins</span></div>
-              <div class="team-score">108.02</div>
-            </th>
-            <th class="th-center">
-              <div class="center-sep"><span class="vs-word">def.</span><span class="vs-margin">+40.88</span></div>
-            </th>
-            <th class="th-right">
-              <div class="team-name">Sedgy</div>
-              <div class="team-sub">FLO</div>
-              <div class="team-rec">0–2 <span class="chip">❄️ 2 Losses</span></div>
-              <div class="team-score">67.14</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="td-left"><p class="player-name">J.J. McCarthy</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">QB</div><div><span class="player-score">23.22</span> vs <span class="player-score score-winner">24.28</span></div></td><td class="td-right"><p class="player-name">Jalen Hurts</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">James Cook</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score score-winner">18.70</span> vs <span class="player-score">17.10</span></div></td><td class="td-right"><p class="player-name">Travis Etienne</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Alvin Kamara</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score score-winner">12.70</span> vs <span class="player-score">-0.20</span></div></td><td class="td-right"><p class="player-name">Kaleb Johnson</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Emeka Egbuka</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score score-winner">21.60</span> vs <span class="player-score">18.10</span></div></td><td class="td-right"><p class="player-name">Puka Nacua</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Amon-Ra St. Brown</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score score-winner">6.50</span> vs <span class="player-score">2.50</span></div></td><td class="td-right"><p class="player-name">Xavier Legette</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">DeVonta Smith</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">FLEX</div><div><span class="player-score">3.10</span> vs <span class="player-score score-winner">7.90</span></div></td><td class="td-right"><p class="player-name">Dallas Goedert</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Brock Bowers</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">TE</div><div><span class="player-score score-winner">12.80</span> vs <span class="player-score">9.40</span></div></td><td class="td-right"><p class="player-name">Kyle Pitts</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Green Bay</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">DEF</div><div><span class="player-score score-winner">10.00</span> vs <span class="player-score">6.00</span></div></td><td class="td-right"><p class="player-name">Minnesota</p><p class="player-stats">&nbsp;</p></td></tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td class="td-left"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-a">A+</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">Cruisey</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">J. Croskey-Merritt (14.20)</div></div></td>
-            <td></td>
-            <td class="td-right"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-f">F</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">Hard Yakka</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Keon Coleman (21.20)</div></div></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <hr class="hairline" />
-  </section>
-
-  <section class="matchup">
-    <p class="matchup-blurb">A battle of the undefeateds ends with Wicka taking the crown, powered by a massive game from their defense. webbyt tastes defeat for the first time but remains a strong contender in the FLO division.</p>
-    <div class="overflow-x-auto">
-      <table class="h2h-table">
-        <thead>
-          <tr>
-            <th class="th-left winner">
-              <div class="team-name">Wicka</div>
-              <div class="team-sub">BTK</div>
-              <div class="team-rec">2–0 <span class="chip">🔥 2 Wins</span></div>
-              <div class="team-score">125.56</div>
-            </th>
-            <th class="th-center">
-              <div class="center-sep"><span class="vs-word">def.</span><span class="vs-margin">+12.88</span></div>
-            </th>
-            <th class="th-right">
-              <div class="team-name">webbyt</div>
-              <div class="team-sub">FLO</div>
-              <div class="team-rec">1–1 <span class="chip">🤝 1-1</span></div>
-              <div class="team-score">112.68</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="td-left"><p class="player-name">Kirk Cousins</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">QB</div><div><span class="player-score">15.18</span> vs <span class="player-score score-winner">26.02</span></div></td><td class="td-right"><p class="player-name">Patrick Mahomes</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Najee Harris</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score score-winner">7.60</span> vs <span class="player-score">7.40</span></div></td><td class="td-right"><p class="player-name">RJ Harvey</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">David Montgomery</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">RB</div><div><span class="player-score">3.70</span> vs <span class="player-score score-winner">3.70</span></div></td><td class="td-right"><p class="player-name">Rhamondre Stevenson</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Marvin Harrison Jr.</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score score-winner">12.00</span> vs <span class="player-score">9.60</span></div></td><td class="td-right"><p class="player-name">Malik Nabers</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Mike Evans</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">WR</div><div><span class="player-score score-winner">10.70</span> vs <span class="player-score">3.60</span></div></td><td class="td-right"><p class="player-name">Ja'Marr Chase</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Brian Thomas Jr.</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">FLEX</div><div><span class="player-score">4.80</span> vs <span class="player-score score-winner">6.30</span></div></td><td class="td-right"><p class="player-name">Travis Hunter</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Luke Musgrave</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">TE</div><div><span class="player-score">0.00</span> vs <span class="player-score score-winner">10.90</span></div></td><td class="td-right"><p class="player-name">Sam LaPorta</p><p class="player-stats">&nbsp;</p></td></tr>
-          <tr><td class="td-left"><p class="player-name">Tampa Bay</p><p class="player-stats">&nbsp;</p></td><td class="td-center"><div class="pos-pill">DEF</div><div><span class="player-score score-winner">18.00</span> vs <span class="player-score">8.00</span></div></td><td class="td-right"><p class="player-name">Seattle</p><p class="player-stats">&nbsp;</p></td></tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td class="td-left"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-a">A</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">About Even</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Zamir White (11.00)</div></div></td>
-            <td></td>
-            <td class="td-right"><div class="summary-card"><div class="summary-title">Coaching Grade</div><div class="summary-value grade-b">B</div></div><div class="summary-card"><div class="summary-title">Luck</div><div class="summary-value small">About Even</div></div><div class="summary-card"><div class="summary-title">Top Bench Warmer</div><div class="summary-value small">Jayden Reed (12.00)</div></div></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <hr class="hairline" />
-  </section>
-</section>
-<section id="awards" class="card">
-    <h2 class="font-header text-3xl sm:text-4xl font-bold mb-4 text-center gold-text">🎖 The Awards Committee</h2>
-    <p class="text-center text-gray-400 mb-8 italic">Where legends are crowned and muppets exposed.</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="summary-card">
-        <div class="summary-title">Highest Scorer</div>
-        <div class="summary-value">Wicka — 125.56</div>
-        <p class="summary-value small">Blew the doors off with a massive score to stay undefeated.</p>
-      </div>
-      <div class="summary-card">
-        <div class="summary-title">Coach of the Week</div>
-        <div class="summary-value">healzyswarriors — 99.8%</div>
-        <p class="summary-value small">A near-perfect lineup optimization to secure a dominant win.</p>
-      </div>
-      <div class="summary-card">
-        <div class="summary-title">Bonehead of the Week</div>
-        <div class="summary-value">gunga36</div>
-        <p class="summary-value small">Benched Daniel Jones (22.84) for Justin Fields (3.98). An all-time blunder.</p>
-      </div>
-      <div class="summary-card">
-        <div class="summary-title">Luckiest Winner</div>
-        <div class="summary-value">coopersallstarz</div>
-        <p class="summary-value small">Scraped a win with only 73 points. Would have lost to 11 other teams.</p>
-      </div>
-      <div class="summary-card">
-        <div class="summary-title">Unluckiest Loser</div>
-        <div class="summary-value">Poddy</div>
-        <p class="summary-value small">Put up 99.24 points and still took the L. The fantasy gods are cruel.</p>
-      </div>
-      <div class="summary-card">
-        <div class="summary-title">Player of the Week</div>
-        <div class="summary-value">Josh Allen — 38.76</div>
-        <p class="summary-value small">An absolute monster performance carried 3whits to a narrow victory.</p>
-      </div>
-    </div>
-  </section>
-
-    <footer class="text-center text-gray-500 text-xs mt-12">
-      <p>16 Fantasies 1 Cup — Season 2025, Week 2.</p>
-      <p class="mt-1">Commissioner’s Cup-Date • Good Luck in Week 3 - Try Not To Suck.</p>
-    </footer>
   </div>
 
   <script>
-    // Simple share/copy
-    (function(){
-      const btn = document.getElementById('share');
-      if(!btn) return;
-      btn.addEventListener('click', async () => {
-        const url = window.location.href;
-        try{
-          if (navigator.share) {
-            await navigator.share({ title: document.title, url });
-          } else {
-            // Fallback for desktop
-            const ta = document.createElement('textarea');
-            ta.value = url;
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            
-            btn.textContent = 'Link copied ✔';
-            setTimeout(()=> btn.textContent='Share', 1600);
-          }
-        }catch(e){
-          console.error("Share failed:", e);
-        }
+    // Replace 2 with actual week number for localStorage keys
+    const weekNumber = '2';
+    
+    // Share functionality
+    document.getElementById('share-week-btn').addEventListener('click', async () => {
+      try {
+        await navigator.share({
+          title: `The Weekly Cup‑Date: Week ${weekNumber}`,
+          text: `Check out Week ${weekNumber} of our fantasy football newsletter!`,
+          url: window.location.href
+        });
+      } catch (err) {
+        navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard!');
+      }
+    });
+
+    // Reactions system
+    const reactions = ['👍', '😂', '🔥', '💀', '😤'];
+    const reactionCounts = JSON.parse(localStorage.getItem(`week${weekNumber}-reactions`) || '{}');
+    
+    document.getElementById('reactions-btn').addEventListener('click', () => {
+      const reaction = reactions[Math.floor(Math.random() * reactions.length)];
+      reactionCounts[reaction] = (reactionCounts[reaction] || 0) + 1;
+      localStorage.setItem(`week${weekNumber}-reactions`, JSON.stringify(reactionCounts));
+      updateReactionDisplay();
+    });
+
+    function updateReactionDisplay() {
+      const display = document.getElementById('reaction-display');
+      const total = Object.values(reactionCounts).reduce((a, b) => a + b, 0);
+      if (total > 0) {
+        const topReactions = Object.entries(reactionCounts)
+          .sort(([,a], [,b]) => b - a)
+          .slice(0, 3)
+          .map(([emoji, count]) => `${emoji} ${count}`)
+          .join(' ');
+        display.textContent = `${total} reactions: ${topReactions}`;
+      }
+    }
+
+    // Poll system
+    const pollVotes = JSON.parse(localStorage.getItem(`week${weekNumber}-poll`) || '{}');
+    
+    document.querySelectorAll('.poll-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const option = btn.dataset.option;
+        pollVotes[option] = (pollVotes[option] || 0) + 1;
+        localStorage.setItem(`week${weekNumber}-poll`, JSON.stringify(pollVotes));
+        updatePollResults();
       });
-    })();
+    });
+
+    function updatePollResults() {
+      const results = document.getElementById('poll-results');
+      const total = Object.values(pollVotes).reduce((a, b) => a + b, 0);
+      if (total > 0) {
+        const resultText = Object.entries(pollVotes)
+          .map(([option, votes]) => `${option}: ${votes} votes`)
+          .join(' | ');
+        results.textContent = `${total} total votes - ${resultText}`;
+      }
+    }
+
+    // Comments system
+    const comments = JSON.parse(localStorage.getItem(`week${weekNumber}-comments`) || '[]');
+    
+    document.getElementById('submit-comment').addEventListener('click', () => {
+      const input = document.getElementById('comment-input');
+      const text = input.value.trim();
+      if (text) {
+        const comment = {
+          text: text,
+          timestamp: new Date().toLocaleString(),
+          id: Date.now()
+        };
+        comments.unshift(comment);
+        localStorage.setItem(`week${weekNumber}-comments`, JSON.stringify(comments));
+        input.value = '';
+        updateComments();
+      }
+    });
+
+    function updateComments() {
+      const list = document.getElementById('comments-list');
+      list.innerHTML = comments.slice(0, 5).map(comment => `
+        <div class="bg-slate-800 p-2 rounded text-sm">
+          <p>${comment.text}</p>
+          <span class="text-xs text-slate-400">${comment.timestamp}</span>
+        </div>
+      `).join('');
+    }
+
+    // Initialize displays
+    updateReactionDisplay();
+    updatePollResults();
+    updateComments();
   </script>
 </body>
 </html>

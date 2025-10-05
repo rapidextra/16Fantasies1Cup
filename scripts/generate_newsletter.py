@@ -9,12 +9,18 @@ import os
 from datetime import datetime
 from typing import Dict, List, Any
 from jinja2 import Template
+import sys
+
+# Add parent directory to path to import roasting engine
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from scripts.roasting_engine import RoastingEngine
 
 class NewsletterGenerator:
     def __init__(self):
         self.project_root = os.path.dirname(os.path.dirname(__file__))
         self.data_dir = os.path.join(self.project_root, 'data')
         self.template_file = os.path.join(self.project_root, 'week-template.html')
+        self.roasting_engine = RoastingEngine()
         
     def generate_newsletter(self, week_number: int, week_title: str = None) -> str:
         """Generate a complete newsletter for the given week"""
@@ -146,7 +152,7 @@ class NewsletterGenerator:
             '''
             
             for i, team in enumerate(top_3):
-                roast = self._get_team_roast(team, "contender")
+                roast = self.roasting_engine.generate_team_roast(team, weekly_data, "contender")
                 html += f'''
                 <article class="sub-card p-4 text-center">
                   <div class="status-badge badge-contender">Crown Contender</div>
@@ -168,7 +174,7 @@ class NewsletterGenerator:
             '''
             
             for i, team in enumerate(bubble_teams, 4):
-                roast = self._get_team_roast(team, "bubble")
+                roast = self.roasting_engine.generate_team_roast(team, weekly_data, "bubble")
                 html += f'''
                 <article class="sub-card p-3 text-center">
                   <div class="status-badge badge-chaser">Playoff Chaser</div>
@@ -196,7 +202,7 @@ class NewsletterGenerator:
             winner = matchup.get('winner', matchup.get('team1', ''))
             loser = matchup.get('team2', '') if winner == matchup.get('team1', '') else matchup.get('team1', '')
             
-            roast = self._generate_matchup_roast(matchup)
+            roast = self.roasting_engine.generate_matchup_roast(matchup)
             
             html += f'''
             <div class="sub-card p-4">
@@ -217,8 +223,9 @@ class NewsletterGenerator:
 
     def _generate_trades_section(self, weekly_data: Dict) -> str:
         """Generate the trades and transactions section"""
-        trades = weekly_data.get('transactions', {}).get('trades', [])
-        waivers = weekly_data.get('transactions', {}).get('waivers', [])
+        transactions = weekly_data.get('transactions', [])
+        trades = [t for t in transactions if t.get('type') == 'trade']
+        waivers = [t for t in transactions if t.get('type') == 'waiver']
         
         if not trades and not waivers:
             return ""
@@ -256,15 +263,15 @@ class NewsletterGenerator:
         return html
 
     def _generate_roasts_section(self, weekly_data: Dict) -> str:
-        """Generate the roasting section"""
+        """Generate the enhanced roasting section"""
         html = '''
         <section class="card px-5 sm:px-6 py-6 border-2 border-red-600/50">
           <h2 class="font-header text-3xl sm:text-4xl font-bold text-center text-red-400">🔥 WEEKLY ROAST CORNER 🔥</h2>
           <div class="mt-6 space-y-4">
         '''
         
-        # Generate roasts for different categories
-        roasts = self._generate_weekly_roasts(weekly_data)
+        # Generate enhanced roasts
+        roasts = self._generate_enhanced_roasts(weekly_data)
         
         for category, roast_list in roasts.items():
             html += f'''
@@ -281,56 +288,53 @@ class NewsletterGenerator:
         html += '</div></section>'
         return html
 
-    def _generate_weekly_roasts(self, weekly_data: Dict) -> Dict[str, List[str]]:
-        """Generate category-based roasts for the week"""
-        return {
-            "🏆 Winners Getting Roasted": [
-                "Congratulations on your win! Too bad it was against the league's punching bag.",
-                "Nice score this week! Your opponent must be wondering what defense is.",
-                "You won, but let's be honest - a broken clock is right twice a day."
-            ],
-            "💀 Losers Getting Destroyed": [
-                "Did you even set a lineup this week? Asking for a friend.",
-                "Your team scored less than my grandmother, and she's been dead for 10 years.",
-                "I've seen better performances at a high school JV game."
-            ],
-            "🤡 Questionable Decisions": [
-                "Starting that player was like bringing a knife to a gunfight.",
-                "Your lineup decisions make me question everything I know about football.",
-                "Did you draft your team blindfolded? Because it sure looks like it."
-            ]
-        }
-
-    def _get_team_roast(self, team: Dict, category: str) -> str:
-        """Get a roast for a specific team based on their performance"""
+    def _generate_enhanced_roasts(self, weekly_data: Dict) -> Dict[str, List[str]]:
+        """Generate enhanced roasts using the roasting engine"""
+        standings = weekly_data.get('standings', [])
+        matchups = weekly_data.get('matchups', [])
+        transactions = weekly_data.get('transactions', {})
+        
         roasts = {
-            "contender": [
-                f"Sitting pretty at the top, but can you handle the pressure?",
-                f"Leading the league while playing the easiest schedule - impressive or lucky?",
-                f"Great record, but playoff time is when boys become men.",
-            ],
-            "bubble": [
-                f"Fighting for that last playoff spot like it's Black Friday.",
-                f"One week you're hot, next week you're not. Make up your mind!",
-                f"Playoff hopes hanging by a thread thinner than your roster depth.",
-            ]
+            "🏆 Top Performers Getting Roasted": [],
+            "💀 Bottom Feeders Getting Destroyed": [],
+            "🤡 Questionable Decisions": [],
+            "🔥 League-Wide Shame": []
         }
         
-        team_roasts = roasts.get(category, ["Performing as expected."])
-        return team_roasts[0]  # Return first roast for simplicity
-
-    def _generate_matchup_roast(self, matchup: Dict) -> str:
-        """Generate a roast for a specific matchup"""
-        score_diff = abs(matchup.get('team1_score', 0) - matchup.get('team2_score', 0))
+        # Generate team-specific roasts
+        for team in standings[:4]:  # Top 4 teams
+            roast = self.roasting_engine.generate_team_roast(team, weekly_data, "contender")
+            roasts["🏆 Top Performers Getting Roasted"].append(roast)
         
-        if score_diff > 50:
-            return "This wasn't a game, it was a public execution."
-        elif score_diff > 30:
-            return "Someone forgot to show up to this beatdown."
-        elif score_diff < 5:
-            return "Closer than a Kardashian family reunion."
-        else:
-            return "A solid win, but nothing to write home about."
+        for team in standings[-4:]:  # Bottom 4 teams
+            roast = self.roasting_engine.generate_team_roast(team, weekly_data, "basement")
+            roasts["💀 Bottom Feeders Getting Destroyed"].append(roast)
+        
+        # Generate matchup roasts
+        for matchup in matchups[:3]:  # Top 3 matchups
+            roast = self.roasting_engine.generate_matchup_roast(matchup)
+            roasts["🤡 Questionable Decisions"].append(roast)
+        
+        # Generate transaction roasts
+        for trade in transactions:
+            if trade.get('type') == 'trade':
+                roast = self.roasting_engine.generate_transaction_roast(trade, "trade")
+                roasts["🤡 Questionable Decisions"].append(roast)
+        
+        for waiver in transactions:
+            if waiver.get('type') == 'waiver':
+                roast = self.roasting_engine.generate_transaction_roast(waiver, "waiver")
+                roasts["🤡 Questionable Decisions"].append(roast)
+        
+        # Generate league-wide roast
+        league_roast = self.roasting_engine.generate_league_roast(weekly_data)
+        roasts["🔥 League-Wide Shame"].append(league_roast)
+        
+        # Remove empty categories
+        roasts = {k: v for k, v in roasts.items() if v}
+        
+        return roasts
+
 
     def _format_pa_ranking(self, team: Dict) -> str:
         """Format points against ranking"""

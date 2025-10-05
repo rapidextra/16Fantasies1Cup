@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pre-Week Preview: Week {{ week_number }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Pre-Week Preview: Week {{ week_number }}" />
+  <meta property="og:description" content="Week {{ week_number }} preview — predictions, matchups, storylines, and pre-game analysis." />
+  <meta property="og:image" content="assets/og-preweek-{{ week_number }}.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    :root{--bg:#0f1318; --ink:#e9eef6; --muted:#9aa7b6; --panel:#181e25; --line:#2a3340; --accent:#f6c453; --good:#35c26b; --warn:#ffb84a; --bad:#ff6262;}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    .font-header{font-family:Teko,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 28px rgba(0,0,0,.25)}
+    .gold-text{color:var(--accent)}
+    .sub-card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px}
+    .status-badge{font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:9999px;text-transform:uppercase;width:fit-content;margin-inline:auto}
+    .badge-contender{background:var(--accent);color:#111827}
+    .badge-chaser{background:#60a5fa;color:#0b1020}
+    .badge-pretender{background:#a3a3a3;color:#111827}
+    .badge-basement{background:#ef4444;color:#fff}
+    .chip{border:1px solid var(--line);border-radius:999px;padding:.15rem .55rem;font-size:.75rem}
+    .chip-playoff.lock{background:rgba(53,194,107,.16)}
+    .chip-playoff.bubble{background:rgba(255,184,74,.16)}
+    .chip-playoff.out{background:rgba(255,98,98,.16)}
+    @media print{
+      body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .card{box-shadow:none}
+      .toolbar{display:none !important}
+    }
+    .toolbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(15,19,24,.95), rgba(15,19,24,.8));backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+    .btn{border:1px solid var(--line);border-radius:10px;padding:.4rem .8rem;font-size:.9rem}
+    .btn:hover{border-color:var(--accent)}
+  </style>
+</head>
+<body class="min-h-full p-6 sm:p-8">
+  <div class="toolbar px-4 py-3 flex items-center gap-3 flex-wrap">
+    <a class="btn" href="index.html">← Back to archive</a>
+    <button class="btn" onclick="window.print()">🖨️ Export as PDF</button>
+    <button class="btn" id="share-week-btn">📤 Share Week</button>
+    <button class="btn" id="reactions-btn">👍 React</button>
+    <div id="reaction-display" class="text-xs text-slate-400"></div>
+    <span class="text-slate-400 text-xs hidden sm:block">Tip: set Destination to "Save as PDF", enable Background graphics</span>
+  </div>
+
+  <main class="max-w-6xl mx-auto space-y-8">
+    <!-- Header -->
+    <header class="text-center py-8">
+      <h1 class="font-header text-5xl sm:text-6xl font-bold mb-4">
+        <span class="gold-text">Pre-Week Preview</span>
+      </h1>
+      <h2 class="font-header text-3xl sm:text-4xl font-bold mb-2">Week {{ week_number }}: {{ week_title }}</h2>
+      <p class="text-slate-400 text-sm">{{ current_date }}</p>
+    </header>
+
+    <!-- Current Standings -->
+    {{ standings_section }}
+
+    <!-- Week Matchups -->
+    {{ matchups_section }}
+
+    <!-- Predictions -->
+    {{ predictions_section }}
+
+    <!-- Storylines -->
+    {{ storylines_section }}
+
+    <!-- Waiver Wire -->
+    {{ waiver_section }}
+
+    <!-- Weather Watch -->
+    {{ weather_section }}
+
+    <!-- Injury Report -->
+    {{ injury_section }}
+
+    <!-- Pre-Game Trash Talk -->
+    {{ roasting_section }}
+
+    <!-- Footer -->
+    <footer class="text-center py-8 text-slate-400 text-sm">
+      <p>Generated on {{ current_date }} • 16 Fantasies 1 Cup • Pre-Week Preview</p>
+      <p class="mt-2">Good luck to all teams this week! 🏈</p>
+    </footer>
+  </main>
+
+  <script>
+    // Share functionality
+    document.getElementById('share-week-btn').addEventListener('click', function() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Pre-Week Preview: Week {{ week_number }}',
+          text: 'Check out the Week {{ week_number }} preview for 16 Fantasies 1 Cup!',
+          url: window.location.href
+        });
+      } else {
+        // Fallback to copying URL
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('Link copied to clipboard!');
+        });
+      }
+    });
+
+    // Reactions functionality
+    let reactions = 0;
+    document.getElementById('reactions-btn').addEventListener('click', function() {
+      reactions++;
+      document.getElementById('reaction-display').textContent = `👍 ${reactions}`;
+    });
+  </script>
+</body>
+</html>
+

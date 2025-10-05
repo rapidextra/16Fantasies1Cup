@@ -8,37 +8,109 @@
     "motto": "Chosen for Victory"
   },
   "currentSeason": {
-    "record": "8-1",
-    "pointsFor": 1234.5,
-    "pointsAgainst": 1089.2,
-    "rank": 1,
+    "record": "4-3",
+    "pointsFor": 617,
+    "pointsAgainst": 623,
+    "rank": 10,
     "divisionRank": 1,
     "streak": "W4",
     "playoffOdds": 98.5,
     "strengthOfSchedule": 0.45,
     "roster": {
-      "qb": ["Josh Allen", "Geno Smith"],
-      "rb": ["Austin Ekeler", "Raheem Mostert", "Tony Pollard"],
-      "wr": ["Davante Adams", "Keenan Allen", "DJ Moore", "Jordan Addison"],
-      "te": ["Travis Kelce"],
-      "def": ["49ers D/ST"],
-      "k": ["Harrison Butker"]
+      "qb": [
+        "Josh Allen",
+        "Geno Smith"
+      ],
+      "rb": [
+        "Austin Ekeler",
+        "Raheem Mostert",
+        "Tony Pollard"
+      ],
+      "wr": [
+        "Davante Adams",
+        "Keenan Allen",
+        "DJ Moore",
+        "Jordan Addison"
+      ],
+      "te": [
+        "Travis Kelce"
+      ],
+      "def": [
+        "49ers D/ST"
+      ],
+      "k": [
+        "Harrison Butker"
+      ]
     },
     "weeklyScores": [
-      {"week": 1, "score": 134.5, "opponent": "Team B", "result": "W"},
-      {"week": 2, "score": 128.2, "opponent": "Team C", "result": "W"},
-      {"week": 3, "score": 145.8, "opponent": "Team D", "result": "W"},
-      {"week": 4, "score": 118.3, "opponent": "Team E", "result": "W"},
-      {"week": 5, "score": 97.6, "opponent": "Team F", "result": "L"},
-      {"week": 6, "score": 139.4, "opponent": "Team G", "result": "W"},
-      {"week": 7, "score": 156.2, "opponent": "Team H", "result": "W"},
-      {"week": 8, "score": 142.1, "opponent": "Team I", "result": "W"},
-      {"week": 9, "score": 167.3, "opponent": "Team J", "result": "W"}
-    ]
+      {
+        "week": 1,
+        "score": 134.5,
+        "opponent": "Team B",
+        "result": "W"
+      },
+      {
+        "week": 2,
+        "score": 128.2,
+        "opponent": "Team C",
+        "result": "W"
+      },
+      {
+        "week": 3,
+        "score": 145.8,
+        "opponent": "Team D",
+        "result": "W"
+      },
+      {
+        "week": 4,
+        "score": 118.3,
+        "opponent": "Team E",
+        "result": "W"
+      },
+      {
+        "week": 5,
+        "score": 97.6,
+        "opponent": "Team F",
+        "result": "L"
+      },
+      {
+        "week": 6,
+        "score": 139.4,
+        "opponent": "Team G",
+        "result": "W"
+      },
+      {
+        "week": 7,
+        "score": 156.2,
+        "opponent": "Team H",
+        "result": "W"
+      },
+      {
+        "week": 8,
+        "score": 142.1,
+        "opponent": "Team I",
+        "result": "W"
+      },
+      {
+        "week": 9,
+        "score": 167.3,
+        "opponent": "Team J",
+        "result": "W"
+      }
+    ],
+    "lastUpdated": "2025-09-21T14:50:43.425749"
   },
   "historicalData": {
-    "championships": [2021],
-    "playoffAppearances": [2019, 2020, 2021, 2022, 2023],
+    "championships": [
+      2021
+    ],
+    "playoffAppearances": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
     "bestSeason": {
       "year": 2021,
       "record": "12-2",
@@ -88,7 +160,16 @@
       "Prefers proven veterans over rookies",
       "Reluctant to trade away draft picks",
       "Strong at identifying waiver wire gems"
-    ]
+    ],
+    "efficiency_rating": 85.7,
+    "strength_of_schedule": 0.45,
+    "playoff_odds": 98.5,
+    "power_ranking": 3,
+    "trends": {
+      "scoring_trend": "Improving",
+      "consistency": "High",
+      "recent_form": "Hot"
+    }
   },
   "roastingMaterial": {
     "currentSeason": [

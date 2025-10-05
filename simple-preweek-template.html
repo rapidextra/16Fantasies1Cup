@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week {{ week_number }} Pre-Week Newsletter - {{ week_title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .font-header { font-family: 'Inter', sans-serif; }
+        .card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .text-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-gray-100 font-header">
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="card text-white py-8 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl sm:text-5xl font-bold mb-2">{{ week_title }}</h1>
+                <p class="text-xl opacity-90">Week {{ week_number }} Pre-Week Newsletter</p>
+                <p class="text-sm opacity-75 mt-2">{{ current_date }}</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-4xl mx-auto py-8 px-4">
+            <!-- Standings Preview -->
+            {{ standings_section }}
+
+            <!-- Matchups Preview -->
+            {{ matchups_section }}
+
+            <!-- Storylines -->
+            {{ storylines_section }}
+
+            <!-- Roasts -->
+            {{ roasting_section }}
+
+            <!-- Footer -->
+            <div class="mt-12 text-center text-gray-600">
+                <p class="text-sm">Good luck this week! 🍀</p>
+                <p class="text-xs mt-2">Generated on {{ current_date }}</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
+
+

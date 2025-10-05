@@ -1,0 +1,541 @@
+{
+  "week": 2,
+  "season": 2025,
+  "last_updated": "2025-09-21T14:52:33.888274",
+  "standings": [
+    {
+      "team": "healzyswarriors",
+      "owner": "healzyswarriors",
+      "division": "BTK",
+      "rank": 1,
+      "record": "2-0-0",
+      "points_for": 216.64,
+      "points_against": 184.32,
+      "wins": 2,
+      "losses": 0,
+      "ties": 0
+    },
+    {
+      "team": "FattyC26",
+      "owner": "FattyC26",
+      "division": "FLO",
+      "rank": 2,
+      "record": "2-0-0",
+      "points_for": 206.22,
+      "points_against": 161.42,
+      "wins": 2,
+      "losses": 0,
+      "ties": 0
+    },
+    {
+      "team": "Wicka",
+      "owner": "Wicka",
+      "division": "BTK",
+      "rank": 3,
+      "record": "2-0-0",
+      "points_for": 200.56,
+      "points_against": 134.7,
+      "wins": 2,
+      "losses": 0,
+      "ties": 0
+    },
+    {
+      "team": "webbyt",
+      "owner": "webbyt",
+      "division": "FLO",
+      "rank": 4,
+      "record": "2-0-0",
+      "points_for": 188.2,
+      "points_against": 123.06,
+      "wins": 2,
+      "losses": 0,
+      "ties": 0
+    },
+    {
+      "team": "3whits",
+      "owner": "3whits",
+      "division": "FLO",
+      "rank": 5,
+      "record": "2-0-0",
+      "points_for": 184.58,
+      "points_against": 144.02,
+      "wins": 2,
+      "losses": 0,
+      "ties": 0
+    },
+    {
+      "team": "coopersallstarz",
+      "owner": "coopersallstarz",
+      "division": "FLO",
+      "rank": 6,
+      "record": "2-0-0",
+      "points_for": 167.1,
+      "points_against": 148.82,
+      "wins": 2,
+      "losses": 0,
+      "ties": 0
+    },
+    {
+      "team": "DaksDemons",
+      "owner": "DaksDemons",
+      "division": "BTK",
+      "rank": 7,
+      "record": "1-1-0",
+      "points_for": 181.68,
+      "points_against": 177.0,
+      "wins": 1,
+      "losses": 1,
+      "ties": 0
+    },
+    {
+      "team": "Stampy",
+      "owner": "Stampy",
+      "division": "FLO",
+      "rank": 8,
+      "record": "1-1-0",
+      "points_for": 175.26,
+      "points_against": 183.44,
+      "wins": 1,
+      "losses": 1,
+      "ties": 0
+    },
+    {
+      "team": "MorgsLev13",
+      "owner": "MorgsLev13",
+      "division": "FLO",
+      "rank": 9,
+      "record": "1-1-0",
+      "points_for": 165.88,
+      "points_against": 193.12,
+      "wins": 1,
+      "losses": 1,
+      "ties": 0
+    },
+    {
+      "team": "JewTeam",
+      "owner": "JewTeam",
+      "division": "BTK",
+      "rank": 10,
+      "record": "1-1-0",
+      "points_for": 147.32,
+      "points_against": 141.26,
+      "wins": 1,
+      "losses": 1,
+      "ties": 0
+    },
+    {
+      "team": "Poddy",
+      "owner": "Poddy",
+      "division": "BTK",
+      "rank": 11,
+      "record": "0-2-0",
+      "points_for": 184.06,
+      "points_against": 203.56,
+      "wins": 0,
+      "losses": 2,
+      "ties": 0
+    },
+    {
+      "team": "5yearRebuild",
+      "owner": "5yearRebuild",
+      "division": "BTK",
+      "rank": 12,
+      "record": "0-2-0",
+      "points_for": 157.66,
+      "points_against": 223.48,
+      "wins": 0,
+      "losses": 2,
+      "ties": 0
+    },
+    {
+      "team": "Bonzo22",
+      "owner": "Bonzo22",
+      "division": "BTK",
+      "rank": 13,
+      "record": "0-2-0",
+      "points_for": 152.76,
+      "points_against": 182.16,
+      "wins": 0,
+      "losses": 2,
+      "ties": 0
+    },
+    {
+      "team": "Sedgy",
+      "owner": "Sedgy",
+      "division": "FLO",
+      "rank": 14,
+      "record": "0-2-0",
+      "points_for": 152.22,
+      "points_against": 182.0,
+      "wins": 0,
+      "losses": 2,
+      "ties": 0
+    },
+    {
+      "team": "gunga36",
+      "owner": "gunga36",
+      "division": "BTK",
+      "rank": 15,
+      "record": "0-2-0",
+      "points_for": 144.1,
+      "points_against": 188.16,
+      "wins": 0,
+      "losses": 2,
+      "ties": 0
+    },
+    {
+      "team": "MickyMayn",
+      "owner": "MickyMayn",
+      "division": "FLO",
+      "rank": 16,
+      "record": "0-2-0",
+      "points_for": 133.96,
+      "points_against": 187.68,
+      "wins": 0,
+      "losses": 2,
+      "ties": 0
+    }
+  ],
+  "matchups": [
+    {
+      "team1": "gunga36",
+      "team2": "DaksDemons",
+      "team1_owner": "gunga36",
+      "team2_owner": "DaksDemons",
+      "team1_score": 83.28,
+      "team2_score": 100.0,
+      "winner": "DaksDemons",
+      "margin": 16.72,
+      "team1_analysis": {
+        "mvp": "Davante Adams (WR)",
+        "bust": "Mark Andrews (TE)",
+        "coach_rating": 69.67,
+        "luck_rating": -3.41,
+        "key_mistake": "Benched Daniel Jones (QB) (22.84) instead of Justin Fields (QB) (3.98)",
+        "optimal_score": 119.54,
+        "ugly": 36.26
+      },
+      "team2_analysis": {
+        "mvp": "Javonte Williams (RB)",
+        "bust": "Cincinnati Bengals (DEF)",
+        "coach_rating": 100.0,
+        "luck_rating": 13.31,
+        "key_mistake": "No obvious mistake",
+        "optimal_score": 100.0,
+        "ugly": 0
+      }
+    },
+    {
+      "team1": "Bonzo22",
+      "team2": "JewTeam",
+      "team1_owner": "Bonzo22",
+      "team2_owner": "JewTeam",
+      "team1_score": 65.74,
+      "team2_score": 90.1,
+      "winner": "JewTeam",
+      "margin": 24.36,
+      "team1_analysis": {
+        "mvp": "Jaylen Warren (RB)",
+        "bust": "Rashod Bateman (WR)",
+        "coach_rating": 83.17,
+        "luck_rating": -20.95,
+        "key_mistake": "Benched Quentin Johnston (WR) (14.4) instead of Rashod Bateman (WR) (2.5)",
+        "optimal_score": 79.04,
+        "ugly": 13.3
+      },
+      "team2_analysis": {
+        "mvp": "Tucker Kraft (TE)",
+        "bust": "Isiah Pacheco (RB)",
+        "coach_rating": 82.66,
+        "luck_rating": 3.41,
+        "key_mistake": "Benched Troy Franklin (WR) (20.0) instead of FLEX starter Isiah Pacheco (RB) (3.4)",
+        "optimal_score": 109.0,
+        "ugly": 18.9
+      }
+    },
+    {
+      "team1": "Poddy",
+      "team2": "healzyswarriors",
+      "team1_owner": "Poddy",
+      "team2_owner": "healzyswarriors",
+      "team1_score": 99.24,
+      "team2_score": 108.02,
+      "winner": "healzyswarriors",
+      "margin": 8.780000000000001,
+      "team1_analysis": {
+        "mvp": "Dak Prescott (QB)",
+        "bust": "Dalton Kincaid (TE)",
+        "coach_rating": 100.0,
+        "luck_rating": 12.55,
+        "key_mistake": "Benched Terry McLaurin (WR) (7.3) instead of FLEX starter Dalton Kincaid (TE) (5.7)",
+        "optimal_score": 99.24,
+        "ugly": 0
+      },
+      "team2_analysis": {
+        "mvp": "Amon-Ra St. Brown (WR)",
+        "bust": "J.J. McCarthy (QB)",
+        "coach_rating": 91.45,
+        "luck_rating": 21.33,
+        "key_mistake": "Benched Juwan Johnson (TE) (13.4) instead of Brock Bowers (TE) (6.3)",
+        "optimal_score": 118.12,
+        "ugly": 10.1
+      }
+    },
+    {
+      "team1": "Wicka",
+      "team2": "5yearRebuild",
+      "team1_owner": "Wicka",
+      "team2_owner": "5yearRebuild",
+      "team1_score": 125.56,
+      "team2_score": 66.58,
+      "winner": "Wicka",
+      "margin": 58.980000000000004,
+      "team1_analysis": {
+        "mvp": "Jared Goff (QB)",
+        "bust": "Hollywood Brown (WR)",
+        "coach_rating": 93.38,
+        "luck_rating": 38.87,
+        "key_mistake": "Benched Bhayshul Tuten (RB) (14.4) instead of FLEX starter Hollywood Brown (WR) (5.5)",
+        "optimal_score": 134.46,
+        "ugly": 8.9
+      },
+      "team2_analysis": {
+        "mvp": "Caleb Williams (QB)",
+        "bust": "T.J. Hockenson (TE)",
+        "coach_rating": 86.27,
+        "luck_rating": -20.11,
+        "key_mistake": "Benched Cooper Kupp (WR) (12.5) instead of FLEX starter T.J. Hockenson (TE) (1.7)",
+        "optimal_score": 77.18,
+        "ugly": 10.6
+      }
+    },
+    {
+      "team1": "3whits",
+      "team2": "Stampy",
+      "team1_owner": "3whits",
+      "team2_owner": "Stampy",
+      "team1_score": 96.42,
+      "team2_score": 83.2,
+      "winner": "3whits",
+      "margin": 13.219999999999999,
+      "team1_analysis": {
+        "mvp": "Rome Odunze (WR)",
+        "bust": "Brenton Strange (TE)",
+        "coach_rating": 84.27,
+        "luck_rating": 9.73,
+        "key_mistake": "Benched Rachaad White (RB) (13.6) instead of FLEX starter Brenton Strange (TE) (3.2)",
+        "optimal_score": 114.42,
+        "ugly": 18.0
+      },
+      "team2_analysis": {
+        "mvp": "Lamar Jackson (QB)",
+        "bust": "Denver Broncos (DEF)",
+        "coach_rating": 100.0,
+        "luck_rating": -3.49,
+        "key_mistake": "No obvious mistake",
+        "optimal_score": 83.2,
+        "ugly": 0
+      }
+    },
+    {
+      "team1": "coopersallstarz",
+      "team2": "Sedgy",
+      "team1_owner": "coopersallstarz",
+      "team2_owner": "Sedgy",
+      "team1_score": 73.38,
+      "team2_score": 67.14,
+      "winner": "coopersallstarz",
+      "margin": 6.239999999999995,
+      "team1_analysis": {
+        "mvp": "Justin Herbert (QB)",
+        "bust": "Aaron Jones (RB)",
+        "coach_rating": 92.67,
+        "luck_rating": -13.31,
+        "key_mistake": "Benched Josh Downs (WR) (8.1) instead of FLEX starter Aaron Jones (RB) (2.3)",
+        "optimal_score": 79.18,
+        "ugly": 5.8
+      },
+      "team2_analysis": {
+        "mvp": "Puka Nacua (WR)",
+        "bust": "Dallas Goedert (TE)",
+        "coach_rating": 88.13,
+        "luck_rating": -19.55,
+        "key_mistake": "Benched Woody Marks (RB) (5.6) instead of FLEX starter Dallas Goedert (TE) (0.0)",
+        "optimal_score": 76.18,
+        "ugly": 9.04
+      }
+    },
+    {
+      "team1": "MickyMayn",
+      "team2": "webbyt",
+      "team1_owner": "MickyMayn",
+      "team2_owner": "webbyt",
+      "team1_score": 65.84,
+      "team2_score": 112.68,
+      "winner": "webbyt",
+      "margin": 46.84,
+      "team1_analysis": {
+        "mvp": "Trevor Lawrence (QB)",
+        "bust": "Courtland Sutton (WR)",
+        "coach_rating": 72.4,
+        "luck_rating": -20.85,
+        "key_mistake": "Benched Wan'Dale Robinson (WR) (24.2) instead of Courtland Sutton (WR) (1.1)",
+        "optimal_score": 90.94,
+        "ugly": 25.1
+      },
+      "team2_analysis": {
+        "mvp": "Malik Nabers (WR)",
+        "bust": "Jayden Reed (WR)",
+        "coach_rating": 88.6,
+        "luck_rating": 25.99,
+        "key_mistake": "Benched Tyler Allgeier (RB) (14.5) instead of FLEX starter Jayden Reed (WR) (0.0)",
+        "optimal_score": 127.18,
+        "ugly": 14.5
+      }
+    },
+    {
+      "team1": "MorgsLev13",
+      "team2": "FattyC26",
+      "team1_owner": "MorgsLev13",
+      "team2_owner": "FattyC26",
+      "team1_score": 70.34,
+      "team2_score": 108.3,
+      "winner": "FattyC26",
+      "margin": 37.959999999999994,
+      "team1_analysis": {
+        "mvp": "Bo Nix (QB)",
+        "bust": "Washington Commanders (DEF)",
+        "coach_rating": 79.71,
+        "luck_rating": -16.35,
+        "key_mistake": "Benched Cam Skattebo (RB) (12.9) instead of Derrick Henry (RB) (2.3)",
+        "optimal_score": 88.24,
+        "ugly": 17.9
+      },
+      "team2_analysis": {
+        "mvp": "Jayden Daniels (QB)",
+        "bust": "Chase Brown (RB)",
+        "coach_rating": 93.28,
+        "luck_rating": 21.61,
+        "key_mistake": "Benched George Pickens (WR) (15.3) instead of FLEX starter Chase Brown (RB) (7.5)",
+        "optimal_score": 116.1,
+        "ugly": 7.8
+      }
+    }
+  ],
+  "awards": {
+    "highest_scorer": {
+      "team": "Wicka",
+      "owner": "Wicka",
+      "score": 125.56
+    },
+    "coach_of_week": {
+      "team": "Stampy",
+      "owner": "Stampy",
+      "rating": "100.0% lineup efficiency"
+    },
+    "bonehead_of_week": {
+      "team": "gunga36",
+      "owner": "gunga36",
+      "mistake": "Benched Daniel Jones (QB) (22.84) instead of Justin Fields (QB) (3.98)",
+      "bench_points_lost": 36.26,
+      "loss_margin": 16.72
+    },
+    "luckiest": {
+      "team": "coopersallstarz",
+      "owner": "coopersallstarz",
+      "score": 73.38,
+      "description": "Would have lost to 10 of 15 teams, but still won"
+    },
+    "unluckiest": {
+      "team": "Poddy",
+      "owner": "Poddy",
+      "score": 99.24,
+      "description": "Would have beaten 10 of 15 teams, but still lost"
+    }
+  },
+  "transactions": [
+    {
+      "type": "trade",
+      "team": "healzyswarriors",
+      "owner": "healzyswarriors",
+      "description": "healzyswarriors made a strategic trade to strengthen their lineup",
+      "impact": "positive"
+    },
+    {
+      "type": "trade",
+      "team": "FattyC26",
+      "owner": "FattyC26",
+      "description": "FattyC26 made a strategic trade to strengthen their lineup",
+      "impact": "positive"
+    },
+    {
+      "type": "trade",
+      "team": "Wicka",
+      "owner": "Wicka",
+      "description": "Wicka made a strategic trade to strengthen their lineup",
+      "impact": "positive"
+    }
+  ],
+  "player_performances": [
+    {
+      "player": "Wicka (Team)",
+      "position": "TM",
+      "points": 125.56,
+      "team": "Wicka"
+    },
+    {
+      "player": "webbyt (Team)",
+      "position": "TM",
+      "points": 112.68,
+      "team": "webbyt"
+    },
+    {
+      "player": "FattyC26 (Team)",
+      "position": "TM",
+      "points": 108.3,
+      "team": "FattyC26"
+    },
+    {
+      "player": "healzyswarriors (Team)",
+      "position": "TM",
+      "points": 108.02,
+      "team": "healzyswarriors"
+    },
+    {
+      "player": "DaksDemons (Team)",
+      "position": "TM",
+      "points": 100.0,
+      "team": "DaksDemons"
+    },
+    {
+      "player": "Poddy (Team)",
+      "position": "TM",
+      "points": 99.24,
+      "team": "Poddy"
+    },
+    {
+      "player": "3whits (Team)",
+      "position": "TM",
+      "points": 96.42,
+      "team": "3whits"
+    },
+    {
+      "player": "JewTeam (Team)",
+      "position": "TM",
+      "points": 90.1,
+      "team": "JewTeam"
+    },
+    {
+      "player": "gunga36 (Team)",
+      "position": "TM",
+      "points": 83.28,
+      "team": "gunga36"
+    },
+    {
+      "player": "Stampy (Team)",
+      "position": "TM",
+      "points": 83.2,
+      "team": "Stampy"
+    }
+  ]
+}
