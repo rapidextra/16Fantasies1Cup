@@ -1,4 +1,10 @@
 window.CUP_WEEKS = [
+   {
+    week: 4,
+    slug: 'week-04',
+    title: 'The Great Separation',
+    blurb: `Some teams are scrapping for their season, others are out here pretending 0-3 is all part of the master plan. Week 4 isn't buying it — it's bringing receipts and handing out reality checks.`
+  }
  {
     week: 3,
     slug: 'week-03',
