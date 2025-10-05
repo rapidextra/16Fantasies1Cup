@@ -180,7 +180,11 @@
     }
 
     // Initialize dashboard and weekly links
+<<<<<<< HEAD
     function initializePage() {
+=======
+    document.addEventListener('DOMContentLoaded', () => {
+>>>>>>> 9793ab904aec985aad2b93ba310312b8a2080879
         loadSeasonData();
         const wrap = document.getElementById('weeks');
         const weeks = Array.isArray(window.CUP_WEEKS) ? window.CUP_WEEKS.slice() : [];
@@ -199,10 +203,14 @@
             `;
             wrap.appendChild(a);
         });
+<<<<<<< HEAD
     }
 
     // Run initialization
     initializePage();
+=======
+    });
+>>>>>>> 9793ab904aec985aad2b93ba310312b8a2080879
   </script>
 </body>
 </html>
