@@ -42,8 +42,7 @@
       <div class="flex flex-col lg:flex-row gap-6">
         <div class="flex-1">
           <h2 class="font-header text-2xl sm:text-3xl font-bold text-[color:var(--accent)] mb-4">🏆 Current Standings</h2>
-          <div id="standings-mini" class="space-y-2">
-            </div>
+          <div id="standings-mini" class="space-y-2"></div>
           <div class="mt-4 text-center">
             <a href="teams/" class="text-sm underline decoration-yellow-400/70 hover:decoration-yellow-300">View all team profiles →</a>
           </div>
@@ -51,39 +50,26 @@
 
         <div class="flex-1">
           <h2 class="font-header text-2xl sm:text-3xl font-bold text-[color:var(--accent)] mb-4">⚡ Season Highlights</h2>
-          <div id="season-highlights" class="space-y-3">
-            </div>
+          <div id="season-highlights" class="space-y-3"></div>
         </div>
 
         <div class="flex-1">
           <h2 class="font-header text-2xl sm:text-3xl font-bold text-[color:var(--accent)] mb-4">📊 League Stats</h2>
-          <div id="quick-stats" class="space-y-3">
-            </div>
+          <div id="quick-stats" class="space-y-3"></div>
         </div>
       </div>
 
       <div class="mt-6 pt-6 border-t border-slate-600">
         <h3 class="font-header text-lg text-[color:var(--accent)] mb-3">🔥 Recent League Activity</h3>
-        <div id="recent-activity" class="flex flex-wrap gap-2">
-          </div>
+        <div id="recent-activity" class="flex flex-wrap gap-2"></div>
       </div>
     </section>
+    
     <section class="space-y-4">
       <h2 class="font-header text-3xl sm:text-4xl font-bold text-center text-[color:var(--accent)]">Weekly Cup‑Dates</h2>
-      <div class="flex justify-center gap-4 mb-6">
-        <button id="share-btn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-200">
-          📤 Share Site
-        </button>
-        <button id="subscribe-btn" class="bg-yellow-600 hover:bg-yellow-700 text-black px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-200">
-          🔔 Get Notifications
-        </button>
-      </div>
-      <div id="weeks" class="grid gap-4 sm:grid-cols-2"></div>
+      <div id="weeks" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
     </section>
-    <section class="card p-5">
-      <h3 class="font-header text-2xl mb-2 text-[color:var(--accent)]">About</h3>
-      <p class="text-sm text-slate-300">Built for chaos. Add new weeks in <code>weeks.js</code> and drop a matching HTML file (e.g., <code>week-10.html</code>). Shortlinks: <code>/w/10</code> or <code>/week/10</code>.</p>
-    </section>
+
   </main>
   <script src="weeks.js"></script>
   <script>
@@ -91,10 +77,14 @@
     async function loadSeasonData() {
       try {
         const response = await fetch('./data/season-stats.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const seasonData = await response.json();
         populateDashboard(seasonData);
       } catch (error) {
-        console.log('Season data not found, using updated mock data for Week 1');
+        console.error('Could not load season data:', error);
+        console.log('Falling back to mock data for Week 1.');
         populateDashboard(getMockSeasonData());
       }
     }
@@ -104,9 +94,9 @@
       const standingsContainer = document.getElementById('standings-mini');
       const topStandings = data.standings.slice(0, 5);
       standingsContainer.innerHTML = topStandings.map(team => `
-        <div class="flex justify-between items-center bg-slate-800 p-2 rounded">
+        <div class="flex justify-between items-center bg-slate-800/50 p-2 rounded">
           <div class="flex items-center gap-2">
-            <span class="text-xs font-bold w-6">${team.rank}.</span>
+            <span class="text-xs font-bold w-6 text-slate-400">${team.rank}.</span>
             <span class="font-semibold text-sm">${team.team}</span>
           </div>
           <div class="text-right text-xs">
@@ -119,32 +109,32 @@
       // Populate season highlights
       const highlightsContainer = document.getElementById('season-highlights');
       highlightsContainer.innerHTML = `
-        <div class="bg-slate-800 p-3 rounded">
+        <div class="bg-slate-800/50 p-3 rounded">
           <div class="text-sm font-semibold text-yellow-400">🏆 High Score</div>
-          <div class="text-xs">${data.topPerformers.highestScorer.team}: ${data.topPerformers.highestScorer.points} pts (Week ${data.topPerformers.highestScorer.week})</div>
+          <div class="text-xs text-slate-300">${data.topPerformers.highestScorer.team}: ${data.topPerformers.highestScorer.points} pts (Week ${data.topPerformers.highestScorer.week})</div>
         </div>
-        <div class="bg-slate-800 p-3 rounded">
+        <div class="bg-slate-800/50 p-3 rounded">
           <div class="text-sm font-semibold text-green-400">⚙️ Most Efficient</div>
-          <div class="text-xs">${data.topPerformers.mostEfficient.team} (${data.topPerformers.mostEfficient.efficiency}%)</div>
+          <div class="text-xs text-slate-300">${data.topPerformers.mostEfficient.team} (${data.topPerformers.mostEfficient.efficiency}%)</div>
         </div>
-        <div class="bg-slate-800 p-3 rounded">
+        <div class="bg-slate-800/50 p-3 rounded">
           <div class="text-sm font-semibold text-red-400">💔 Worst Beat</div>
-          <div class="text-xs">${data.topPerformers.worstBeat.team}: Lost with ${data.topPerformers.worstBeat.points} pts (Week ${data.topPerformers.worstBeat.week})</div>
+          <div class="text-xs text-slate-300">${data.topPerformers.worstBeat.team}: Lost with ${data.topPerformers.worstBeat.points} pts (Week ${data.topPerformers.worstBeat.week})</div>
         </div>
       `;
 
       // Populate quick stats
       const statsContainer = document.getElementById('quick-stats');
       statsContainer.innerHTML = `
-        <div class="bg-slate-800 p-3 rounded text-center">
+        <div class="bg-slate-800/50 p-3 rounded text-center">
           <div class="text-lg font-bold text-yellow-400">${data.currentWeek}</div>
           <div class="text-xs text-slate-400">Current Week</div>
         </div>
-        <div class="bg-slate-800 p-3 rounded text-center">
+        <div class="bg-slate-800/50 p-3 rounded text-center">
           <div class="text-lg font-bold text-green-400">${data.leagueInfo.playoffTeams}</div>
           <div class="text-xs text-slate-400">Playoff Spots</div>
         </div>
-        <div class="bg-slate-800 p-3 rounded text-center">
+        <div class="bg-slate-800/50 p-3 rounded text-center">
           <div class="text-lg font-bold text-blue-400">${data.leagueInfo.totalTeams}</div>
           <div class="text-xs text-slate-400">Total Teams</div>
         </div>
@@ -153,25 +143,23 @@
       // Populate recent activity
       const activityContainer = document.getElementById('recent-activity');
       const activities = [];
-      
       if (data.recentActivity.trades && data.recentActivity.trades.length > 0) {
         activities.push(...data.recentActivity.trades.map(trade => 
-          `<span class="bg-blue-900 text-blue-200 px-2 py-1 rounded text-xs">📄 ${trade.summary}</span>`
+          `<span class="bg-blue-900/50 text-blue-200 px-2 py-1 rounded text-xs">📄 ${trade.summary}</span>`
         ));
       } else {
-        activities.push(`<span class="bg-gray-700 text-gray-300 px-2 py-1 rounded text-xs">No trades this week</span>`);
+        activities.push(`<span class="bg-gray-700/80 text-gray-300 px-2 py-1 rounded text-xs">No trades this week</span>`);
       }
-      
       if (data.recentActivity.waivers && data.recentActivity.waivers.length > 0) {
         activities.push(...data.recentActivity.waivers.map(waiver => 
-          `<span class="bg-green-900 text-green-200 px-2 py-1 rounded text-xs">💰 ${waiver.team} claimed ${waiver.player}</span>`
+          `<span class="bg-green-900/50 text-green-200 px-2 py-1 rounded text-xs">💰 ${waiver.team} claimed ${waiver.player}</span>`
         ));
       }
-
       activityContainer.innerHTML = activities.join('');
     }
 
     function getMockSeasonData() {
+      // This is fallback data in case season-stats.json fails to load.
       return {
         currentWeek: 1,
         leagueInfo: { totalTeams: 16, playoffTeams: 8 },
@@ -181,17 +169,6 @@
           { rank: 3, team: "MorgsLev13", record: "1-0", pointsFor: 95.54 },
           { rank: 4, team: "coopersallstarz", record: "1-0", pointsFor: 93.72 },
           { rank: 5, team: "Stampy", record: "1-0", pointsFor: 92.06 },
-          { rank: 6, team: "3whits", record: "1-0", pointsFor: 88.16 },
-          { rank: 7, team: "webbyt", record: "1-0", pointsFor: 75.52 },
-          { rank: 8, team: "Wicka", record: "1-0", pointsFor: 75.00 },
-          { rank: 9, team: "5yearRebuild", record: "0-1", pointsFor: 91.08 },
-          { rank: 10, team: "Bonzo22", record: "0-1", pointsFor: 87.02 },
-          { rank: 11, team: "Sedgy", record: "0-1", pointsFor: 85.08 },
-          { rank: 12, team: "Poddy", record: "0-1", pointsFor: 84.82 },
-          { rank: 13, team: "DaksDemons", record: "0-1", pointsFor: 81.68 },
-          { rank: 14, team: "MickyMayn", record: "0-1", pointsFor: 68.12 },
-          { rank: 15, team: "gunga36", record: "0-1", pointsFor: 60.82 },
-          { rank: 16, team: "JewTeam", record: "0-1", pointsFor: 57.22 }
         ],
         topPerformers: {
           highestScorer: { team: "healzyswarriors", points: 108.62, week: 1 },
@@ -205,80 +182,27 @@
       };
     }
 
-    // Initialize dashboard
-    loadSeasonData();
-    const wrap = document.getElementById('weeks');
-    const weeks = Array.isArray(window.CUP_WEEKS) ? window.CUP_WEEKS.slice() : [];
-    const maxWeek = weeks.reduce((m, w) => Math.max(m, w.week || 0), 0);
-    
-    weeks.forEach(w => {
-      const a = document.createElement('a');
-      a.className = 'card p-5 block hover:scale-105 transition-transform duration-200';
-      a.href = `${w.slug}.html`;
-      a.innerHTML = `
-        ${w.week === maxWeek ? '<div class="badge" aria-label="Newest">NEW</div>' : ''}
-        <div class="text-xs uppercase tracking-wide text-slate-400">Week ${w.week}</div>
-        <div class="mt-1 font-header text-2xl">${w.title}</div>
-        <p class="mt-2 text-sm text-slate-300">${w.blurb ?? ""}</p>
-        <div class="mt-3 flex gap-2">
-          <button class="share-week-btn text-xs bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded" data-week="${w.week}" data-title="${w.title}" data-slug="${w.slug}">
-            📤 Share
-          </button>
-          <span class="text-xs text-slate-500">Click to read →</span>
-        </div>
-      `;
-      wrap.appendChild(a);
-    });
-
-    // Share functionality
-    document.getElementById('share-btn').addEventListener('click', async () => {
-      try {
-        await navigator.share({
-          title: '16 Fantasies 1 Cup',
-          text: 'Check out our fantasy football league newsletter!',
-          url: window.location.href
+    // Initialize dashboard and weekly links
+    document.addEventListener('DOMContentLoaded', () => {
+        loadSeasonData();
+        const wrap = document.getElementById('weeks');
+        const weeks = Array.isArray(window.CUP_WEEKS) ? window.CUP_WEEKS.slice() : [];
+        const maxWeek = weeks.reduce((m, w) => Math.max(m, w.week || 0), 0);
+        
+        wrap.innerHTML = ''; // Clear existing content
+        weeks.forEach(w => {
+            const a = document.createElement('a');
+            a.className = 'card p-5 block hover:scale-[1.03] transition-transform duration-200';
+            a.href = `${w.slug}.html`;
+            a.innerHTML = `
+                ${w.week === maxWeek ? '<div class="badge" aria-label="Newest">NEW</div>' : ''}
+                <div class="text-xs uppercase tracking-wide text-slate-400">Week ${w.week}</div>
+                <div class="mt-1 font-header text-2xl">${w.title}</div>
+                <p class="mt-2 text-sm text-slate-300">${w.blurb ?? ""}</p>
+            `;
+            wrap.appendChild(a);
         });
-      } catch (err) {
-        navigator.clipboard.writeText(window.location.href);
-        alert('Link copied to clipboard!');
-      }
     });
-
-    // Subscription simulation
-    document.getElementById('subscribe-btn').addEventListener('click', () => {
-      const email = prompt('Enter your email to get notified of new Cup-Dates:');
-      if (email) {
-        alert(`Thanks! We'll notify ${email} when new newsletters are published.`);
-        localStorage.setItem('subscribedEmail', email);
-      }
-    });
-
-    // Individual week sharing
-    document.addEventListener('click', async (e) => {
-      if (e.target.classList.contains('share-week-btn')) {
-        e.preventDefault();
-        e.stopPropagation();
-        const { week, title, slug } = e.target.dataset;
-        const url = `${window.location.origin}/${slug}.html`;
-        try {
-          await navigator.share({
-            title: `Week ${week}: ${title}`,
-            text: `Check out this week's Cup-Date from 16 Fantasies 1 Cup!`,
-            url: url
-          });
-        } catch (err) {
-          navigator.clipboard.writeText(url);
-          alert('Link copied to clipboard!');
-        }
-      }
-    });
-
-    // Show notification if user is subscribed
-    if (localStorage.getItem('subscribedEmail')) {
-      const email = localStorage.getItem('subscribedEmail');
-      document.getElementById('subscribe-btn').innerHTML = '✅ Subscribed';
-      document.getElementById('subscribe-btn').title = `Notifications enabled for ${email}`;
-    }
   </script>
 </body>
 </html>
